@@ -5,12 +5,12 @@ import classes from "./Header.module.scss";
 const Header = () => {
   return (
     <div className={classes.header}>
-      <div className="content">
+      <div className={classes.content}>
         <h3>Today's beautiful news</h3>
         <h1>
           Meet the security guard protecting Cape Town’s children from hunger
         </h1>
-        <div className="titles">
+        <div className={classes.titles}>
           <Link href="#">Community</Link>
           <Link href="#">South Africa</Link>
         </div>

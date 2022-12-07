@@ -1,0 +1,45 @@
+@use "../../styles/vars" as *;
+.header {
+  .content {
+    position: absolute;
+    top: 30%;
+    h3 {
+      text-transform: uppercase;
+      font-size: 1.5rem;
+    }
+
+    h1 {
+      margin: 1rem 0;
+      width: 40%;
+      font-weight: 900;
+      font-size: 3rem;
+      // text-align: justify;
+    }
+
+    .titles {
+      font-weight: bold;
+      a {
+        margin-right: 2rem;
+        color: $lighter_dark;
+      }
+    }
+
+    button {
+      cursor: pointer;
+      background-color: $lighter_rose;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      svg {
+        margin-right: 0.7rem;
+      }
+    }
+  }
+
+  img {
+    position: relative;
+    z-index: -1;
+  }
+}
