@@ -58,6 +58,18 @@
         margin-right: 0.7rem;
       }
     }
+
+    .shape {
+      //  display: flex;
+      //  justify-content: flex-end;
+      position: absolute;
+      right: 0;
+      h4 {
+        line-height: 1.6;
+        font-size: 1.4rem;
+        font-weight: normal;
+      }
+    }
   }
 
   img {

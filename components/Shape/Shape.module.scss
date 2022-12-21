@@ -3,7 +3,12 @@
   width: fit-content;
   padding: 1rem;
   position: relative;
-  margin: 2rem; // delete this.
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: 0.5s;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 5px 25px;
+  }
   &::before {
     content: "";
     border: solid $lighter_rose;

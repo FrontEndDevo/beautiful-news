@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import classes from "./Header.module.scss";
+import Shape from "../Shape/Shape";
 const Header = () => {
   return (
     <div className={classes.header}>
@@ -18,6 +19,11 @@ const Header = () => {
           <FontAwesomeIcon icon={faPlay} />
           <span>1:15</span>
         </button>
+        <div className={classes.shape}>
+          <Shape>
+            <h4>sjackson@insider.com <br />(Sarah Jackson)</h4>
+          </Shape>
+        </div>
       </div>
       <img
         src="https://www.beautifulnews.com/sites/default/files/styles/header/public/story/image/MoosaIsmail_SecurityGuard-03025.jpg?h=3f2aa710&itok=cHl4-9NE"
