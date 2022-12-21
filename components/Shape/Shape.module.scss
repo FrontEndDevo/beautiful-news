@@ -1,0 +1,45 @@
+@use "../../styles/vars" as *;
+.shape {
+  width: fit-content;
+  padding: 1rem;
+  position: relative;
+  margin: 2rem; // delete this.
+  &::before {
+    content: "";
+    border: solid $lighter_rose;
+    border-top-width: 10px;
+    border-right-width: 0;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    width: 40%;
+    height: 100%;
+    position: absolute;
+    top: -10px;
+    left: 0;
+  }
+  &::after {
+    content: "";
+    border: solid $lighter_rose;
+    border-top-width: 10px;
+    border-left-width: 0;
+    border-bottom-width: 10px;
+    border-right-width: 10px;
+    width: 40%;
+    height: 100%;
+    position: absolute;
+    top: -10px;
+    right: 0;
+  }
+
+  .icon {
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -50px;
+      right: 20px;
+      border: 20px solid;
+      border-color: $lighter_rose transparent transparent transparent;
+      z-index: 11;
+    }
+  }
+}
