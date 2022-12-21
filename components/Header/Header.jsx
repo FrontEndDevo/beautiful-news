@@ -21,7 +21,9 @@ const Header = () => {
         </button>
         <div className={classes.shape}>
           <Shape>
-            <h4>sjackson@insider.com <br />(Sarah Jackson)</h4>
+            <h4>
+              sjackson@insider.com <br /> (Sarah Jackson)
+            </h4>
           </Shape>
         </div>
       </div>
