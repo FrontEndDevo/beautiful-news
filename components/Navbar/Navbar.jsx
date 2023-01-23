@@ -1,6 +1,7 @@
 import classes from "./Navbar.module.scss";
-import myIcon from '../../assets/images/ico.webp';
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 const Navbar = () => {
   return (
     <div className={classes.navbar}>
@@ -13,13 +14,14 @@ const Navbar = () => {
           </h1>
         </div>
         <div className={classes.pages}>
-          <Link>About</Link>
-          <Link>Channels</Link>
+          <Link href="./">About</Link>
+          <Link href="./">Channels</Link>
         </div>
       </div>
       <div className="R-H-S">
-        {/* Search icon //install fontawesome library */}
-        <div className="menu"></div>
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
+        <FontAwesomeIcon icon={faBars} />
+        {/* <FontAwesomeIcon icon={faXmark} /> */}
       </div>
     </div>
   );
