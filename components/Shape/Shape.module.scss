@@ -1,7 +1,7 @@
 @use "../../styles/vars" as *;
 .shape {
   width: fit-content;
-  padding: 1rem;
+  padding: 1.5rem;
   position: relative;
   background-color: rgba(0, 0, 0, 0.4);
   transition: 0.5s;
@@ -41,7 +41,7 @@
       content: "";
       position: absolute;
       bottom: -50px;
-      right: 20px;
+      right: 78px;
       border: 20px solid;
       border-color: $lighter_rose transparent transparent transparent;
       z-index: 11;
