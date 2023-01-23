@@ -1,11 +1,50 @@
 @use "../../styles/vars" as *;
-.navbar{
-  width: 92%;
-  margin-left: auto;
+.navbar {
+  position: fixed;
+  z-index: 1000;
+  width: 80%;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  img{
-    width: 30px;
-    height: 25px;
+  .L-H-S {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    font-weight: bold;
+    .title {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.5rem;
+      img {
+        width: 30px;
+        height: 25px;
+      }
+      a {
+        font-size: 1.5rem;
+        span {
+          font-weight: 100;
+        }
+      }
+    }
+    .pages {
+      display: flex;
+      gap: 2rem;
+      a {
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
   }
 
+  .R-H-S {
+    display: flex;
+    gap: 1.5rem;
+    svg {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
 }
