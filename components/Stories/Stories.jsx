@@ -1,4 +1,5 @@
 import classes from "./Stories.module.scss";
+import Story from "./Story/Story";
 const DUMMY_NEWS = [
   {
     source: { id: null, name: "Marketscreener.com" },
@@ -130,9 +131,24 @@ const DUMMY_NEWS = [
   },
 ];
 const Stories = () => {
+  const allStories = DUMMY_NEWS.map((story) => (
+    <Story
+      key={
+        story.source.id
+          ? story.source.id
+          : story.source.name
+          ? story.source.name
+          : story.author
+      }
+      author={story.author}
+      urlToImage={story.urlToImage}
+      title={story.title}
+    />
+  ));
   return (
     <div className={classes.stories}>
       <h3>Latest News</h3>
+      <ul>{allStories}</ul>
     </div>
   );
 };
