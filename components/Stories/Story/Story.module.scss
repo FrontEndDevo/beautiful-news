@@ -1,13 +1,68 @@
 @use "../../../styles/vars" as *;
 .story {
-  h4 {
+  position: relative;
+  width: 400px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: all $mid_transition;
+
+  .author {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    font-weight: 900;
+    background-color: $lighter_rose;
+    padding: 4px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: inherit;
+    z-index: 10;
   }
 
-  p {
+  .title {
+    width: 80%;
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    font-weight: 700;
+    padding: 0.4rem;
+    border-radius: 6px;
+    line-height: 1.6;
+    transition: inherit;
+    z-index: 10;
+    background-color: #333333;
   }
 
-  img {
-    width: 400px;
-    height: 250px;
+  .story-image {
+    // Need to understand this point (Please Besho, Ask Google)
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+  }
+
+  .image-hover {
+    transition: inherit;
+  }
+
+  // Hover for all elements:
+  &:hover {
+    .image-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0.5;
+    }
+
+    .author {
+      left: 0;
+    }
+    .title {
+      background-color: transparent;
+    }
   }
 }
