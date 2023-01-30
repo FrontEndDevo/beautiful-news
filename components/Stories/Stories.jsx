@@ -141,14 +141,14 @@ const Stories = () => {
           : story.author
       }
       author={story.author}
-      urlToImage={story.urlToImage}
       title={story.title}
+      urlToImage={story.urlToImage}
     />
   ));
   return (
     <div className={classes.stories}>
       <h3>Latest News</h3>
-      <ul>{allStories}</ul>
+      <div className={classes['rendered-stories']}>{allStories}</div>
     </div>
   );
 };
