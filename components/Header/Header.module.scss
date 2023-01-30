@@ -20,6 +20,10 @@
       // background-repeat: no-repeat;
       // background-size: 100%,100%;
       // background-position: 0 -.2125em;
+      transition: $mid_transition;
+      &:hover {
+        text-decoration: underline wavy $lighter_rose from-font;
+      }
     }
 
     .titles {
