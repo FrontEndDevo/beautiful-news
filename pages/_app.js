@@ -19,9 +19,9 @@ function MyApp({ Component, pageProps }) {
           href="https://i.postimg.cc/1t8Z3bF7/icon.png"
         />
       </Head>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
-  )
+  );
 }
 
 export default MyApp;

@@ -28,7 +28,7 @@ const Header = () => {
         </div>
       </div>
       <img
-        src="https://www.beautifulnews.com/sites/default/files/styles/header/public/story/image/MoosaIsmail_SecurityGuard-03025.jpg?h=3f2aa710&itok=cHl4-9NE"
+        src="https://www.androidheadlines.com/wp-content/uploads/2020/12/Servers.jpg"
         alt=""
       />
     </div>
