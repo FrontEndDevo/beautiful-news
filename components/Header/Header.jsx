@@ -28,7 +28,7 @@ const Header = () => {
         </div>
       </div>
       <img
-        src="https://www.androidheadlines.com/wp-content/uploads/2020/12/Servers.jpg"
+        src="https://www.mckinsey.com/~/media/mckinsey/industries/automotive%20and%20assembly/our%20insights/why%20the%20economics%20of%20electrification%20make%20this%20decarbonization%20transition%20different/why%20the%20economics%20of%20electrification%20make%20this%20decarbonization%20transition%20different_1401495101_standard_1536x1536.jpg"
         alt=""
       />
     </div>
