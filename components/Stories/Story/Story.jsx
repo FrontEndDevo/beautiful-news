@@ -1,6 +1,6 @@
 import classes from "./Story.module.scss";
 const Story = (props) => {
-  const { author, title, img } = props;
+  const { author, title, urlToImage: img } = props;
   return (
     <div className={classes.story}>
       <h4>{author}</h4>
