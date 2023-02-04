@@ -1,8 +1,8 @@
 import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
 const Stories = (props) => {
-  console.log(props.news);
-  const allStories = props.news.map((story) => (
+  const filteredNews = props.news.filter((item) => item.urlToImage !== null);
+  const allStories = filteredNews.map((story) => (
     <Story
       key={
         story.source.id
