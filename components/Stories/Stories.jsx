@@ -1,6 +1,7 @@
 import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
 const Stories = (props) => {
+  // Filter news which have no urlToImages.
   const filteredNews = props.news.filter((item) => item.urlToImage !== null);
   const allStories = filteredNews.map((story) => (
     <Story
@@ -11,7 +12,7 @@ const Stories = (props) => {
           ? story.source.name
           : story.author
       }
-      author={story.author}
+      author={story.author ? story.author : "Unknown Author"}
       title={story.title}
       urlToImage={story.urlToImage}
     />
