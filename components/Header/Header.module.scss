@@ -2,6 +2,7 @@
 .header {
   background-image: linear-gradient(to right, black, transparent);
   height: 80vh;
+  position: relative;
   .content {
     position: absolute;
     top: 20%;
@@ -12,7 +13,7 @@
 
     h1 {
       margin: 1rem 0;
-      width: 40%;
+      width: 70%;
       font-weight: 900;
       font-size: 3rem;
       position: relative;
@@ -39,7 +40,7 @@
       cursor: pointer;
       background-color: $lighter_rose;
       border: none;
-      padding: 0.8rem 1.5rem;
+      padding: 0.5rem 2rem;
       color: white;
       font-weight: bold;
       font-size: 1.2rem;
@@ -53,20 +54,7 @@
       }
       svg {
         transition: $fast_transition;
-        margin-right: 0.7rem;
-      }
-    }
-
-    .shape {
-      //  display: flex;
-      //  justify-content: flex-end;
-      position: absolute;
-      right: 10rem;
-      h4 {
-        line-height: 1.6;
-        font-size: 1.4rem;
-        font-weight: normal;
-        text-align: center;
+        font-size: 2rem;
       }
     }
   }
@@ -78,5 +66,22 @@
     height: 100%;
     max-width: 100%;
     max-height: 100%;
+  }
+
+  .shape {
+    position: absolute;
+    bottom: 5rem;
+    right: 5rem;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+    button {
+      line-height: 1.6;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      background-color: transparent;
+      border: none;
+      color: white;
+    }
   }
 }

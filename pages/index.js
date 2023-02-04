@@ -10,7 +10,7 @@ export default function Home(props) {
   return (
     <>
       <Navbar />
-      <Header />
+      <Header news={props.news} />
       <Stories news={props.news} />
     </>
   );
