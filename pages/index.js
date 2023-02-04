@@ -6,12 +6,12 @@ const NEWS_API =
   "https://newsapi.org/v2/everything?q=tesla&from=2023-01-04&sortBy=publishedAt&apiKey=8804ae5da994436aa3ab963e0217fe73";
 
 export default function Home(props) {
-  console.log(props.news);
+  // console.log(props.news);
   return (
     <>
       <Navbar />
       <Header />
-      <Stories />
+      <Stories news={props.news} />
     </>
   );
 }
