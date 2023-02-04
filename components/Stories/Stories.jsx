@@ -20,7 +20,15 @@ const Stories = (props) => {
   return (
     <div className={classes.stories}>
       <h3>Worldwide News</h3>
-      <div className={classes["rendered-stories"]}>{allStories}</div>
+      <div className={classes["rendered-stories"]}>
+        {props.news.length > 0 ? (
+          allStories
+        ) : (
+          <p className={classes["no-news"]}>
+            oops... There are no news at this moment.
+          </p>
+        )}
+      </div>
     </div>
   );
 };

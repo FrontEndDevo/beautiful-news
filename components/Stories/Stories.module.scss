@@ -8,6 +8,16 @@
     font-weight: 900;
   }
 
+  .no-news {
+    background-color: $dark;
+    padding: 1rem 2rem;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 3rem;
+    font-weight: 700;
+    font-style: italic;
+  }
+
   .rendered-stories {
     display: flex;
     flex-wrap: wrap;
