@@ -2,9 +2,6 @@ import Header from "../components/Header/Header";
 import Navbar from "../components/Navbar/Navbar";
 import Stories from "../components/Stories/Stories";
 
-const NEWS_API =
-  "https://newsapi.org/v2/everything?q=tesla&from=2023-01-04&sortBy=publishedAt&apiKey=8804ae5da994436aa3ab963e0217fe73";
-
 export default function Home(props) {
   // console.log(props.news);
   return (
@@ -18,7 +15,9 @@ export default function Home(props) {
 
 export async function getStaticProps() {
   // Fetching news from our API:
-  const response = await fetch(NEWS_API);
+  const response = await fetch(
+    "https://newsapi.org/v2/everything?q=tesla&from=2023-01-08&sortBy=publishedAt&apiKey=8804ae5da994436aa3ab963e0217fe73"
+  );
   const data = await response.json();
 
   // Handling results and push them to an array.

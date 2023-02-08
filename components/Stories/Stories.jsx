@@ -2,21 +2,21 @@ import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
 const Stories = (props) => {
   // Filter news which have no urlToImages.
-  const filteredNews = props.news.filter((item) => item.urlToImage !== null);
-  const allStories = filteredNews.map((story) => (
+  // const filteredNews = props.news.filter((item) => item.urlToImage);
+  const filteredNews = [...new Set(props.news)];
+  const allStories = filteredNews.map((story, index) => (
     <Story
-      key={
-        story.source.id
-          ? story.source.id
-          : story.key
-          ? story.source.name
-          : story.author
-      }
+      key={index}
       author={story.author ? story.author : "Unknown Author"}
-      title={story.title}
-      urlToImage={story.urlToImage}
+      title={story.title ? story.title : "No Title"}
+      urlToImage={
+        story.urlToImage
+          ? story.urlToImage
+          : "https://www.linkpicture.com/q/image-not-found-1-scaled.png"
+      }
     />
   ));
+
   return (
     <div className={classes.stories}>
       <h3>Worldwide News</h3>
