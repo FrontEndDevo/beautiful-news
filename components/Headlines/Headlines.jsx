@@ -20,9 +20,7 @@ const Headlines = () => {
         <br />
         <span>the world</span>
       </h2>
-      <div className={styles.categories}>
-        <ul>{allHeadlines}</ul>
-      </div>
+      <ul className={styles.categories}>{allHeadlines}</ul>
     </div>
   );
 };
