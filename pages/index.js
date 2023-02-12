@@ -1,4 +1,5 @@
 import Header from "../components/Header/Header";
+import Headlines from "../components/Headlines/Headlines";
 import Navbar from "../components/Navbar/Navbar";
 import Stories from "../components/Stories/Stories";
 
@@ -9,6 +10,7 @@ export default function Home(props) {
       <Navbar />
       <Header news={props.news} allowTitles={true} />
       <Stories news={props.news} />
+      <Headlines />
     </>
   );
 }
@@ -16,7 +18,7 @@ export default function Home(props) {
 export async function getStaticProps() {
   // Fetching news from our API:
   const response = await fetch(
-    "https://newsapi.org/v2/everything?q=tesla&from=2023-01-12&sortBy=publishedAt&apiKey=8804ae5da994436aa3ab963e0217fe73"
+    "https://newsapi.org/v2/everything?q=tesla&apiKey=8804ae5da994436aa3ab963e0217fe73"
   );
   const data = await response.json();
 
