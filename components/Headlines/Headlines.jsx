@@ -1,6 +1,6 @@
 import Category from "./Category/Category";
 import styles from "./Headlines.module.scss";
-const TOP_HEADLINES = [
+export const TOP_HEADLINES = [
   "general",
   "entertainment",
   "business",

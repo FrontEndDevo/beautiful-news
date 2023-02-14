@@ -3,6 +3,9 @@ import Headlines from "../components/Headlines/Headlines";
 import Navbar from "../components/Navbar/Navbar";
 import Stories from "../components/Stories/Stories";
 
+// Top-Headlines for (general) category.
+const defaultAPI =
+  "https://newsapi.org/v2/top-headlines?category=general&pageSize=100&apiKey=8804ae5da994436aa3ab963e0217fe73";
 export default function Home(props) {
   // console.log(props.news);
   return (
@@ -17,9 +20,7 @@ export default function Home(props) {
 
 export async function getStaticProps() {
   // Fetching news from our API:
-  const response = await fetch(
-    "https://newsapi.org/v2/everything?q=tesla&apiKey=8804ae5da994436aa3ab963e0217fe73"
-  );
+  const response = await fetch(defaultAPI);
   const data = await response.json();
 
   // Handling results and push them to an array.
