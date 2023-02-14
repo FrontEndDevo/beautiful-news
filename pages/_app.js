@@ -2,9 +2,20 @@ import "../styles/globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Head from "next/head";
+import Loader from "../components/Loader/Loader";
+import { useState } from "react";
+import { Router } from "next/router";
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 
 function MyApp({ Component, pageProps }) {
+  const [isLoading, setIsLoading] = useState(false);
+  Router.events.on("routeChangeStart", () => {
+    setIsLoading(true);
+  });
+
+  Router.events.on("routeChangeComplete", () => {
+    setIsLoading(false);
+  });
   return (
     <>
       <Head>
@@ -19,6 +30,7 @@ function MyApp({ Component, pageProps }) {
           href="https://i.postimg.cc/1t8Z3bF7/icon.png"
         />
       </Head>
+      {isLoading && <Loader />}
       <Component {...pageProps} />
     </>
   );

@@ -9,6 +9,7 @@ body {
   color: white;
   width: 93%;
   margin-left: auto;
+  position: relative;
 }
 
 a {
