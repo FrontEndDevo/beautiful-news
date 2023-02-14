@@ -9,7 +9,7 @@ const defaultAPI =
 export default function Home(props) {
   // console.log(props.news);
   return (
-    <>
+    <> 
       <Navbar />
       <Header news={props.news} allowTitles={true} />
       <Stories news={props.news} />
