@@ -1,18 +1,17 @@
 import Header from "../components/Header/Header";
 import Navbar from "../components/Navbar/Navbar";
 import Stories from "../components/Stories/Stories";
-import { TOP_HEADLINES } from "../components/Headlines/Headlines";
-const SpecificCategory = ({ categoryPosts }) => {
-  console.log(categoryPosts);
+import Headlines, { TOP_HEADLINES } from "../components/Headlines/Headlines";
+const SpecificCategory = ({ categoryNews }) => {
   return (
     <>
       <Navbar />
-      <Header news={categoryPosts} allowTitles={true} />
-      <Stories news={categoryPosts} />
+      <Header news={categoryNews} allowTitles={true} />
+      <Stories news={categoryNews} />
+      <Headlines />
     </>
   );
 };
-
 export default SpecificCategory;
 
 export async function getStaticPaths() {
@@ -35,28 +34,28 @@ export async function getStaticProps(context) {
   const res = await fetch(
     `https://newsapi.org/v2/top-headlines?pageSize=50&apiKey=8804ae5da994436aa3ab963e0217fe73&category=${context.params.categoryId}`
   );
-  const categoryPosts = await res.json();
+  const categoryNews = await res.json();
 
   // Handling results and push them to an array.
-  const loadedPosts = [];
-  if (categoryPosts.totalResults > 0) {
-    for (const key in categoryPosts.articles) {
-      loadedPosts.push({
+  const loadedNews = [];
+  if (categoryNews.totalResults > 0) {
+    for (const key in categoryNews.articles) {
+      loadedNews.push({
         key,
-        source: categoryPosts.articles[key].source,
-        author: categoryPosts.articles[key].author,
-        title: categoryPosts.articles[key].title,
-        description: categoryPosts.articles[key].description,
-        url: categoryPosts.articles[key].url,
-        urlToImage: categoryPosts.articles[key].urlToImage,
-        content: categoryPosts.articles[key].content,
+        source: categoryNews.articles[key].source,
+        author: categoryNews.articles[key].author,
+        title: categoryNews.articles[key].title,
+        description: categoryNews.articles[key].description,
+        url: categoryNews.articles[key].url,
+        urlToImage: categoryNews.articles[key].urlToImage,
+        content: categoryNews.articles[key].content,
       });
     }
   }
 
   return {
     props: {
-      categoryPosts: loadedPosts,
+      categoryNews: loadedNews,
     },
   };
 }
