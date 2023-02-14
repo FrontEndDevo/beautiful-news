@@ -3,7 +3,7 @@ import styles from "./Category.module.scss";
 const Category = ({ headline }) => {
   return (
     <li className={styles.category}>
-      <Link href={headline}>{headline}</Link>
+      <Link href={headline != "general" ? headline : "/"}>{headline}</Link>
     </li>
   );
 };
