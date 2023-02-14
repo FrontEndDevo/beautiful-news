@@ -2,9 +2,18 @@ import Header from "../components/Header/Header";
 import Navbar from "../components/Navbar/Navbar";
 import Stories from "../components/Stories/Stories";
 import Headlines, { TOP_HEADLINES } from "../components/Headlines/Headlines";
-const SpecificCategory = ({ categoryNews }) => {
+import Head from "next/head";
+const SpecificCategory = ({ categoryNews, categoryId }) => {
   return (
     <>
+      <Head>
+        // Global Metadata (Title, Description and favicon-icon)
+        <title>{`${categoryId} | Beautiful News`}</title>
+        <meta
+          name="description"
+          content={`Discover all the news about ${categoryId} in all countries of the world in all possible languages`}
+        />
+      </Head>
       <Navbar />
       <Header news={categoryNews} allowTitles={true} />
       <Stories news={categoryNews} />
@@ -56,6 +65,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       categoryNews: loadedNews,
+      categoryId: context.params.categoryId,
     },
   };
 }
