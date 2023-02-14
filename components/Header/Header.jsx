@@ -6,11 +6,11 @@ import classes from "./Header.module.scss";
 import Shape from "../Shape/Shape";
 const Header = ({ news, allowTitles = false }) => {
   const [pickedStory, setPickedStory] = useState(news[0]);
-  // Pick a story and put its info in the header cells every (1h || 3600000 milliseconds):
+  // Pick a story and put its info in the header cells every (1m || 60000 milliseconds):
   useEffect(() => {
     const interval = setInterval(() => {
       setPickedStory(news[Math.floor(Math.random() * news.length)]);
-    }, 3600000);
+    }, 60000);
 
     return () => {
       clearInterval(interval);
