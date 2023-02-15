@@ -10,9 +10,9 @@ const Categories = () => {
     />
   ));
   return (
-    <div className={classes.channels}>
+    <div className={classes.categories}>
       <h3>Beautiful News Channels to watch</h3>
-      <ul className={classes.categories}>{allChannels}</ul>
+      <ul className={classes.channels}>{allChannels}</ul>
     </div>
   );
 };
