@@ -26,7 +26,7 @@ export async function getStaticPaths() {
   const paths = TOP_HEADLINES.map((cat) => {
     return {
       params: {
-        categoryId: cat,
+        categoryId: cat.headline,
       },
     };
   });
