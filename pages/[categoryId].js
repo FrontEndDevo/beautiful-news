@@ -7,7 +7,6 @@ const SpecificCategory = ({ categoryNews, categoryId }) => {
   return (
     <>
       <Head>
-        // Global Metadata (Title, Description and favicon-icon)
         <title>{`${categoryId} | Beautiful News`}</title>
         <meta
           name="description"
