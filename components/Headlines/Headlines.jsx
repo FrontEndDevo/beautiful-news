@@ -7,7 +7,7 @@ export const TOP_HEADLINES = [
   },
   {
     headline: "entertainment",
-    img: "https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    img: "https://images.pexels.com/photos/2927080/pexels-photo-2927080.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {
     headline: "business",
@@ -27,7 +27,7 @@ export const TOP_HEADLINES = [
   },
   {
     headline: "technology",
-    img: "https://images.pexels.com/photos/6153741/pexels-photo-6153741.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    img: "https://images.pexels.com/photos/4145356/pexels-photo-4145356.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
 ];
 const Headlines = () => {
