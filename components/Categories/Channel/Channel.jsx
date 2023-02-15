@@ -7,7 +7,10 @@ const Channel = (props) => {
   return (
     <li className={classes.channel}>
       <Link href={name}>
-        <img src={img} alt={name} />
+        <div>
+          <img src={img} alt={name} />
+          <div className={classes.hover}></div>
+        </div>
         <div className={classes.words}>
           <h4>{name}</h4>
           <div className={classes.watch}>
