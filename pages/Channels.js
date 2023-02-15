@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Categories from "../components/Categories/Categories";
 import Navbar from "../components/Navbar/Navbar";
-import { TOP_HEADLINES } from "../components/Headlines/Headlines";
 const Channels = () => {
   return (
     <>
