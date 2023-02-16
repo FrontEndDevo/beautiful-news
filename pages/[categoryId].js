@@ -7,7 +7,9 @@ const SpecificCategory = ({ categoryNews, categoryId }) => {
   return (
     <>
       <Head>
-        <title>{`${categoryId} | Beautiful News`}</title>
+        <title>{`${
+          categoryId.charAt(0).toUpperCase() + categoryId.slice(1)
+        } | Beautiful News`}</title>
         <meta
           name="description"
           content={`Discover all the news about ${categoryId} in all countries of the world in all possible languages`}

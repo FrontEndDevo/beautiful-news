@@ -12,7 +12,7 @@ const Channel = (props) => {
           <div className={classes.hover}></div>
         </div>
         <div className={classes.words}>
-          <h4>{name}</h4>
+          <h4>{name.charAt(0).toUpperCase() + name.slice(1)}</h4>
           <div className={classes.watch}>
             <FontAwesomeIcon icon={faEye} />
             <p>Watch</p>
