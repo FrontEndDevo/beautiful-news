@@ -34,7 +34,14 @@ const Header = ({ news, allowTitles = false }) => {
           </button>
         </div>
       </div>
-      <img src={pickedStory.urlToImage} alt={pickedStory.title} />
+      <img
+        src={
+          pickedStory.urlToImage
+            ? pickedStory.urlToImage
+            : "https://www.linkpicture.com/q/image-not-found-1-scaled.png"
+        }
+        alt={pickedStory.title}
+      />
       {allowTitles && (
         <div className={classes.shape}>
           <Shape>
