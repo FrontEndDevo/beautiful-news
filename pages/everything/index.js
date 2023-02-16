@@ -1,6 +1,22 @@
+import Head from "next/head";
+import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
+import Stories from "../../components/Stories/Stories";
+
 const Everything = ({ everythingNews }) => {
-  console.log(everythingNews);
-  return <div>Everything</div>;
+  return (
+    <React.Fragment>
+      <Head>
+        <title>Everything | Beautiful News</title>
+        <meta
+          name="description"
+          content="Discover all the news around a certain topic in all languages"
+        />
+      </Head>
+      <Navbar />
+      <Stories news={everythingNews} />
+    </React.Fragment>
+  );
 };
 
 export default Everything;
