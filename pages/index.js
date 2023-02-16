@@ -28,7 +28,6 @@ export async function getStaticProps() {
   if (data.totalResults > 0) {
     for (const key in data.articles) {
       loadedNews.push({
-        key,
         source: data.articles[key].source,
         author: data.articles[key].author,
         title: data.articles[key].title,
