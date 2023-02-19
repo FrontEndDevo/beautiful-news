@@ -14,7 +14,7 @@ const Everything = ({ everythingNews }) => {
         />
       </Head>
       <Navbar />
-      <Stories news={everythingNews} />
+      <Stories news={everythingNews} everything={true} />
     </React.Fragment>
   );
 };

@@ -1,9 +1,8 @@
 import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
-const Stories = (props) => {
-  // Filter news which have no urlToImages.
-  // const filteredNews = props.news.filter((item) => item.urlToImage);
-  const filteredNews = [...new Set(props.news)];
+const Stories = ({ news, everything = false }) => {
+  // Filter duplicated stories:
+  const filteredNews = [...new Set(news)];
   const allStories = filteredNews.map((story, index) => (
     <Story
       key={index}
@@ -19,9 +18,11 @@ const Stories = (props) => {
 
   return (
     <div className={classes.stories}>
-      <h3>Worldwide News</h3>
+      <h3>
+        {everything ? "Everything We Know About < Google >" : "Worldwide News"}
+      </h3>
       <div className={classes["rendered-stories"]}>
-        {props.news.length > 0 ? (
+        {news.length > 0 ? (
           allStories
         ) : (
           <p className={classes["no-news"]}>
