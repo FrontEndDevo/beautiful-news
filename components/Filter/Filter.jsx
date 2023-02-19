@@ -23,6 +23,7 @@ const sortBy = ["publishedAt", "relevancy", "popularity"];
 const pageSize = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
 const Filter = () => {
+  
   return (
     <div className={classes.filter}>
       <FontAwesomeIcon icon={faFilter} />
