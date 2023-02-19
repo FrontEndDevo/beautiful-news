@@ -30,9 +30,9 @@ const Filter = () => {
   const renderedSortBy = optionsObj.sortBy.map((item) => (
     <Options key={item} option={item} />
   ));
-  const renderedPageSize = optionsObj.pageSize.map((size) => (
-    <Options key={size} option={size} />
-  ));
+  const renderedPageSize = optionsObj.pageSize
+    .map((size) => <Options key={size} option={size} />)
+    .reverse();
   return (
     <div className={classes.filter}>
       <FontAwesomeIcon icon={faFilter} />
