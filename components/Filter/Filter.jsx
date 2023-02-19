@@ -35,20 +35,51 @@ const Filter = () => {
     .reverse();
   return (
     <div className={classes.filter}>
-      <FontAwesomeIcon icon={faFilter} />
+      <FontAwesomeIcon className={classes["filter-icon"]} icon={faFilter} />
       <div className={classes.inputs}>
-        <input type="text" name="keyword" id="" />
-        <select className={classes["sort-by"]} name="" id="">
-          {renderedSortBy}
-        </select>
-        <div className={classes.short}>
-          <select className={classes.languages} name="" id="">
-            {renderedLanguages}
-          </select>
-          <select className={classes.size} name="" id="">
-            {renderedPageSize}
-          </select>
+        <div className={classes["keyword-sort"]}>
+          <div className={classes.keyword}>
+            <label htmlFor="keyword">Keyword</label>
+            <input
+              type="text"
+              name="keyword"
+              id="keyword"
+              placeholder="e.g. Google"
+            />
+          </div>
+
+          <div className={classes["sort-by"]}>
+            <p>Sorting By</p>
+            <select name="sortby" id="sortby">
+              {renderedSortBy}
+            </select>
+          </div>
         </div>
+        <div className={classes["from-to"]}>
+          <div className={classes.from}>
+            <label htmlFor="from">From</label>
+            <input type="date" name="from" id="from" />
+          </div>
+          <div className={classes.to}>
+            <label htmlFor="to">To</label>
+            <input type="date" name="to" id="to" />
+          </div>
+        </div>
+        <div className={classes["language-sizes"]}>
+          <div className={classes.languages}>
+            <p>Languages</p>
+            <select name="language" id="language">
+              {renderedLanguages}
+            </select>
+          </div>
+          <div className={classes.sizes}>
+            <p>Page Size</p>
+            <select name="size" id="size">
+              {renderedPageSize}
+            </select>
+          </div>
+        </div>
+        <button className={classes.apply}>Apply</button>
       </div>
     </div>
   );
