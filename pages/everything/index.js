@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import Filter from "../../components/Filter/Filter";
 import Navbar from "../../components/Navbar/Navbar";
 import Stories from "../../components/Stories/Stories";
 
@@ -14,6 +15,7 @@ const Everything = ({ everythingNews }) => {
         />
       </Head>
       <Navbar />
+      <Filter />
       <Stories news={everythingNews} everything={true} />
     </React.Fragment>
   );
