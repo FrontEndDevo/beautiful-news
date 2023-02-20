@@ -1,13 +1,40 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Filter from "../../components/Filter/Filter";
 import Navbar from "../../components/Navbar/Navbar";
 import Stories from "../../components/Stories/Stories";
 
 const Everything = ({ everythingNews }) => {
-  const getFiltersHandler = (filtersObj) => {
-    console.log(filtersObj);
+  // To store the required news after set filters by user and fetch them.
+  const [newStories, setNewStories] = useState([]);
+
+  const getFiltersAndFetchNewsHandler = (filtersObj) => {
+    // use object destructuring to extract values:
+    const { keyword, language, pageSize, sortBy } = filtersObj;
+
+    // Start fetching the required news/stories:
+    const getFilteredNews = async () => {
+      const response = await fetch(
+        `https://newsapi.org/v2/everything?apiKey=8804ae5da994436aa3ab963e0217fe73&q=${keyword}&language=${language}&pageSize=${pageSize}&sortBy=${sortBy}`
+      );
+      const data = await response.json();
+      const newNews = [];
+      for (const key in data.articles) {
+        newNews.push({
+          source: data.articles[key].source,
+          author: data.articles[key].author,
+          title: data.articles[key].title,
+          description: data.articles[key].description,
+          url: data.articles[key].url,
+          urlToImage: data.articles[key].urlToImage,
+          content: data.articles[key].content,
+        });
+      }
+      setNewStories(newNews);
+    };
+    getFilteredNews();
   };
+
   return (
     <React.Fragment>
       <Head>
@@ -18,8 +45,11 @@ const Everything = ({ everythingNews }) => {
         />
       </Head>
       <Navbar />
-      <Filter getFilters={getFiltersHandler} />
-      <Stories news={everythingNews} everything={true} />
+      <Filter getFilters={getFiltersAndFetchNewsHandler} />
+      <Stories
+        news={newStories.length > 0 ? newStories : everythingNews}
+        everything={true}
+      />
     </React.Fragment>
   );
 };
