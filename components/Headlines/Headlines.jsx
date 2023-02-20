@@ -29,10 +29,6 @@ export const TOP_HEADLINES = [
     headline: "technology",
     img: "https://images.pexels.com/photos/4145356/pexels-photo-4145356.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
-  {
-    headline: "everything",
-    img: "https://images.pexels.com/photos/3944383/pexels-photo-3944383.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  },
 ];
 const Headlines = () => {
   const allHeadlines = TOP_HEADLINES.map((headlineObj, index) => (
@@ -45,7 +41,10 @@ const Headlines = () => {
         <br />
         <span>the world</span>
       </h2>
-      <ul className={styles.categories}>{allHeadlines}</ul>
+      <ul className={styles.categories}>
+        {allHeadlines}
+        <Category headline="everything" />
+      </ul>
     </div>
   );
 };

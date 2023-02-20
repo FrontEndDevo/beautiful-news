@@ -63,7 +63,6 @@ const Everything = ({ everythingNews }) => {
       <Stories
         news={newStories.length > 0 ? newStories : everythingNews}
         everything={true}
-        filterSucceed={newStories.length > 0 ? true : false}
         keyword={filters.keyword}
       />
     </React.Fragment>

@@ -1,11 +1,6 @@
 import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
-const Stories = ({
-  news,
-  everything = false,
-  keyword = "Google",
-  filterSucceed = false,
-}) => {
+const Stories = ({ news, everything = false, keyword = "Google" }) => {
   // Filter duplicated stories:
   const filteredNews = [...new Set(news)];
   const allStories = filteredNews.map((story, index) => (
@@ -23,17 +18,15 @@ const Stories = ({
 
   return (
     <div className={classes.stories}>
-      {filterSucceed && (
-        <h3>
-          {everything
-            ? `Everything We Know About < ${
-                keyword.charAt(0).toUpperCase() + keyword.slice(1)
-              } >`
-            : "Worldwide News"}
-        </h3>
-      )}
+      <h3>
+        {everything
+          ? `Everything We Know About < ${
+              keyword.charAt(0).toUpperCase() + keyword.slice(1)
+            } >`
+          : "Worldwide News"}
+      </h3>
       <div className={classes["rendered-stories"]}>
-        {news.length > 0 && filterSucceed ? (
+        {news.length > 0 ? (
           allStories
         ) : (
           <p className={classes["no-news"]}>

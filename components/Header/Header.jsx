@@ -5,7 +5,7 @@ import Link from "next/link";
 import classes from "./Header.module.scss";
 import Shape from "../Shape/Shape";
 const Header = ({ news, allowTitles = false }) => {
-  const [pickedStory, setPickedStory] = useState(news[0]);
+  const [pickedStory, setPickedStory] = useState({});
   // Pick a story and put its info in the header cells every (1m || 60000 milliseconds):
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,7 +22,7 @@ const Header = ({ news, allowTitles = false }) => {
       <div className={classes.content}>
         <div className="L-H-S">
           {allowTitles && <h3>Today's beautiful news</h3>}
-          <h1>{pickedStory.title}</h1>
+          <h1>{pickedStory.title || ""}</h1>
           {allowTitles && (
             <div className={classes.titles}>
               <Link href="#">Community</Link>
@@ -36,9 +36,8 @@ const Header = ({ news, allowTitles = false }) => {
       </div>
       <img
         src={
-          pickedStory.urlToImage
-            ? pickedStory.urlToImage
-            : "https://www.linkpicture.com/q/image-not-found-1-scaled.png"
+          pickedStory.urlToImage ||
+          "https://www.linkpicture.com/q/image-not-found-1-scaled.png"
         }
         alt={pickedStory.title}
       />
