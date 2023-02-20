@@ -25,16 +25,14 @@ const SpecificCategory = ({ categoryNews, categoryId }) => {
 export default SpecificCategory;
 
 export async function getStaticPaths() {
-  const paths = TOP_HEADLINES.map((cat) => {
-    return {
-      params: {
-        categoryId: cat.headline,
-      },
-    };
-  });
-
   return {
-    paths,
+    paths: TOP_HEADLINES.map((cat) => {
+      return {
+        params: {
+          categoryId: cat.headline,
+        },
+      };
+    }),
     fallback: false,
   };
 }
