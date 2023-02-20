@@ -7,8 +7,11 @@ import Stories from "../../components/Stories/Stories";
 const Everything = ({ everythingNews }) => {
   // To store the required news after set filters by user and fetch them.
   const [newStories, setNewStories] = useState([]);
+  const [filters, setFilters] = useState({});
 
   const getFiltersAndFetchNewsHandler = (filtersObj) => {
+    setFilters(filtersObj);
+
     // use object destructuring to extract values:
     const { keyword, language, pageSize, sortBy } = filtersObj;
 
@@ -35,10 +38,17 @@ const Everything = ({ everythingNews }) => {
     getFilteredNews();
   };
 
+  const headTitle =
+    Object.keys(filters).length > 0
+      ? `${
+          filters.keyword.charAt(0).toUpperCase() + filters.keyword.slice(1)
+        } | Everything | Beautiful News`
+      : "Google | Everything | Beautiful News";
+
   return (
     <React.Fragment>
       <Head>
-        <title>Everything | Beautiful News</title>
+        <title>{headTitle}</title>
         <meta
           name="description"
           content="Discover all the news around a certain topic in all languages"
@@ -49,6 +59,7 @@ const Everything = ({ everythingNews }) => {
       <Stories
         news={newStories.length > 0 ? newStories : everythingNews}
         everything={true}
+        keyword={filters.keyword}
       />
     </React.Fragment>
   );
