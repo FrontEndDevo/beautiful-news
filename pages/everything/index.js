@@ -51,7 +51,11 @@ const Everything = ({ everythingNews }) => {
         <title>{headTitle}</title>
         <meta
           name="description"
-          content="Discover all the news around a certain topic in all languages"
+          content={`Discover all the news around ${
+            Object.keys(filters).length > 0
+              ? filters.keyword
+              : "a certain topic"
+          } in all languages`}
         />
       </Head>
       <Navbar />
@@ -59,6 +63,7 @@ const Everything = ({ everythingNews }) => {
       <Stories
         news={newStories.length > 0 ? newStories : everythingNews}
         everything={true}
+        filterSucceed={newStories.length > 0 ? false : true}
         keyword={filters.keyword}
       />
     </React.Fragment>
