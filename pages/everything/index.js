@@ -5,6 +5,9 @@ import Navbar from "../../components/Navbar/Navbar";
 import Stories from "../../components/Stories/Stories";
 
 const Everything = ({ everythingNews }) => {
+  const getFiltersHandler = (filtersObj) => {
+    console.log(filtersObj);
+  };
   return (
     <React.Fragment>
       <Head>
@@ -15,7 +18,7 @@ const Everything = ({ everythingNews }) => {
         />
       </Head>
       <Navbar />
-      <Filter />
+      <Filter getFilters={getFiltersHandler} />
       <Stories news={everythingNews} everything={true} />
     </React.Fragment>
   );
