@@ -5,6 +5,7 @@ import Channel from "./Channel/Channel";
 const Categories = () => {
   const allChannels = TOP_HEADLINES.map((headlineObj) => (
     <Channel
+      key={headlineObj.headline}
       headlineName={headlineObj.headline}
       headlineImg={headlineObj.img}
     />

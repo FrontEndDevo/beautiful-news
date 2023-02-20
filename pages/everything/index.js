@@ -24,7 +24,7 @@ const Everything = ({ everythingNews }) => {
 export default Everything;
 
 const EVERYTHING_API =
-  "https://newsapi.org/v2/everything?apiKey=8804ae5da994436aa3ab963e0217fe73&q=google&language=en&pageSize=50&sortBy=popularity";
+  "https://newsapi.org/v2/everything?apiKey=8804ae5da994436aa3ab963e0217fe73&q=google&language=en&pageSize=100&sortBy=publishedAt";
 export async function getStaticProps() {
   const response = await fetch(EVERYTHING_API);
   const data = await response.json();
