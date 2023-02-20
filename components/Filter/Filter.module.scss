@@ -42,9 +42,7 @@
           border: none;
           font-weight: bold;
           caret-color: $lighter_rose;
-          &:focus {
-            border: 1px solid $lighter_rose;
-          }
+          border: 1px solid $lighter_rose;
         }
       }
       .sort-by {

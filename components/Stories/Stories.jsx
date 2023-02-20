@@ -23,7 +23,7 @@ const Stories = ({
 
   return (
     <div className={classes.stories}>
-      {!filterSucceed && (
+      {filterSucceed && (
         <h3>
           {everything
             ? `Everything We Know About < ${
@@ -33,14 +33,12 @@ const Stories = ({
         </h3>
       )}
       <div className={classes["rendered-stories"]}>
-        {news.length > 0 && !filterSucceed ? (
+        {news.length > 0 && filterSucceed ? (
           allStories
         ) : (
-          <p className={classes["no-news"]}>{`${
-            filterSucceed
-              ? `oops... There are no news around ${keyword} at this moment.`
-              : "oops... There are no news at this moment."
-          }`}</p>
+          <p className={classes["no-news"]}>
+            oops...There are no news at this moment.
+          </p>
         )}
       </div>
     </div>

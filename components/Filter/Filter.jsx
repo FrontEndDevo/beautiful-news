@@ -96,12 +96,12 @@ const Filter = (props) => {
           <div className={classes["from-to"]}>
             <div className={classes.from}>
               <label htmlFor="from">From</label>
-              <input type="date" name="from" id="from" />
+              <input disabled type="date" name="from" id="from" />
             </div>
 
             <div className={classes.to}>
               <label htmlFor="to">To</label>
-              <input type="date" name="to" id="to" />
+              <input disabled type="date" name="to" id="to" />
             </div>
           </div>
           <div className={classes["language-sizes"]}>
