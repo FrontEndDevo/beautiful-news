@@ -5,7 +5,7 @@ import Link from "next/link";
 import classes from "./Header.module.scss";
 import Shape from "../Shape/Shape";
 const Header = ({ news, allowTitles = false }) => {
-  const [pickedStory, setPickedStory] = useState({});
+  const [pickedStory, setPickedStory] = useState(news[0]);
   // Pick a story and put its info in the header cells every (1m || 60000 milliseconds):
   useEffect(() => {
     const interval = setInterval(() => {

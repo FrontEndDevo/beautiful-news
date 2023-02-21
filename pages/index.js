@@ -7,7 +7,6 @@ import Stories from "../components/Stories/Stories";
 const defaultAPI =
   "https://newsapi.org/v2/top-headlines?category=general&pageSize=100&apiKey=8804ae5da994436aa3ab963e0217fe73";
 export default function Home(props) {
-  // console.log(props.news);
   return (
     <>
       <Navbar />
