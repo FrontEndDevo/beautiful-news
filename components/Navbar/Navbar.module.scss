@@ -59,4 +59,30 @@
       cursor: pointer;
     }
   }
+
+  .search-bar {
+    position: absolute;
+    padding: 1.5rem 0;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    svg {
+      font-size: 1.7rem;
+      color: $dark;
+      margin-right: 1rem;
+    }
+    input {
+      width: 90%;
+      outline: none;
+      border: none;
+      font-size: 1.2rem;
+      padding: 10px 5px;
+      color: white;
+      background-color: transparent;
+      &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+      }
+    }
+  }
 }

@@ -7,6 +7,7 @@ import {
   faMagnifyingGlass,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/router";
 const Navbar = () => {
   const [navbarBackground, setNavbarBackground] = useState(false);
 
@@ -17,6 +18,9 @@ const Navbar = () => {
 
     window.addEventListener("scroll", changeNavbarBackground);
   }, []);
+
+  const router = useRouter();
+  console.log(router.pathname);
 
   return (
     <div className={classes.navbar}>
@@ -42,6 +46,10 @@ const Navbar = () => {
         <FontAwesomeIcon icon={faMagnifyingGlass} />
         <FontAwesomeIcon icon={faBars} />
         {/* <FontAwesomeIcon icon={faXmark} /> */}
+      </div>
+      <div className={classes["search-bar"]}>
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
+        <input type="search" name="search" id="search" maxLength="150" />
       </div>
     </div>
   );
