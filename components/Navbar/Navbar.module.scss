@@ -62,11 +62,12 @@
 
   .search-bar {
     position: absolute;
-    padding: 1.5rem 0;
+    padding: 1.2rem 0;
     width: 100%;
     background-color: black;
     display: flex;
     align-items: center;
+    animation: top-down $fast_transition;
     svg {
       font-size: 1.7rem;
       color: $dark;
@@ -84,5 +85,14 @@
         -webkit-appearance: none;
       }
     }
+  }
+}
+
+@keyframes top-down {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

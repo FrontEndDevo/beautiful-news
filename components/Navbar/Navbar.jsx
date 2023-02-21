@@ -10,6 +10,7 @@ import {
 import { useRouter } from "next/router";
 const Navbar = () => {
   const [navbarBackground, setNavbarBackground] = useState(false);
+  const [showSearchBar, setShowSearchBar] = useState(false);
 
   useEffect(() => {
     const changeNavbarBackground = () => {
@@ -18,6 +19,14 @@ const Navbar = () => {
 
     window.addEventListener("scroll", changeNavbarBackground);
   }, []);
+
+  const showSearchBarHandler = () => {
+    setShowSearchBar((prevState) => !prevState);
+  };
+
+  const blurSearchBarHandler = () => {
+    setShowSearchBar(false);
+  };
 
   const router = useRouter();
   console.log(router.pathname);
@@ -43,14 +52,26 @@ const Navbar = () => {
         </ul>
       </div>
       <div className={classes["R-H-S"]}>
-        <FontAwesomeIcon icon={faMagnifyingGlass} />
+        <FontAwesomeIcon
+          icon={faMagnifyingGlass}
+          onClick={showSearchBarHandler}
+        />
         <FontAwesomeIcon icon={faBars} />
         {/* <FontAwesomeIcon icon={faXmark} /> */}
       </div>
-      <div className={classes["search-bar"]}>
-        <FontAwesomeIcon icon={faMagnifyingGlass} />
-        <input type="search" name="search" id="search" maxLength="150" />
-      </div>
+      {showSearchBar && (
+        <div className={classes["search-bar"]}>
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+          <input
+            type="search"
+            name="search"
+            id="search"
+            maxLength="150"
+            autoFocus
+            onBlur={blurSearchBarHandler}
+          />
+        </div>
+      )}
     </div>
   );
 };
