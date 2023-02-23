@@ -29,17 +29,19 @@ const Navbar = (props) => {
 
   const blurSearchBarHandler = () => {
     setShowSearchBar(false);
-    // props.everythingPageSearchBar("");
-    props.generalHomePageSearchBar("");
-    // props.categoryIdPage("");
+    router.pathname == "everything"
+      ? props.everythingPageSearchBar("")
+      : router.pathname == "/"
+      ? props.generalHomePageSearchBar("")
+      : props.categoryIdPage("");
   };
 
   const changeSearchBarHandler = (text) => {
-    // router.pathname == "everything"
-    // ?props.everythingPageSearchBar(text.target.value);
-    // : router.pathname == "/"
-     props.generalHomePageSearchBar(text.target.value)
-    // : props.categoryIdPage(text.target.value);
+    router.pathname == "everything"
+      ? props.everythingPageSearchBar(text.target.value.toLowerCase())
+      : router.pathname == "/"
+      ? props.generalHomePageSearchBar(text.target.value.toLowerCase())
+      : props.categoryIdPage(text.target.value.toLowerCase());
   };
 
   return (

@@ -3,7 +3,18 @@ import Navbar from "../components/Navbar/Navbar";
 import Stories from "../components/Stories/Stories";
 import Headlines, { TOP_HEADLINES } from "../components/Headlines/Headlines";
 import Head from "next/head";
+import { useState } from "react";
 const SpecificCategory = ({ categoryNews, categoryId }) => {
+  // This state to store filtered news the user searched for:
+  const [filteredNews, setFilteredNews] = useState([]);
+
+  const categoryIdFilterNewsHandler = (categoryIdText) => {
+    const categoryIdFilteredStories = categoryNews.filter((item) =>
+      item.title.toLowerCase().includes(categoryIdText)
+    );
+    setFilteredNews(categoryIdFilteredStories);
+  };
+
   return (
     <>
       <Head>
@@ -15,9 +26,9 @@ const SpecificCategory = ({ categoryNews, categoryId }) => {
           content={`Discover all the news about ${categoryId} in all countries of the world in all possible languages`}
         />
       </Head>
-      <Navbar />
+      <Navbar categoryIdPage={categoryIdFilterNewsHandler} />
       <Header news={categoryNews} allowTitles={true} />
-      <Stories news={categoryNews} />
+      <Stories news={filteredNews.length > 0 ? filteredNews : categoryNews} />
       <Headlines />
     </>
   );
