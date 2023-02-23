@@ -29,15 +29,15 @@ const Navbar = (props) => {
 
   const blurSearchBarHandler = () => {
     setShowSearchBar(false);
-    router.pathname == "everything"
-      ? props.everythingPageSearchBar("")
+    router.pathname == "/everything"
+      ? props.everythingPageSearchBar(null)
       : router.pathname == "/"
-      ? props.generalHomePageSearchBar("")
-      : props.categoryIdPage("");
+      ? props.generalHomePageSearchBar(null)
+      : props.categoryIdPage(null);
   };
 
   const changeSearchBarHandler = (text) => {
-    router.pathname == "everything"
+    router.pathname == "/everything"
       ? props.everythingPageSearchBar(text.target.value.toLowerCase())
       : router.pathname == "/"
       ? props.generalHomePageSearchBar(text.target.value.toLowerCase())
