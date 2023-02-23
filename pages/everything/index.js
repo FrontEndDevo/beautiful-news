@@ -9,7 +9,7 @@ const Everything = ({ everythingNews }) => {
   const [newStories, setNewStories] = useState([]);
   const [filters, setFilters] = useState({});
 
-  // This state to store filtered news which user search for:
+  // This state to store filtered news the user searched for:
   const [filteredNews, setFilteredNews] = useState([]);
 
   const getFiltersAndFetchNewsHandler = (filtersObj) => {
@@ -48,18 +48,17 @@ const Everything = ({ everythingNews }) => {
         } | Everything | Beautiful News`
       : "Google | Everything | Beautiful News";
 
-  const filterNewsHandler = (searchedStory) => {
-    const filteredStories =
+  const everythingFilterNewsHandler = (everythingText) => {
+    const everythingFilteredStories =
       newStories.length > 0
         ? newStories.filter((item) =>
-            item.title.toLowerCase().includes(searchedStory)
+            item.title.toLowerCase().includes(everythingText)
           )
         : everythingNews.filter((item) =>
-            item.title.toLowerCase().includes(searchedStory)
+            item.title.toLowerCase().includes(everythingText)
           );
 
-    console.log(filteredStories);
-    setFilteredNews(filteredStories);
+    setFilteredNews(everythingFilteredStories);
   };
 
   return (
@@ -75,7 +74,7 @@ const Everything = ({ everythingNews }) => {
           } in all languages`}
         />
       </Head>
-      <Navbar everythingPageSearchBar={filterNewsHandler} />
+      <Navbar everythingPageSearchBar={everythingFilterNewsHandler} />
       <Filter getFilters={getFiltersAndFetchNewsHandler} />
       <Stories
         news={

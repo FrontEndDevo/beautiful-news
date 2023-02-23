@@ -29,16 +29,16 @@ const Navbar = (props) => {
 
   const blurSearchBarHandler = () => {
     setShowSearchBar(false);
-    props.everythingPageSearchBar("");
+    // props.everythingPageSearchBar("");
     props.generalHomePageSearchBar("");
-    props.categoryIdPage("");
+    // props.categoryIdPage("");
   };
 
   const changeSearchBarHandler = (text) => {
     // router.pathname == "everything"
-    props.everythingPageSearchBar(text.target.value);
+    // ?props.everythingPageSearchBar(text.target.value);
     // : router.pathname == "/"
-    // ? props.generalHomePageSearchBar(text.target.value)
+     props.generalHomePageSearchBar(text.target.value)
     // : props.categoryIdPage(text.target.value);
   };
 

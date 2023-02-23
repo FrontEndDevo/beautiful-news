@@ -1,21 +1,32 @@
+import { useState } from "react";
 import Header from "../components/Header/Header";
 import Headlines from "../components/Headlines/Headlines";
 import Navbar from "../components/Navbar/Navbar";
 import Stories from "../components/Stories/Stories";
 
-// Top-Headlines for (general) category.
-const defaultAPI =
-  "https://newsapi.org/v2/top-headlines?category=general&pageSize=100&apiKey=8804ae5da994436aa3ab963e0217fe73";
 export default function Home(props) {
+  // This state to store filtered news the user searched for:
+  const [filteredNews, setFilteredNews] = useState([]);
+
+  const homeFilteredNewsHandler = (homeText) => {
+    const homeFilteredStories = props.news.filter((item) =>
+      item.title.toLowerCase().includes(homeText)
+    );
+    setFilteredNews(homeFilteredStories);
+  };
   return (
     <>
-      <Navbar />
+      <Navbar generalHomePageSearchBar={homeFilteredNewsHandler} />
       <Header news={props.news} allowTitles={true} />
-      <Stories news={props.news} />
+      <Stories news={filteredNews.length > 0 ? filteredNews : props.news} />
       <Headlines />
     </>
   );
 }
+
+// Top-Headlines for (general) category.
+const defaultAPI =
+  "https://newsapi.org/v2/top-headlines?category=general&pageSize=100&apiKey=8804ae5da994436aa3ab963e0217fe73";
 
 export async function getStaticProps() {
   // Fetching news from our API:
