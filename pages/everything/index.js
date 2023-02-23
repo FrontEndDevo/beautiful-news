@@ -9,6 +9,9 @@ const Everything = ({ everythingNews }) => {
   const [newStories, setNewStories] = useState([]);
   const [filters, setFilters] = useState({});
 
+  // This state to store filtered news which user search for:
+  const [filteredNews, setFilteredNews] = useState([]);
+
   const getFiltersAndFetchNewsHandler = (filtersObj) => {
     setFilters(filtersObj);
 
@@ -45,6 +48,20 @@ const Everything = ({ everythingNews }) => {
         } | Everything | Beautiful News`
       : "Google | Everything | Beautiful News";
 
+  const filterNewsHandler = (searchedStory) => {
+    const filteredStories =
+      newStories.length > 0
+        ? newStories.filter((item) =>
+            item.title.toLowerCase().includes(searchedStory)
+          )
+        : everythingNews.filter((item) =>
+            item.title.toLowerCase().includes(searchedStory)
+          );
+
+    console.log(filteredStories);
+    setFilteredNews(filteredStories);
+  };
+
   return (
     <React.Fragment>
       <Head>
@@ -58,10 +75,16 @@ const Everything = ({ everythingNews }) => {
           } in all languages`}
         />
       </Head>
-      <Navbar />
+      <Navbar everythingPageSearchBar={filterNewsHandler} />
       <Filter getFilters={getFiltersAndFetchNewsHandler} />
       <Stories
-        news={newStories.length > 0 ? newStories : everythingNews}
+        news={
+          filteredNews.length > 0
+            ? filteredNews
+            : newStories.length > 0
+            ? newStories
+            : everythingNews
+        }
         everything={true}
         keyword={filters.keyword}
       />

@@ -8,9 +8,12 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
-const Navbar = () => {
+const Navbar = (props) => {
   const [navbarBackground, setNavbarBackground] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
+
+  // Access router to get pathname of current page and filter news.
+  const router = useRouter();
 
   useEffect(() => {
     const changeNavbarBackground = () => {
@@ -26,10 +29,18 @@ const Navbar = () => {
 
   const blurSearchBarHandler = () => {
     setShowSearchBar(false);
+    props.everythingPageSearchBar("");
+    props.generalHomePageSearchBar("");
+    props.categoryIdPage("");
   };
 
-  const router = useRouter();
-  console.log(router.pathname);
+  const changeSearchBarHandler = (text) => {
+    // router.pathname == "everything"
+    props.everythingPageSearchBar(text.target.value);
+    // : router.pathname == "/"
+    // ? props.generalHomePageSearchBar(text.target.value)
+    // : props.categoryIdPage(text.target.value);
+  };
 
   return (
     <div className={classes.navbar}>
@@ -69,6 +80,7 @@ const Navbar = () => {
             maxLength="150"
             autoFocus
             onBlur={blurSearchBarHandler}
+            onChange={changeSearchBarHandler}
           />
         </div>
       )}
