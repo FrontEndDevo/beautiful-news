@@ -1,4 +1,5 @@
 import Head from "next/head";
+import About from "../components/About/About";
 import Navbar from "../components/Navbar/Navbar";
 const AboutPage = () => {
   return (
@@ -8,6 +9,7 @@ const AboutPage = () => {
         <meta name="description" content="Read more about Beautiful News" />
       </Head>
       <Navbar />
+      <About />
     </>
   );
 };
