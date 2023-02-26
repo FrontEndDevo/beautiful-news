@@ -1,5 +1,8 @@
 import classes from "./Inbox.module.scss";
 const Inbox = () => {
+  const requiredMsg = (
+    <p className={classes.required}>This field is required.</p>
+  );
   return (
     <div className={classes.inbox}>
       <div className={classes.title}>
@@ -13,9 +16,30 @@ const Inbox = () => {
         </p>
       </div>
       <form className={classes.subscribe}>
-        <input type="text" name="first-name" id="first-name" placeholder="First Name"/>
-        <input type="text" name="last-name" id="last-name" placeholder="Last Name"/>
-        <input type="email" name="email" id="email" placeholder="Enter your email"/>
+        <div className={classes.field}>
+          <input
+            type="text"
+            name="first-name"
+            id="first-name"
+            placeholder="First Name"
+          />
+        </div>
+        <div className={classes.field}>
+          <input
+            type="text"
+            name="last-name"
+            id="last-name"
+            placeholder="Last Name"
+          />
+        </div>
+        <div className={classes.field}>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+          />
+        </div>
         <button>Sign up</button>
       </form>
     </div>
