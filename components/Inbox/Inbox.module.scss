@@ -27,7 +27,7 @@
       flex: 1;
       input {
         width: 100%;
-        font-size: 18px;
+        font-size: 17px;
         padding: 0.5rem 1rem;
         border: 0;
         outline: 0;
@@ -38,8 +38,8 @@
       }
       .required {
         position: absolute;
-        bottom: 1px;
-        right: 1px;
+        bottom: 5px;
+        right: 2px;
         z-index: 11;
         color: $lighter_red;
         font-style: italic;
