@@ -1,5 +1,11 @@
 import { useReducer } from "react";
 import classes from "./Inbox.module.scss";
+
+// Simple (regular-expression) to validate the E-mail:
+const emailRegex = new RegExp(
+  /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9_.+-]+.[a-zA-Z0-9_.+-]/i
+);
+
 const initialInputs = {
   firstName: "",
   firstNameIsEmpty: false,
@@ -7,6 +13,7 @@ const initialInputs = {
   lastNameIsEmpty: false,
   email: "",
   emailIsEmpty: false,
+  emailIsValid: false,
 };
 
 const inputsReducer = (state, action) => {
@@ -28,6 +35,7 @@ const inputsReducer = (state, action) => {
         ...state,
         email: action.value,
         emailIsEmpty: !action.value,
+        emailIsValid: emailRegex.test(action.value),
       };
     default:
       return initialInputs;
@@ -53,19 +61,17 @@ const Inbox = () => {
     if (
       !inputFields.firstNameIsEmpty &&
       !inputFields.lastNameIsEmpty &&
-      !inputFields.emailIsEmpty
+      !inputFields.emailIsEmpty &&
+      inputFields.emailIsValid
     ) {
-      dispatch({ type: "RESET" });
       console.log(inputFields);
+      dispatch({ type: "RESET" });
     }
   };
 
   const requiredMsg = (
     <p className={classes.required}>This field is required.</p>
   );
-
-  // Simple (regular-expression) to validate the E-mail:
-  const emailRegex = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9_.+-]+\.[a-zA-Z0-9_.+-]/gi;
 
   return (
     <div className={classes.inbox}>
