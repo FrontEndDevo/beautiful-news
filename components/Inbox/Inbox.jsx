@@ -1,5 +1,25 @@
+import { useReducer } from "react";
 import classes from "./Inbox.module.scss";
+const initialInputs = {
+  firstNameIsEmpty: false,
+  lastNameIsEmpty: false,
+  emailIsEmpty: false,
+};
+
+const inputsReducer = (state, action) => {
+  switch (action.type) {
+    case "FIRST_NAME":
+      return { ...state, firstNameIsEmpty: !firstNameIsEmpty };
+    case "LAST_NAME":
+      return { ...state, lastNameIsEmpty: !lastNameIsEmpty };
+    case "EMAIL":
+      return { ...state, emailIsEmpty: !emailIsEmpty };
+    default:
+      return state;
+  }
+};
 const Inbox = () => {
+  const [inputFields, dispatch] = useReducer(inputsReducer, initialInputs);
   const requiredMsg = (
     <p className={classes.required}>This field is required.</p>
   );
