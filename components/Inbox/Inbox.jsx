@@ -72,6 +72,9 @@ const Inbox = () => {
   const requiredMsg = (
     <p className={classes.required}>This field is required.</p>
   );
+  const emailValidationMsg = (
+    <p className={classes.validate}>Email is not valid!</p>
+  );
 
   return (
     <div className={classes.inbox}>
@@ -124,6 +127,9 @@ const Inbox = () => {
             onBlur={(e) => (e.target.placeholder = "Enter your email")}
           />
           {inputFields.emailIsEmpty && requiredMsg}
+          {!inputFields.emailIsValid &&
+            !inputFields.emailIsEmpty &&
+            emailValidationMsg}
         </div>
         <button>Sign up</button>
       </form>
