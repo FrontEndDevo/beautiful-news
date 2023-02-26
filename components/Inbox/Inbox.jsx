@@ -34,10 +34,9 @@ const inputsReducer = (state, action) => {
   }
 };
 const Inbox = () => {
+  // This reducer to get values of input fields & detect if fields are empty.
   const [inputFields, dispatch] = useReducer(inputsReducer, initialInputs);
-  const requiredMsg = (
-    <p className={classes.required}>This field is required.</p>
-  );
+
   // onChange functions for (First - Last - Email) input fields:
   const changeFirstNameHandler = (firstName) => {
     dispatch({ type: "FIRST_NAME", value: firstName.target.value.trim() });
@@ -48,6 +47,22 @@ const Inbox = () => {
   const changeEmailHandler = (email) => {
     dispatch({ type: "EMAIL", value: email.target.value.trim() });
   };
+
+  const submitSubscribtionHandler = (e) => {
+    e.preventDefault();
+    if (
+      !inputFields.firstNameIsEmpty &&
+      !inputFields.lastNameIsEmpty &&
+      !inputFields.emailIsEmpty
+    ) {
+      dispatch({ type: "RESET" });
+      console.log(inputFields);
+    }
+  };
+
+  const requiredMsg = (
+    <p className={classes.required}>This field is required.</p>
+  );
 
   return (
     <div className={classes.inbox}>
@@ -61,14 +76,17 @@ const Inbox = () => {
           and never miss a story
         </p>
       </div>
-      <form className={classes.subscribe}>
+      <form onSubmit={submitSubscribtionHandler} className={classes.subscribe}>
         <div className={classes.field}>
           <input
             type="text"
             name="first-name"
             id="first-name"
             placeholder="First Name"
+            value={inputFields.firstName}
             onChange={changeFirstNameHandler}
+            onFocus={(e) => (e.target.placeholder = "")}
+            onBlur={(e) => (e.target.placeholder = "First Name")}
           />
           {inputFields.firstNameIsEmpty && requiredMsg}
         </div>
@@ -78,7 +96,10 @@ const Inbox = () => {
             name="last-name"
             id="last-name"
             placeholder="Last Name"
+            value={inputFields.lastName}
             onChange={changeLastNameHandler}
+            onFocus={(e) => (e.target.placeholder = "")}
+            onBlur={(e) => (e.target.placeholder = "Last Name")}
           />
           {inputFields.lastNameIsEmpty && requiredMsg}
         </div>
@@ -88,7 +109,10 @@ const Inbox = () => {
             name="email"
             id="email"
             placeholder="Enter your email"
+            value={inputFields.email}
             onChange={changeEmailHandler}
+            onFocus={(e) => (e.target.placeholder = "")}
+            onBlur={(e) => (e.target.placeholder = "Enter your email")}
           />
           {inputFields.emailIsEmpty && requiredMsg}
         </div>
