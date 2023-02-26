@@ -64,6 +64,9 @@ const Inbox = () => {
     <p className={classes.required}>This field is required.</p>
   );
 
+  // Simple (regular-expression) to validate the E-mail:
+  const emailRegex = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9_.+-]+\.[a-zA-Z0-9_.+-]/gi;
+
   return (
     <div className={classes.inbox}>
       <div className={classes.title}>
