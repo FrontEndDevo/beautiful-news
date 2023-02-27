@@ -2,6 +2,7 @@ import Header from "../components/Header/Header";
 import Navbar from "../components/Navbar/Navbar";
 import Stories from "../components/Stories/Stories";
 import Headlines, { TOP_HEADLINES } from "../components/Headlines/Headlines";
+import Inbox from "../components/Inbox/Inbox";
 import Head from "next/head";
 import { useState } from "react";
 const SpecificCategory = ({ categoryNews, categoryId }) => {
@@ -30,6 +31,7 @@ const SpecificCategory = ({ categoryNews, categoryId }) => {
       <Header news={categoryNews} allowTitles={true} />
       <Stories news={filteredNews.length > 0 ? filteredNews : categoryNews} />
       <Headlines />
+      <Inbox />
     </>
   );
 };
