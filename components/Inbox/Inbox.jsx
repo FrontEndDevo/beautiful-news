@@ -13,7 +13,7 @@ const initialInputs = {
   lastNameIsEmpty: false,
   email: "",
   emailIsEmpty: false,
-  emailIsValid: false,
+  emailIsValid: true,
 };
 
 const inputsReducer = (state, action) => {
