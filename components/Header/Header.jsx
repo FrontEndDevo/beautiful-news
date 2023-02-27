@@ -25,8 +25,8 @@ const Header = ({ news, allowTitles = false }) => {
           <h1>{pickedStory.title || ""}</h1>
           {allowTitles && (
             <div className={classes.titles}>
-              <Link href="#">Community</Link>
-              <Link href="#">South Africa</Link>
+              <Link href="/">General</Link>
+              <Link href="/everything">Everything</Link>
             </div>
           )}
           <button>
