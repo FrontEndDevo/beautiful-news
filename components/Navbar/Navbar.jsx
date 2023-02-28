@@ -13,7 +13,7 @@ import SideBar from "../SideBar/SideBar";
 const Navbar = (props) => {
   const [navbarBackground, setNavbarBackground] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
-
+  const [sideBar, setSideBar] = useState(false);
   // Access router to get pathname of current page and filter news.
   const router = useRouter();
 
@@ -46,9 +46,17 @@ const Navbar = (props) => {
       : props.categoryIdPage(text.target.value.toLowerCase());
   };
 
+  const showSideBarHandler = () => {
+    setSideBar(true);
+  };
+  const hideSideBarHandler = (answer) => {
+    setSideBar(answer);
+  };
+
   return (
     <>
-      {ReactDOM.createPortal(<SideBar />, document.getElementById("aside"))}
+      {/* {ReactDOM.createPortal(<SideBar showSideBar={ sideBar} />, document.getElementById("aside"))} */}
+      <SideBar showSideBar={sideBar} closeSideBar={hideSideBarHandler} />
       <div className={classes.navbar}>
         {navbarBackground && <div className={classes["navbar-bg"]}></div>}
         <div className={classes["L-H-S"]}>
@@ -76,8 +84,7 @@ const Navbar = (props) => {
             icon={faMagnifyingGlass}
             onClick={showSearchBarHandler}
           />
-          <FontAwesomeIcon icon={faBars} />
-          {/* <FontAwesomeIcon icon={faXmark} /> */}
+          <FontAwesomeIcon icon={faBars} onClick={showSideBarHandler} />
         </div>
         {showSearchBar && (
           <div className={classes["search-bar"]}>

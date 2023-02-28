@@ -5,10 +5,11 @@ import {
   faVimeo,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import classes from "./SideBar.module.scss";
-const SideBar = () => {
+const SideBar = (props) => {
   // To keep JSX lean ASAP.
   const contactIcons = (
     <div className={classes.icons}>
@@ -17,8 +18,24 @@ const SideBar = () => {
       ))}
     </div>
   );
+
+  const closeSideBarHandler = () => {
+    props.closeSideBar(false);
+  };
   return (
-    <aside className={classes["side-bar"]}>
+    <aside
+      className={classes["side-bar"]}
+      style={{
+        transform: `${
+          props.showSideBar ? "translateX(0vw)" : "translateX(35vw)"
+        }`,
+      }}
+    >
+      <FontAwesomeIcon
+        icon={faXmark}
+        className={classes["close-side-bar"]}
+        onClick={closeSideBarHandler}
+      />
       <div className={classes.content}>
         <div className={classes.tags}>
           <div className={classes["primary"]}>
