@@ -8,6 +8,7 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
+import SideBar from "../SideBar/SideBar";
 const Navbar = (props) => {
   const [navbarBackground, setNavbarBackground] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -45,48 +46,54 @@ const Navbar = (props) => {
   };
 
   return (
-    <div className={classes.navbar}>
-      {navbarBackground && <div className={classes["navbar-bg"]}></div>}
-      <div className={classes["L-H-S"]}>
-        <div className={classes.title}>
-          {/* Here I used (PostImage) tool to create URL for my local image */}
-          <img src="https://i.postimg.cc/1t8Z3bF7/icon.png" alt="navbar-icon" />
-          <Link href="./">
-            Beautiful<span>News</span>
-          </Link>
+    <>
+      <SideBar />
+      <div className={classes.navbar}>
+        {navbarBackground && <div className={classes["navbar-bg"]}></div>}
+        <div className={classes["L-H-S"]}>
+          <div className={classes.title}>
+            {/* Here I used (PostImage) tool to create URL for my local image */}
+            <img
+              src="https://i.postimg.cc/1t8Z3bF7/icon.png"
+              alt="navbar-icon"
+            />
+            <Link href="./">
+              Beautiful<span>News</span>
+            </Link>
+          </div>
+          <ul className={classes.pages}>
+            <li>
+              <Link href="./about">About</Link>
+            </li>
+            <li>
+              <Link href="./channels">Channels</Link>
+            </li>
+          </ul>
         </div>
-        <ul className={classes.pages}>
-          <li>
-            <Link href="./about">About</Link>
-          </li>
-          <li>
-            <Link href="./channels">Channels</Link>
-          </li>
-        </ul>
-      </div>
-      <div className={classes["R-H-S"]}>
-        <FontAwesomeIcon
-          icon={faMagnifyingGlass}
-          onClick={showSearchBarHandler}
-        />
-        <FontAwesomeIcon icon={faBars} />
-        {/* <FontAwesomeIcon icon={faXmark} /> */}
-      </div>
-      {showSearchBar && (
-        <div className={classes["search-bar"]}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-          <input
-            type="search"
-            name="search"
-            id="search"
-            maxLength="150"
-            autoFocus
-            onBlur={blurSearchBarHandler}
-            onChange={changeSearchBarHandler}
+        <div className={classes["R-H-S"]}>
+          <FontAwesomeIcon
+            icon={faMagnifyingGlass}
+            onClick={showSearchBarHandler}
           />
+          <FontAwesomeIcon icon={faBars} />
+          {/* <FontAwesomeIcon icon={faXmark} /> */}
         </div>
-      )}
-    </div>
+        {showSearchBar && (
+          <div className={classes["search-bar"]}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <input
+              type="search"
+              name="search"
+              id="search"
+              maxLength="150"
+              autoFocus
+              onBlur={blurSearchBarHandler}
+              onChange={changeSearchBarHandler}
+            />
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
