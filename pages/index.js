@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import Headlines from "../components/Headlines/Headlines";
 import Inbox from "../components/Inbox/Inbox";
 import Navbar from "../components/Navbar/Navbar";
+import SideBar from "../components/SideBar/SideBar";
 import Stories from "../components/Stories/Stories";
 
 export default function Home(props) {
@@ -18,6 +19,7 @@ export default function Home(props) {
   return (
     <>
       <Navbar generalHomePageSearchBar={homeFilteredNewsHandler} />
+      <SideBar />
       <Header news={props.news} allowTitles={true} />
       <Stories news={filteredNews.length > 0 ? filteredNews : props.news} />
       <Headlines />
