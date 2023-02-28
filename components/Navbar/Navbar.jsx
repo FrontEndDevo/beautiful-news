@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import classes from "./Navbar.module.scss";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -47,7 +48,7 @@ const Navbar = (props) => {
 
   return (
     <>
-      <SideBar />
+      {ReactDOM.createPortal(<SideBar />, document.getElementById("aside"))}
       <div className={classes.navbar}>
         {navbarBackground && <div className={classes["navbar-bg"]}></div>}
         <div className={classes["L-H-S"]}>
