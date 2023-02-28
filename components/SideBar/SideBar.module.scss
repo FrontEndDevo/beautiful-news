@@ -1,15 +1,86 @@
 @use "../../styles/vars" as *;
 .side-bar {
   background-color: $darken;
-  .content{
-    .tags{
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1111;
+  height: 100vh;
+  width: 35vw;
+  padding: 6rem 4rem;
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .tags {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
 
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .primary {
+        font-size: 20px;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .secondary {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
     }
-    .buttons{
-      
-    }
-    .contact-us{
+    .buttons {
+      display: flex;
+      gap: 2rem;
 
+      button {
+        font-size: 1.5rem;
+        padding: 5px 15px;
+        border-radius: 4px;
+        color: white;
+        border: none;
+        background-color: transparent;
+        transition: $fast_transition;
+        cursor: pointer;
+        border: 3px solid $lighter_rose;
+        &:first-child {
+          &:hover {
+            background-color: $lighter_rose;
+          }
+        }
+        &:last-child {
+          background-color: $lighter_rose;
+          &:hover {
+            background-color: transparent;
+            border: 3px solid $lighter_rose;
+          }
+        }
+      }
+    }
+    .contact-us {
+      font-size: 1.5rem;
+      h4 {
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+      }
+      .icons {
+        display: flex;
+        gap: 1rem;
+        svg {
+          transition: $fast_transition;
+          color: $lighter_dark;
+          cursor: pointer;
+          &:hover {
+            color: white;
+          }
+        }
+      }
     }
   }
 }
