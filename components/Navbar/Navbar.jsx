@@ -55,7 +55,6 @@ const Navbar = (props) => {
 
   return (
     <>
-      {/* {ReactDOM.createPortal(<SideBar showSideBar={ sideBar} />, document.getElementById("aside"))} */}
       <SideBar showSideBar={sideBar} closeSideBar={hideSideBarHandler} />
       <div className={classes.navbar}>
         {navbarBackground && <div className={classes["navbar-bg"]}></div>}
