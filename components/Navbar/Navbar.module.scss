@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 2rem 0;
   transition: $mid_transition;
   .navbar-bg {
     position: absolute;
@@ -52,26 +52,36 @@
 
   .R-H-S {
     display: flex;
-    gap: 1.5rem;
-    margin-right: 10rem;
+    gap: 2rem;
+    margin-right: 12rem;
     svg {
       font-size: 1.5rem;
       cursor: pointer;
     }
 
-    .side-bar{
+    .side-bar {
       position: relative;
-      svg{
+      .menu-icon {
         position: absolute;
         z-index: 11111;
+        display: flex;
+        gap: 8px;
+        flex-direction: column;
+        span {
+          display: block;
+          width: 40px;
+          height: 3px;
+          background: white;
+        }
       }
     }
   }
 
   .search-bar {
     position: absolute;
-    padding: 1.2rem 0;
+    padding: 2rem 0;
     width: 100%;
+    z-index: 111111;
     background-color: black;
     display: flex;
     align-items: center;

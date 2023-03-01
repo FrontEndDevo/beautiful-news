@@ -80,7 +80,14 @@ const Navbar = (props) => {
             onClick={showSearchBarHandler}
           />
           <div className={classes["side-bar"]}>
-            <FontAwesomeIcon icon={faBars} onClick={toggleSideBarHandler} />
+            <span
+              className={classes["menu-icon"]}
+              onClick={toggleSideBarHandler}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
             {/* <FontAwesomeIcon icon={faXmark} /> */}
             <SideBar showSideBar={sideBar} />
           </div>
