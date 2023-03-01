@@ -81,14 +81,15 @@ const Navbar = (props) => {
           />
           <div className={classes["side-bar"]}>
             <span
-              className={classes["menu-icon"]}
+              className={`${classes["menu-icon"]} ${
+                sideBar && classes["close-icon"]
+              }`}
               onClick={toggleSideBarHandler}
             >
               <span></span>
               <span></span>
               <span></span>
             </span>
-            {/* <FontAwesomeIcon icon={faXmark} /> */}
             <SideBar showSideBar={sideBar} />
           </div>
         </div>
