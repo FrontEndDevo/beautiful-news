@@ -58,6 +58,14 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
+
+    .side-bar{
+      position: relative;
+      svg{
+        position: absolute;
+        z-index: 11111;
+      }
+    }
   }
 
   .search-bar {

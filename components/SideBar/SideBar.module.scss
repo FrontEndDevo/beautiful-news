@@ -1,6 +1,6 @@
 @use "../../styles/vars" as *;
 .side-bar {
-  background-color: $darken;
+  background-color: $dark_gray;
   position: fixed;
   top: 0;
   right: 0;
@@ -10,21 +10,15 @@
   padding: 6rem 4rem;
   transition: $mid_transition;
   transform: translateX(35vw);
-  .close-side-bar {
-    font-size: 2.5rem;
-    position: absolute;
-    top: 2rem;
-    right: 20%;
-    cursor: pointer;
-  }
+
   .content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
     .tags {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 3rem;
 
       a {
         &:hover {
@@ -82,6 +76,7 @@
         display: flex;
         gap: 1rem;
         svg {
+          position: relative;
           transition: $fast_transition;
           color: $lighter_dark;
           cursor: pointer;

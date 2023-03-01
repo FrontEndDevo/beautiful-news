@@ -46,16 +46,12 @@ const Navbar = (props) => {
       : props.categoryIdPage(text.target.value.toLowerCase());
   };
 
-  const showSideBarHandler = () => {
-    setSideBar(true);
-  };
-  const hideSideBarHandler = (answer) => {
-    setSideBar(answer);
+  const toggleSideBarHandler = () => {
+    setSideBar((prevState) => !prevState);
   };
 
   return (
     <>
-      <SideBar showSideBar={sideBar} closeSideBar={hideSideBarHandler} />
       <div className={classes.navbar}>
         {navbarBackground && <div className={classes["navbar-bg"]}></div>}
         <div className={classes["L-H-S"]}>
@@ -83,7 +79,11 @@ const Navbar = (props) => {
             icon={faMagnifyingGlass}
             onClick={showSearchBarHandler}
           />
-          <FontAwesomeIcon icon={faBars} onClick={showSideBarHandler} />
+          <div className={classes["side-bar"]}>
+            <FontAwesomeIcon icon={faBars} onClick={toggleSideBarHandler} />
+            {/* <FontAwesomeIcon icon={faXmark} /> */}
+            <SideBar showSideBar={sideBar} />
+          </div>
         </div>
         {showSearchBar && (
           <div className={classes["search-bar"]}>

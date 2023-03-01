@@ -19,9 +19,6 @@ const SideBar = (props) => {
     </div>
   );
 
-  const closeSideBarHandler = () => {
-    props.closeSideBar(false);
-  };
   return (
     <aside
       className={classes["side-bar"]}
@@ -31,11 +28,6 @@ const SideBar = (props) => {
         }`,
       }}
     >
-      <FontAwesomeIcon
-        icon={faXmark}
-        className={classes["close-side-bar"]}
-        onClick={closeSideBarHandler}
-      />
       <div className={classes.content}>
         <div className={classes.tags}>
           <div className={classes["primary"]}>
