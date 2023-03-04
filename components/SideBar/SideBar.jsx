@@ -9,6 +9,14 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import classes from "./SideBar.module.scss";
+
+/* There was an attempt to use ReactDOM.createPortals( SideBar ), but
+there were many errors appear like: (referenceerror: document is not
+defined || error: Target container is not a DOM element. nextjs) */
+{
+  // We were gonna make this div in _document.js in pages folder.
+  /* <div id="aside" /> */
+}
 const SideBar = (props) => {
   // To keep JSX lean ASAP.
   const contactIcons = (
