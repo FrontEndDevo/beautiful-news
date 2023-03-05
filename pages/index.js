@@ -1,11 +1,22 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import Header from "../components/Header/Header";
 import Headlines from "../components/Headlines/Headlines";
 import Inbox from "../components/Inbox/Inbox";
 import Navbar from "../components/Navbar/Navbar";
 import Stories from "../components/Stories/Stories";
+import { headlinesActions } from "../store/headlines-slice";
 
 export default function Home(props) {
+  // Store (General-News) in headlines-slice.js in general obj.
+  const dispatch = useDispatch();
+  dispatch(
+    headlinesActions.generalStore({
+      news: props.news,
+      total: props.totalResults,
+    })
+  );
+
   // This state to store filtered news the user searched for:
   const [filteredNews, setFilteredNews] = useState([]);
 
