@@ -6,6 +6,8 @@ import Loader from "../components/Loader/Loader";
 import { useState } from "react";
 import { Router } from "next/router";
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
+import { Provider } from "react-redux";
+import store from "../store/redux-store";
 
 function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +33,9 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       {isLoading && <Loader />}
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     </>
   );
 }
