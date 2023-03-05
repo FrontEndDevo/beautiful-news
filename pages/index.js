@@ -54,6 +54,7 @@ export async function getStaticProps() {
   return {
     props: {
       news: loadedNews,
+      totalResults: data.totalResults,
     },
     revalidate: 43200, // Will fetching new 'news' every 12 hours.
   };
