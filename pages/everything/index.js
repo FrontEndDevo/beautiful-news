@@ -1,10 +1,21 @@
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import Filter from "../../components/Filter/Filter";
 import Navbar from "../../components/Navbar/Navbar";
 import Stories from "../../components/Stories/Stories";
+import { everythingNewsActions } from "../../store/everything-slice";
 
-const Everything = ({ everythingNews }) => {
+const Everything = ({ everythingNews, totalResults }) => {
+  // Store (Everything-News) in everything-slice.js.
+  const dispatch = useDispatch();
+  dispatch(
+    everythingNewsActions.everythingStore({
+      news: everythingNews,
+      total: totalResults,
+    })
+  );
+
   // To store the required news after set filters by user and fetch them.
   const [newStories, setNewStories] = useState([]);
   const [filters, setFilters] = useState({});
@@ -113,7 +124,7 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { everythingNews: everythingData },
+    props: { everythingNews: everythingData, totalResults: data.totalResults },
     revalidate: 43200, // Will fetching new 'news' every 12 hours.
   };
 }
