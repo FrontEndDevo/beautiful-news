@@ -58,7 +58,7 @@ const Filter = (props) => {
   const submitFiltrationHandler = (e) => {
     e.preventDefault();
     const filtersObject = {
-      keyword: keywordInputRef.current.value.toLowerCase().trim() || "google",
+      keyword: keywordInputRef.current.value.toLowerCase().trim() || "tesla",
       sortBy,
       language,
       pageSize,
@@ -82,7 +82,7 @@ const Filter = (props) => {
                 type="text"
                 name="keyword"
                 id="keyword"
-                placeholder="e.g. Google"
+                placeholder="e.g. Tesla"
               />
             </div>
 

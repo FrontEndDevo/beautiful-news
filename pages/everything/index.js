@@ -57,7 +57,7 @@ const Everything = ({ everythingNews, totalResults }) => {
       ? `${
           filters.keyword.charAt(0).toUpperCase() + filters.keyword.slice(1)
         } | Everything | Beautiful News`
-      : "Google | Everything | Beautiful News";
+      : "Tesla | Everything | Beautiful News";
 
   const everythingFilterNewsHandler = (everythingText) => {
     const everythingFilteredStories =
@@ -105,7 +105,7 @@ const Everything = ({ everythingNews, totalResults }) => {
 export default Everything;
 
 const EVERYTHING_API =
-  "https://newsapi.org/v2/everything?apiKey=8804ae5da994436aa3ab963e0217fe73&q=google&language=en&pageSize=100&sortBy=publishedAt";
+  "https://newsapi.org/v2/everything?apiKey=8804ae5da994436aa3ab963e0217fe73&q=tesla&language=en&pageSize=100&sortBy=publishedAt";
 export async function getStaticProps() {
   const response = await fetch(EVERYTHING_API);
   const data = await response.json();
