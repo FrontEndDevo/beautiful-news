@@ -7,21 +7,22 @@ import Stories from "../../components/Stories/Stories";
 import { everythingNewsActions } from "../../store/everything-slice";
 
 const Everything = ({ everythingNews, totalResults }) => {
-  // Store (Everything-News) in everything-slice.js.
-  const dispatch = useDispatch();
-  dispatch(
-    everythingNewsActions.everythingStore({
-      news: everythingNews,
-      total: totalResults,
-    })
-  );
-
   // To store the required news after set filters by user and fetch them.
   const [newStories, setNewStories] = useState([]);
   const [filters, setFilters] = useState({});
 
   // This state to store filtered news the user searched for:
   const [filteredNews, setFilteredNews] = useState([]);
+
+  // Store (Everything-News) in everything-slice.js.
+  const dispatch = useDispatch();
+  dispatch(
+    everythingNewsActions.everythingStore({
+      topic: filters.keyword || "tesla",
+      news: everythingNews,
+      total: totalResults,
+    })
+  );
 
   const getFiltersAndFetchNewsHandler = (filtersObj) => {
     setFilters(filtersObj);

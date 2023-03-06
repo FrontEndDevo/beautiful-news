@@ -1,7 +1,6 @@
 import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
 const Stories = ({ news, everything = false, keyword = "Tesla" }) => {
-
   // Filter duplicated stories:
   const filteredNews = [...new Set(news)];
   const allStories = filteredNews.map((story, index) => (

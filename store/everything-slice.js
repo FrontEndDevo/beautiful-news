@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialEverythingState = {
+  topic: "",
   totalResults: 0,
   articles: [],
 };
@@ -10,6 +11,7 @@ const everythingNewsSlice = createSlice({
   initialState: initialEverythingState,
   reducers: {
     everythingStore: (state, action) => {
+      state.topic = action.payload.topic;
       state.articles = action.payload.news;
       state.totalResults = action.payload.total;
     },
