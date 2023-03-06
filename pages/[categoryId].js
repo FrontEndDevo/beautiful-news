@@ -5,7 +5,19 @@ import Headlines, { TOP_HEADLINES } from "../components/Headlines/Headlines";
 import Inbox from "../components/Inbox/Inbox";
 import Head from "next/head";
 import { useState } from "react";
-const SpecificCategory = ({ categoryNews, categoryId }) => {
+import { useDispatch } from "react-redux";
+import { headlinesActions } from "../store/headlines-slice";
+const SpecificCategory = ({ categoryNews, totalResults, categoryId }) => {
+  // Store (Specific Category News) in headlines-slice.js
+  const dispatch = useDispatch();
+  dispatch(
+    headlinesActions.headlineStore({
+      category: categoryId,
+      news: categoryNews,
+      total: totalResults,
+    })
+  );
+
   // This state to store filtered news the user searched for:
   const [filteredNews, setFilteredNews] = useState([]);
 
@@ -76,6 +88,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       categoryNews: loadedNews,
+      totalResults: categoryNews.totalResults,
       categoryId: context.params.categoryId,
     },
   };

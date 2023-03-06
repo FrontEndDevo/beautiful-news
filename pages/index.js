@@ -8,10 +8,11 @@ import Stories from "../components/Stories/Stories";
 import { headlinesActions } from "../store/headlines-slice";
 
 export default function Home(props) {
-  // Store (General-News) in headlines-slice.js in general obj.
+  // Store (General-News) in headlines-slice.js
   const dispatch = useDispatch();
   dispatch(
-    headlinesActions.generalStore({
+    headlinesActions.headlineStore({
+      category: "general",
       news: props.news,
       total: props.totalResults,
     })
