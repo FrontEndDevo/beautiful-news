@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialHeadlinesState = {
-  headline: {
-    category: "general",
-    articles: [],
-    totalResults: 0,
-  },
+  headlines: [],
 };
 
 const headlinesNewsSlice = createSlice({
@@ -13,9 +9,30 @@ const headlinesNewsSlice = createSlice({
   initialState: initialHeadlinesState,
   reducers: {
     headlineStore: (state, action) => {
-      state.headline.category = action.payload.category;
-      state.headline.articles = action.payload.news;
-      state.headline.totalResults = action.payload.total;
+      // Prepare the new headline object (category & articles & totalResults):
+      const newHeadlineObj = {
+        category: action.payload.category,
+        articles: action.payload.news,
+        totalResults: action.payload.total,
+      };
+
+      // Detect if the coming headline is already exist in headlines array or not
+      const isCategoryExist = state.headlines.find(
+        (obj) => obj.category == action.payload.category
+      );
+
+      // Get the index of headline we have in our array:
+      const existingHeadlineIndex = state.headlines.indexOf(
+        (obj) => obj.category == action.payload.category
+      );
+
+      // Start replacing existing headline with the new:
+      if (isCategoryExist) {
+        state.headlines.splice(existingHeadlineIndex, 1, newHeadlineObj);
+      } else {
+        // Or push the new headline to our headlines array.
+        state.headlines.push(newHeadlineObj);
+      }
     },
   },
 });
