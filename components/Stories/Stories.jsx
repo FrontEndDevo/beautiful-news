@@ -1,6 +1,23 @@
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
 const Stories = ({ news, everything = false, keyword = "Tesla" }) => {
+  // Fetching stored news from redux-store.
+  const reduxNews = useSelector((news) =>
+    everything ? news.everything : news.headlines
+  );
+
+  // Router to get current URL except everything page because we have everything property from props:
+  const router = useRouter();
+
+  // Detect which category page are we on now.
+  const whichCategoryPage =
+    router.pathname == "/" ? "general" : router.query.categoryId;
+
+  console.log(whichCategoryPage);
+  console.log(reduxNews);
+
   // Filter duplicated stories:
   const filteredNews = [...new Set(news)];
   const allStories = filteredNews.map((story, index) => (
