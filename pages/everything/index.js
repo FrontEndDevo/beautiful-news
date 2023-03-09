@@ -8,21 +8,8 @@ import { everythingNewsActions } from "../../store/everything-slice";
 
 const Everything = ({ everythingNews, totalResults }) => {
   // To store the required news after set filters by user and fetch them.
-  const [newStories, setNewStories] = useState([]);
+  const [newStories, setNewStories] = useState({});
   const [filters, setFilters] = useState({});
-
-  // This state to store filtered news the user searched for:
-  const [filteredNews, setFilteredNews] = useState([]);
-
-  // Store (Everything-News) in everything-slice.js.
-  const dispatch = useDispatch();
-  dispatch(
-    everythingNewsActions.everythingStore({
-      topic: filters.keyword || "tesla",
-      news: everythingNews,
-      total: totalResults,
-    })
-  );
 
   const getFiltersAndFetchNewsHandler = (filtersObj) => {
     setFilters(filtersObj);
@@ -48,7 +35,7 @@ const Everything = ({ everythingNews, totalResults }) => {
           content: data.articles[key].content,
         });
       }
-      setNewStories(newNews);
+      setNewStories({ articles: newNews, totalResults: data.totalResults });
     };
     getFilteredNews();
   };
@@ -60,18 +47,16 @@ const Everything = ({ everythingNews, totalResults }) => {
         } | Everything | Beautiful News`
       : "Tesla | Everything | Beautiful News";
 
-  const everythingFilterNewsHandler = (everythingText) => {
-    const everythingFilteredStories =
-      newStories.length > 0
-        ? newStories.filter((item) =>
-            item.title.toLowerCase().includes(everythingText)
-          )
-        : everythingNews.filter((item) =>
-            item.title.toLowerCase().includes(everythingText)
-          );
+  // Store (Everything-News) in everything-slice.js.
+  const dispatch = useDispatch();
 
-    setFilteredNews(everythingFilteredStories);
-  };
+  dispatch(
+    everythingNewsActions.everythingStore({
+      topic: filters.keyword || "tesla",
+      news: newStories.articles ? newStories : everythingNews,
+      total: newStories.articles ? newStories.totalResults : totalResults,
+    })
+  );
 
   return (
     <React.Fragment>
@@ -86,29 +71,19 @@ const Everything = ({ everythingNews, totalResults }) => {
           } in all languages`}
         />
       </Head>
-      <Navbar everythingPageSearchBar={everythingFilterNewsHandler} />
+      <Navbar />
       <Filter getFilters={getFiltersAndFetchNewsHandler} />
-      <Stories
-        news={
-          filteredNews.length > 0
-            ? filteredNews
-            : newStories.length > 0
-            ? newStories
-            : everythingNews
-        }
-        everything={true}
-        keyword={filters.keyword}
-      />
+      <Stories everything={true} keyword={filters.keyword} />
     </React.Fragment>
   );
 };
 
 export default Everything;
 
-const EVERYTHING_API =
-  "https://newsapi.org/v2/everything?apiKey=8804ae5da994436aa3ab963e0217fe73&q=tesla&language=en&pageSize=100&sortBy=publishedAt";
 export async function getStaticProps() {
-  const response = await fetch(EVERYTHING_API);
+  const response = await fetch(
+    "https://newsapi.org/v2/everything?apiKey=8804ae5da994436aa3ab963e0217fe73&q=tesla&language=en&pageSize=100&sortBy=publishedAt"
+  );
   const data = await response.json();
   const everythingData = [];
   for (const key in data.articles) {

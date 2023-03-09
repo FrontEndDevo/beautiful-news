@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
-const Stories = ({ news, everything = false, keyword = "Tesla" }) => {
+const Stories = ({ everything = false, keyword = "Tesla" }) => {
   // Router to get current URL except everything page because we have everything property from props:
   const router = useRouter();
 
@@ -21,7 +21,7 @@ const Stories = ({ news, everything = false, keyword = "Tesla" }) => {
   console.log(fetchedNewsFromRedux);
 
   // Filter duplicated stories:
-  const filteredNews = [...new Set(news)];
+  const filteredNews = [...new Set(fetchedNewsFromRedux)];
   const allStories = filteredNews.map((story, index) => (
     <Story
       key={index}
@@ -39,13 +39,13 @@ const Stories = ({ news, everything = false, keyword = "Tesla" }) => {
     <div className={classes.stories}>
       <h3>
         {everything
-          ? `Everything We Know About < ${
+          ? `Everything We Know About <  ${
               keyword.charAt(0).toUpperCase() + keyword.slice(1)
-            } >`
+            } />`
           : "Worldwide News"}
       </h3>
       <div className={classes["rendered-stories"]}>
-        {news.length > 0 ? (
+        {allStories.length > 0 ? (
           allStories
         ) : (
           <p className={classes["no-news"]}>
