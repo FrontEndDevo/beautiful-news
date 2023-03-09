@@ -3,11 +3,6 @@ import { useSelector } from "react-redux";
 import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
 const Stories = ({ news, everything = false, keyword = "Tesla" }) => {
-  // Fetching stored news from redux-store.
-  const reduxNews = useSelector((news) =>
-    everything ? news.everything : news.headlines
-  );
-
   // Router to get current URL except everything page because we have everything property from props:
   const router = useRouter();
 
@@ -15,8 +10,15 @@ const Stories = ({ news, everything = false, keyword = "Tesla" }) => {
   const whichCategoryPage =
     router.pathname == "/" ? "general" : router.query.categoryId;
 
-  console.log(whichCategoryPage);
-  console.log(reduxNews);
+  // Fetching stored news from redux-store.
+  const fetchedNewsFromRedux = useSelector((news) =>
+    everything
+      ? news.everything.articles
+      : news.headlines.headlines.filter(
+          (cat) => cat.category == whichCategoryPage
+        )[0].articles
+  );
+  console.log(fetchedNewsFromRedux);
 
   // Filter duplicated stories:
   const filteredNews = [...new Set(news)];
