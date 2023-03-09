@@ -21,9 +21,11 @@ const SideBar = (props) => {
   // To keep JSX lean ASAP.
   const contactIcons = (
     <div className={classes.icons}>
-      {[faFacebook, faInstagram, faLinkedin, faYoutube, faVimeo].map((icon) => (
-        <FontAwesomeIcon icon={icon} />
-      ))}
+      {[faFacebook, faInstagram, faLinkedin, faYoutube, faVimeo].map(
+        (icon, index) => (
+          <FontAwesomeIcon key={index} icon={icon} />
+        )
+      )}
     </div>
   );
 
