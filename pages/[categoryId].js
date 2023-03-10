@@ -17,17 +17,6 @@ const SpecificCategory = ({ categoryNews, totalResults, categoryId }) => {
       total: totalResults,
     })
   );
-
-  // This state to store filtered news the user searched for:
-  const [filteredNews, setFilteredNews] = useState([]);
-
-  const categoryIdFilterNewsHandler = (categoryIdText) => {
-    const categoryIdFilteredStories = categoryNews.filter((item) =>
-      item.title.toLowerCase().includes(categoryIdText)
-    );
-    setFilteredNews(categoryIdFilteredStories);
-  };
-
   return (
     <>
       <Head>
@@ -39,9 +28,9 @@ const SpecificCategory = ({ categoryNews, totalResults, categoryId }) => {
           content={`Discover all the news about ${categoryId} in all countries of the world in all possible languages`}
         />
       </Head>
-      <Navbar categoryIdPage={categoryIdFilterNewsHandler} />
+      <Navbar />
       <Header news={categoryNews} allowTitles={true} />
-      <Stories news={filteredNews.length > 0 ? filteredNews : categoryNews} />
+      <Stories />
       <Headlines />
       <Inbox />
     </>
