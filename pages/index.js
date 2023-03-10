@@ -20,7 +20,7 @@ export default function Home(props) {
   return (
     <>
       <Navbar />
-      <Header news={props.news} allowTitles={true} />
+      <Header allowTitles={true} />
       <Stories />
       <Headlines />
       <Inbox />

@@ -29,7 +29,7 @@ const SpecificCategory = ({ categoryNews, totalResults, categoryId }) => {
         />
       </Head>
       <Navbar />
-      <Header news={categoryNews} allowTitles={true} />
+      <Header allowTitles={true} />
       <Stories />
       <Headlines />
       <Inbox />
