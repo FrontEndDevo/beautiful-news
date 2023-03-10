@@ -4,18 +4,23 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import classes from "./Header.module.scss";
 import Shape from "../Shape/Shape";
-const Header = ({ news, allowTitles = false }) => {
-  const [pickedStory, setPickedStory] = useState(news[0]);
+import { detectAndFetch } from "../../helpers/detectAndFetch";
+const Header = ({ allowTitles = false }) => {
+  const fetchHeaderNews = detectAndFetch();
+
+  const [pickedStory, setPickedStory] = useState(fetchHeaderNews[0]);
   // Pick a story and put its info in the header cells every (1m || 60000 milliseconds):
   useEffect(() => {
     const interval = setInterval(() => {
-      setPickedStory(news[Math.floor(Math.random() * news.length)]);
+      setPickedStory(
+        fetchHeaderNews[Math.floor(Math.random() * fetchHeaderNews.length)]
+      );
     }, 60000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [news, setPickedStory]);
+  }, [fetchHeaderNews, setPickedStory]);
 
   return (
     <div className={classes.header}>

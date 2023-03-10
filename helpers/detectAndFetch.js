@@ -14,7 +14,6 @@ export const detectAndFetch = () => {
   // Detect if we are on (everything page) or not.
   const onEverythingPage = router.pathname == "/everything";
 
-  console.log(onEverythingPage);
   // Fetching stored news from redux-store.
   const fetchedNewsFromRedux = useSelector((news) =>
     onEverythingPage
