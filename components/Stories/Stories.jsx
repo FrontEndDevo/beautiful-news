@@ -2,7 +2,7 @@ import { detectAndFetch } from "../../helpers/detectAndFetch";
 import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
 const Stories = ({ everything = false, keyword = "Tesla" }) => {
-  const fetchedNewsFromRedux = detectAndFetch(everything);
+  const fetchedNewsFromRedux = detectAndFetch();
   // Filter duplicated stories:
   const filteredNews = [...new Set(fetchedNewsFromRedux)];
   const allStories = filteredNews.map((story, index) => (
