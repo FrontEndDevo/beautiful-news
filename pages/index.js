@@ -17,21 +17,11 @@ export default function Home(props) {
       total: props.totalResults,
     })
   );
-
-  // This state to store filtered news the user searched for:
-  const [filteredNews, setFilteredNews] = useState([]);
-
-  const homeFilteredNewsHandler = (homeText) => {
-    const homeFilteredStories = props.news.filter((item) =>
-      item.title.toLowerCase().includes(homeText)
-    );
-    setFilteredNews(homeFilteredStories);
-  };
   return (
     <>
-      <Navbar generalHomePageSearchBar={homeFilteredNewsHandler} />
+      <Navbar />
       <Header news={props.news} allowTitles={true} />
-      <Stories news={filteredNews.length > 0 ? filteredNews : props.news} />
+      <Stories />
       <Headlines />
       <Inbox />
     </>
