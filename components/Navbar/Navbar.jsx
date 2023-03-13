@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import SideBar from "../SideBar/SideBar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { searchActions } from "../../store/search-bar-slice";
 const Navbar = () => {
   const [navbarBackground, setNavbarBackground] = useState(false);
@@ -28,6 +28,7 @@ const Navbar = () => {
 
   const blurSearchBarHandler = () => {
     setShowSearchBar(false);
+    dispatch(searchActions.getKeyword({ keyword: "" }));
   };
 
   const dispatch = useDispatch();
