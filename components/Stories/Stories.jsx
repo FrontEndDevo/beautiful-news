@@ -1,10 +1,25 @@
+import { useSelector } from "react-redux";
 import { detectAndFetch } from "../../helpers/detectAndFetch";
 import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
 const Stories = ({ everything = false, keyword = "Tesla" }) => {
+  // Detect the page we on now and fetch the correct news from redux-store.
   const fetchCorrectNews = detectAndFetch();
+
+  // Fetch searched story from redux-store.
+  const searchedKeyword = useSelector(
+    (keyword) => keyword.search.searchedKeyword
+  );
+
+  // Filter the news we have in this page ang get the searched news:
+  const filteredSearchedNews = fetchCorrectNews.filter((item) =>
+    item.title.toLowerCase().includes(searchedKeyword)
+  );
+
   // Filter duplicated stories:
-  const filteredNews = [...new Set(fetchCorrectNews)];
+  const filteredNews = [
+    ...new Set(searchedKeyword ? filteredSearchedNews : fetchCorrectNews),
+  ];
   const allStories = filteredNews.map((story, index) => (
     <Story
       key={index}

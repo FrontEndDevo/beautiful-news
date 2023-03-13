@@ -31,7 +31,9 @@ const Navbar = () => {
   };
 
   const changeSearchBarHandler = (text) => {
-    dispatch(searchActions.getKeyword({ keyword: text.target.value }));
+    dispatch(
+      searchActions.getKeyword({ keyword: text.target.value.toLowerCase() })
+    );
   };
 
   const toggleSideBarHandler = () => {
