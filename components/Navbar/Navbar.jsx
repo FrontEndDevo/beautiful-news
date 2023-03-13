@@ -3,16 +3,15 @@ import classes from "./Navbar.module.scss";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { useRouter } from "next/router";
 import SideBar from "../SideBar/SideBar";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { searchActions } from "../../store/search-bar-slice";
 const Navbar = () => {
   const [navbarBackground, setNavbarBackground] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [sideBar, setSideBar] = useState(false);
-  // Access router to get pathname of current page and filter news.
-  const router = useRouter();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const changeNavbarBackground = () => {
@@ -30,8 +29,6 @@ const Navbar = () => {
     setShowSearchBar(false);
     dispatch(searchActions.getKeyword({ keyword: "" }));
   };
-
-  const dispatch = useDispatch();
 
   const changeSearchBarHandler = (text) => {
     dispatch(searchActions.getKeyword({ keyword: text.target.value }));
