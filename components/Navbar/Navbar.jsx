@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import SideBar from "../SideBar/SideBar";
+import { useDispatch } from "react-redux";
+import { searchActions } from "../../store/search-bar-slice";
 const Navbar = () => {
   const [navbarBackground, setNavbarBackground] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -26,19 +28,12 @@ const Navbar = () => {
 
   const blurSearchBarHandler = () => {
     setShowSearchBar(false);
-    router.pathname == "/everything"
-      ? props.everythingPageSearchBar(null)
-      : router.pathname == "/"
-      ? props.generalHomePageSearchBar(null)
-      : props.categoryIdPage(null);
   };
 
+  const dispatch = useDispatch();
+
   const changeSearchBarHandler = (text) => {
-    router.pathname == "/everything"
-      ? props.everythingPageSearchBar(text.target.value.toLowerCase())
-      : router.pathname == "/"
-      ? props.generalHomePageSearchBar(text.target.value.toLowerCase())
-      : props.categoryIdPage(text.target.value.toLowerCase());
+    dispatch(searchActions.getKeyword({ keyword: text.target.value }));
   };
 
   const toggleSideBarHandler = () => {

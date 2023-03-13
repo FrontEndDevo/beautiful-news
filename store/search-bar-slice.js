@@ -7,6 +7,7 @@ const searchBarSlice = createSlice({
   initialState: initialSearchBar,
   reducers: {
     getKeyword: (state, action) => {
+      // Maybe we store something else in the future, so we are gonna pass an object with (keyword) property.
       state.searchedKeyword = action.payload.keyword;
     },
   },
