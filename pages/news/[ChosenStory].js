@@ -18,11 +18,10 @@ const ChosenStory = () => {
       router.query.chosenStory
   )[0];
 
-  console.log(catchedStory);
   return (
     <>
       <Navbar />
-      <CatchedStory />
+      <CatchedStory story={catchedStory} />
     </>
   );
 };

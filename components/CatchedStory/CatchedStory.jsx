@@ -9,12 +9,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import classes from "./CatchedStory.module.scss";
 const CatchedStory = (props) => {
+  // Extract all properties using destructuring:
+  const {
+    title,
+    author,
+    content,
+    description,
+    urlToImage,
+    url,
+    source: { id, name },
+  } = props.story;
+
   return (
     <div className={classes["catched-story"]}>
       <div className={classes.content}>
-        <h2>
-          Slowing-down-everyday-activities-to-make-one-second-last-for-one-hour
-        </h2>
+        <h2></h2>
         <div className={classes.links}>
           <Link href="/">General</Link>
           <Link href="/everything">Everything</Link>
