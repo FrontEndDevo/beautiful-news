@@ -56,12 +56,14 @@ const CatchedStory = (props) => {
       </div>
       <div className={classes.image}>
         <img src={urlToImage} alt={author} />
-        <h4
-          className={classes.author}
-          style={{ left: `calc(45% - ${authorWidth}px)` }}
-        >
-          {author}
-        </h4>
+        {author && (
+          <h4
+            className={classes.author}
+            style={{ left: `calc(45% - ${authorWidth}px)` }}
+          >
+            {author}
+          </h4>
+        )}
       </div>
       <div className={classes["bottom-content"]}>
         <div className={classes.paragraph}>
