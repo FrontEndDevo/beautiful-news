@@ -1,7 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialHeadlinesState = {
-  headlines: [],
+  headlines: [
+    {
+      category: "general",
+      articles: [],
+      totalResults: 0,
+    },
+  ],
 };
 
 const headlinesNewsSlice = createSlice({
