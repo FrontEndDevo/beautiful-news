@@ -20,8 +20,6 @@ const CatchedStory = (props) => {
     source: { id, name },
   } = props.story;
 
-  console.log(props.story);
-
   return (
     <div className={classes["catched-story"]}>
       <div className={classes["top-content"]}>
@@ -31,10 +29,10 @@ const CatchedStory = (props) => {
           <Link href="/">General</Link>
           <Link href="/everything">Everything</Link>
         </div>
-        <div>
-          <button>
+        <div className={classes.social}>
+          <Link href={url} target="_blank">
             <FontAwesomeIcon icon={faPlay} />
-          </button>
+          </Link>
           <div className={classes.icons}>
             <FontAwesomeIcon icon={faBookmark} />
             <FontAwesomeIcon icon={faComment} />
@@ -47,7 +45,7 @@ const CatchedStory = (props) => {
       <div className={classes["bottom-content"]}>
         <p className={classes.content}>{content}</p>
         <p className={classes.description}>{description}</p>
-        <Link className={classes.url} href={url}>
+        <Link className={classes['read-more']} href={url} target="_blank">
           Read More
         </Link>
       </div>

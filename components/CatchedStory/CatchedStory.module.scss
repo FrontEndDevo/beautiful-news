@@ -1,5 +1,30 @@
-@use '../../styles/vars' as *;
+@use "../../styles/vars" as *;
 
-.catched-story{
-  
+.catched-story {
+  .top-content {
+    .title {
+    }
+    .author {
+    }
+    .links {
+    }
+    .social {
+      a {
+      }
+      .icons {
+        svg {
+        }
+      }
+    }
+    .image {
+    }
+  }
+  .bottom-content {
+    .content {
+    }
+    .description {
+    }
+    .read-more {
+    }
+  }
 }
