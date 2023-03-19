@@ -1,3 +1,5 @@
+import Navbar from "../../components/Navbar/Navbar";
+import CatchedStory from "../../components/CatchedStory/CatchedStory";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 const ChosenStory = () => {
@@ -14,7 +16,12 @@ const ChosenStory = () => {
 
   console.log(catchedStory);
 
-  return <div>ChosenStory</div>;
+  return (
+    <>
+      <Navbar />
+      <CatchedStory />
+    </>
+  );
 };
 
 export default ChosenStory;
