@@ -20,6 +20,20 @@ const CatchedStory = (props) => {
     source: { id, name },
   } = props.story;
 
+  // To delete (content… '[+5450 chars]') of each content.
+  const modifiedConetent = content.substring(
+    0,
+    content.split("").lastIndexOf("[")
+  );
+
+  console.log(props.story);
+
+  // Ready code to measure word length from (geeksforgeeks):
+  // To center the author name on the img below.
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  const authorWidth = Math.ceil(context.measureText(author).width);
+
   return (
     <div className={classes["catched-story"]}>
       <div className={classes["top-content"]}>
@@ -40,11 +54,18 @@ const CatchedStory = (props) => {
           </div>
         </div>
       </div>
-      <h4 className={classes.author}>{author}</h4>
-      <img className={classes.image} src={urlToImage} alt={author} />
+      <div className={classes.image}>
+        <img src={urlToImage} alt={author} />
+        <h4
+          className={classes.author}
+          style={{ left: `calc(45% - ${authorWidth}px)` }}
+        >
+          {author}
+        </h4>
+      </div>
       <div className={classes["bottom-content"]}>
         <div className={classes.paragraph}>
-          <p className={classes.content}>{content}</p>
+          <p className={classes.content}>{modifiedConetent}</p>
           <p className={classes.description}>{description}</p>
         </div>
         <Link className={classes["read-more"]} href={url} target="_blank">
