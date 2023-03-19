@@ -9,7 +9,10 @@ const Story = (props) => {
   const editedAuthor =
     author.length > 20 ? `${author.split(" ")[0]}...` : author;
   return (
-    <Link href={`news/${title.replace(/\s/g, "-")}`} className={classes.story}>
+    <Link
+      href={`news/${title.replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s/g, "-")}`}
+      className={classes.story}
+    >
       <h4 className={classes.author}>{editedAuthor}</h4>
       <p className={classes.title}>{title}</p>
       <img className={classes["story-image"]} src={img} alt={author} />
