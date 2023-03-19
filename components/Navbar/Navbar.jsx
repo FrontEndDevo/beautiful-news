@@ -47,16 +47,16 @@ const Navbar = () => {
         <div className={classes.title}>
           {/* Here I used (PostImage) tool to create URL for my local image */}
           <img src="https://i.postimg.cc/1t8Z3bF7/icon.png" alt="navbar-icon" />
-          <Link href="./">
+          <Link href="/">
             Beautiful<span>News</span>
           </Link>
         </div>
         <ul className={classes.pages}>
           <li>
-            <Link href="./about">About</Link>
+            <Link href="about">About</Link>
           </li>
           <li>
-            <Link href="./channels">Channels</Link>
+            <Link href="channels">Channels</Link>
           </li>
         </ul>
       </div>
