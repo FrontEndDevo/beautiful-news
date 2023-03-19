@@ -20,10 +20,13 @@ const CatchedStory = (props) => {
     source: { id, name },
   } = props.story;
 
+  console.log(props.story);
+
   return (
     <div className={classes["catched-story"]}>
-      <div className={classes.content}>
-        <h2></h2>
+      <div className={classes["top-content"]}>
+        <h2 className={classes.title}>{title}</h2>
+        <h4 className={classes.author}>{author}</h4>
         <div className={classes.links}>
           <Link href="/">General</Link>
           <Link href="/everything">Everything</Link>
@@ -39,8 +42,15 @@ const CatchedStory = (props) => {
             <FontAwesomeIcon icon={faHeart} />
           </div>
         </div>
+        <img className={classes.image} src={urlToImage} alt={author} />
       </div>
-      <img src="" alt="" />
+      <div className={classes["bottom-content"]}>
+        <p className={classes.content}>{content}</p>
+        <p className={classes.description}>{description}</p>
+        <Link className={classes.url} href={url}>
+          Read More
+        </Link>
+      </div>
     </div>
   );
 };
