@@ -1,30 +1,133 @@
 @use "../../styles/vars" as *;
 
 .catched-story {
+  margin: 6rem 0;
+  background-image: linear-gradient(to right, black, transparent);
   .top-content {
+    position: absolute;
+    top: 25%;
     .title {
-    }
-    .author {
+      margin: 1rem 0;
+      width: 60vw;
+      text-align: justify;
+      font-weight: 900;
+      font-size: 3rem;
     }
     .links {
-    }
-    .social {
+      font-weight: bold;
+      margin-bottom: 2rem;
       a {
-      }
-      .icons {
-        svg {
+        transition: $fast_transition;
+        margin-right: 3rem;
+        color: $lighter_dark;
+        &:hover {
+          color: white;
         }
       }
     }
-    .image {
+    .social {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      .play {
+        display: flex;
+        width: fit-content;
+        background-color: $lighter_rose;
+        padding: 0.5rem 2rem;
+        transition: $fast_transition;
+        border-radius: 4px;
+        svg {
+          transition: inherit;
+          font-size: 2rem;
+        }
+        &:hover {
+          background-color: $dark;
+          svg {
+            color: $lighter_rose;
+          }
+        }
+      }
+      .icons {
+        display: flex;
+        gap: 1.5rem;
+        svg {
+          cursor: pointer;
+          font-size: 1.5rem;
+          transition: $fast_transition;
+          &:hover {
+            color: $lighter_rose;
+          }
+        }
+      }
     }
   }
+
+  .author {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+  }
+  .image {
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    height: 80vh;
+  }
+
   .bottom-content {
-    .content {
-    }
-    .description {
+    margin-top: 2rem;
+    display: block;
+    width: 70vw;
+    .paragraph {
+      line-height: 1.8;
+      text-align: justify;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      font-size: 22px;
+      .content,
+      .description {
+        &::before {
+          margin-right: 1rem;
+          // border-bottom-left-radius: 40px;
+          border-top-right-radius: 40px;
+          padding: 0.2rem 1.5rem;
+          font-style: italic;
+          // background: linear-gradient(to left, #73c8a9, #373b44);
+          background-color: #00dbde;
+          background-image: linear-gradient(
+            90deg,
+            #00dbde 0%,
+            $lighter_rose 100%
+          );
+        }
+      }
+      .content {
+        &::before {
+          content: "Content: ";
+        }
+      }
+      .description {
+        &::before {
+          content: "Description: ";
+        }
+      }
     }
     .read-more {
+      background-color: $darken;
+      border: 2px solid $lighter_rose;
+      padding: 0.5rem 4rem;
+      font-size: 2rem;
+      font-style: italic;
+      border-bottom-right-radius: 40px;
+      border-top-left-radius: 40px;
+      transition: $fast_transition;
+      display: block;
+      width: fit-content;
+      margin: 3rem 0 0 auto;
+      &:hover {
+        background-color: $dark;
+      }
     }
   }
 }
