@@ -2,6 +2,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import CatchedStory from "../../components/CatchedStory/CatchedStory";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import Head from "next/head";
 const ChosenStory = () => {
   const router = useRouter();
   // Fetching all news from redux-store:
@@ -20,6 +21,13 @@ const ChosenStory = () => {
 
   return (
     <>
+      <Head>
+        <title>{`${catchedStory.title} | News | Beautiful News`}</title>
+        <meta
+          name="description"
+          content={`${catchedStory.content} | News section | Beautiful News`}
+        />
+      </Head>
       <Navbar />
       <CatchedStory story={catchedStory} />
     </>
