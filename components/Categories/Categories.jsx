@@ -11,7 +11,7 @@ const Categories = () => {
     />
   ));
   return (
-    <div className={classes.categories}>
+    <main className={classes.categories}>
       <h3>Beautiful News Channels to watch</h3>
       <ul className={classes.channels}>
         {allChannels}
@@ -20,7 +20,7 @@ const Categories = () => {
           headlineImg="https://images.pexels.com/photos/3944383/pexels-photo-3944383.jpeg?auto=compress&cs=tinysrgb&w=1600"
         />
       </ul>
-    </div>
+    </main>
   );
 };
 

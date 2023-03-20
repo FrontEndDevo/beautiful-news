@@ -34,7 +34,7 @@ const Stories = ({ everything = false, keyword = "Tesla" }) => {
   ));
 
   return (
-    <div className={classes.stories}>
+    <main className={classes.stories}>
       <h3>
         {everything
           ? `Everything We Know About <  ${
@@ -51,7 +51,7 @@ const Stories = ({ everything = false, keyword = "Tesla" }) => {
           </p>
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

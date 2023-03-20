@@ -41,7 +41,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={classes.navbar}>
+    <nav className={classes.navbar}>
       {navbarBackground && <div className={classes["navbar-bg"]}></div>}
       <div className={classes["L-H-S"]}>
         <div className={classes.title}>
@@ -93,7 +93,7 @@ const Navbar = () => {
           />
         </div>
       )}
-    </div>
+    </nav>
   );
 };
 

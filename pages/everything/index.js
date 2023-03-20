@@ -2,6 +2,7 @@ import Head from "next/head";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Filter from "../../components/Filter/Filter";
+import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Stories from "../../components/Stories/Stories";
 import { everythingNewsActions } from "../../store/everything-slice";
@@ -74,6 +75,7 @@ const Everything = ({ everythingNews, totalResults }) => {
       <Navbar />
       <Filter getFilters={getFiltersAndFetchNewsHandler} />
       <Stories everything={true} keyword={filters.keyword} />
+      <Footer />
     </React.Fragment>
   );
 };

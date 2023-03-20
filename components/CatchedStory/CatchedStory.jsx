@@ -35,7 +35,7 @@ const CatchedStory = (props) => {
   const authorWidth = Math.ceil(context.measureText(author).width);
 
   return (
-    <div className={classes["catched-story"]}>
+    <section className={classes["catched-story"]}>
       <div className={classes["top-content"]}>
         <h2 className={classes.title}>{title}</h2>
         <div className={classes.links}>
@@ -74,7 +74,7 @@ const CatchedStory = (props) => {
           Read More
         </Link>
       </div>
-    </div>
+    </section>
   );
 };
 

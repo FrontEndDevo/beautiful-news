@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import Headlines from "../components/Headlines/Headlines";
 import Inbox from "../components/Inbox/Inbox";
@@ -24,6 +25,7 @@ export default function Home(props) {
       <Stories />
       <Headlines />
       <Inbox />
+      <Footer />
     </>
   );
 }

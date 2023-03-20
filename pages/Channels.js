@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Categories from "../components/Categories/Categories";
+import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 const Channels = () => {
   return (
@@ -13,6 +14,7 @@ const Channels = () => {
       </Head>
       <Navbar />
       <Categories />
+      <Footer />
     </>
   );
 };

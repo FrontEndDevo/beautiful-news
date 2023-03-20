@@ -35,7 +35,7 @@ const Headlines = () => {
     <Category key={index} headline={headlineObj.headline} />
   ));
   return (
-    <div className={styles.headlines}>
+    <section className={styles.headlines}>
       <h2>
         Re-framing
         <br />
@@ -45,7 +45,7 @@ const Headlines = () => {
         {allHeadlines}
         <Category headline="everything" />
       </ul>
-    </div>
+    </section>
   );
 };
 

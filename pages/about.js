@@ -1,5 +1,6 @@
 import Head from "next/head";
 import About from "../components/About/About";
+import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 const AboutPage = () => {
   return (
@@ -10,6 +11,7 @@ const AboutPage = () => {
       </Head>
       <Navbar />
       <About />
+      <Footer />
     </>
   );
 };

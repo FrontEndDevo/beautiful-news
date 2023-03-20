@@ -7,6 +7,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { headlinesActions } from "../store/headlines-slice";
+import Footer from "../components/Footer/Footer";
 const SpecificCategory = ({ categoryNews, totalResults, categoryId }) => {
   // Store (Specific Category News) in headlines-slice.js
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const SpecificCategory = ({ categoryNews, totalResults, categoryId }) => {
       <Stories />
       <Headlines />
       <Inbox />
+      <Footer />
     </>
   );
 };

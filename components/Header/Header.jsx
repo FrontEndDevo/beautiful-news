@@ -23,7 +23,7 @@ const Header = ({ allowTitles = false }) => {
   }, [fetchHeaderNews, setPickedStory]);
 
   return (
-    <div className={classes.header}>
+    <header className={classes.header}>
       <div className={classes.content}>
         <div className="L-H-S">
           {allowTitles && <h3>Today's beautiful news</h3>}
@@ -57,7 +57,7 @@ const Header = ({ allowTitles = false }) => {
           </Shape>
         </div>
       )}
-    </div>
+    </header>
   );
 };
 

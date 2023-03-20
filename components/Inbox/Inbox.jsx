@@ -77,7 +77,7 @@ const Inbox = () => {
   );
 
   return (
-    <div className={classes.inbox}>
+    <section className={classes.inbox}>
       <div className={classes.title}>
         <h2>
           <span>Reframe</span> your inbox
@@ -133,7 +133,7 @@ const Inbox = () => {
         </div>
         <button>Sign up</button>
       </form>
-    </div>
+    </section>
   );
 };
 

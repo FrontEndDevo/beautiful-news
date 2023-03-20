@@ -1,7 +1,7 @@
 import styles from "./About.module.scss";
 const About = () => {
   return (
-    <div className={styles.about}>
+    <main className={styles.about}>
       <div className={styles.title}>
         <h2>
           About
@@ -43,7 +43,7 @@ const About = () => {
           change.
         </p>
       </div>
-    </div>
+    </main>
   );
 };
 
