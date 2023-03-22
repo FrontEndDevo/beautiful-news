@@ -1,4 +1,29 @@
 @use "../../styles/vars" as *;
-.contact{
-  
+.contact {
+  .text {
+    h2 {
+    }
+    p {
+    }
+  }
+  .form {
+    .inputs {
+      input {
+      }
+      select {
+        option {
+        }
+      }
+    }
+    .buttons {
+      button {
+      }
+      .checking {
+        input {
+        }
+        p {
+        }
+      }
+    }
+  }
 }

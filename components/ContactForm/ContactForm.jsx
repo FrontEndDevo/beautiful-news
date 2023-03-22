@@ -10,8 +10,8 @@ const ContactForm = () => {
           a message we'd love to hear from you.
         </p>
       </div>
-      <form>
-        <div>
+      <form className={classes.form}>
+        <div className={classes.inputs}>
           <input
             type="text"
             name="name"
@@ -34,9 +34,9 @@ const ContactForm = () => {
             placeholder="Your message (optional)"
           />
         </div>
-        <div>
+        <div className={classes.buttons}>
           <button>Send</button>
-          <div>
+          <div className={classes.checking}>
             <input type="checkbox" name="" id="" required />
             <p>
               I agree with the{" "}
