@@ -70,10 +70,10 @@ const ContactForm = () => {
     dispatch({
       type: "MULTIPLEINPUTS",
       payload: {
-        name: nameInputRef.current.value,
-        email: emailInputRef.current.value,
-        message: messageInputRef.current.value,
-        interest: interestInputRef.current.value,
+        name: nameInputRef.current.value.trim(),
+        email: emailInputRef.current.value.trim(),
+        message: messageInputRef.current.value.trim(),
+        interest: interestInputRef.current.value.trim(),
         agreement: checkboxInputRef.current.checked,
       },
     });
@@ -83,24 +83,24 @@ const ContactForm = () => {
   // Error messages for empty and invalid inputs:
   const nameError =
     isFormSubmmited && inputs.name.length == 0 ? (
-      <p className={classes["name-error"]}>enter your name</p>
+      <p className={classes.error}>enter your name</p>
     ) : null;
 
   const emailError =
     isFormSubmmited && inputs.email.length == 0 ? (
-      <p className={classes["email-error"]}>enter your email</p>
+      <p className={classes.error}>enter your email</p>
     ) : null;
 
   const interestError =
-    isFormSubmmited && inputs.interest.length == 0 ? (
-      <p className={classes["interest-error"]}>
-        select your reason of contacting
-      </p>
+    isFormSubmmited && inputs.interest == "I am interested in" ? (
+      <p className={classes.error}>select your reason of contacting</p>
     ) : null;
 
   const agreementError =
     isFormSubmmited && !inputs.agreement ? (
-      <p className={classes["agreement-error"]}>agree with our terms</p>
+      <p className={classes["agreement-error"]}>
+        * &ensp; agree with our terms
+      </p>
     ) : null;
 
   return (
@@ -114,37 +114,48 @@ const ContactForm = () => {
       </div>
       <form onSubmit={submitContactFormHandler} className={classes.form}>
         <div className={classes.inputs}>
-          <input
-            ref={nameInputRef}
-            type="text"
-            name="name"
-            id="name"
-            placeholder="My name is*"
-          />
-          <select ref={interestInputRef} name="reson-for-contact" id="reson">
-            <option disabled value="I am interested in">
-              I am interested in*
-            </option>
-            <option value="career opportunities">career opportunities</option>
-            <option value="collaboration">collaboration</option>
-            <option value="other">other</option>
-          </select>
-          <input
-            ref={emailInputRef}
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email*"
+          <div className={classes.input}>
+            <input
+              ref={nameInputRef}
+              type="text"
+              name="name"
+              id="name"
+              placeholder="My name is*"
+            />
+            {nameError}
+          </div>
+          <div className={classes.input}>
+            <select ref={interestInputRef} name="reson-for-contact" id="reson">
+              <option selected disabled value="I am interested in">
+                I am interested in*
+              </option>
+              <option value="career opportunities">career opportunities</option>
+              <option value="collaboration">collaboration</option>
+              <option value="other">other</option>
+            </select>
+            {interestError}
+          </div>
+          <div className={classes.input}>
+            <input
+              ref={emailInputRef}
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email*"
+            />
+            {emailError}
+          </div>
+        </div>
+        <div className={classes.input}>
+          <textarea
+            className={classes.textarea}
+            ref={messageInputRef}
+            name="message"
+            id="message"
+            rows="5"
+            placeholder="Your message (optional)"
           />
         </div>
-        <textarea
-          className={classes.textarea}
-          ref={messageInputRef}
-          name="message"
-          id="message"
-          rows="5"
-          placeholder="Your message (optional)"
-        />
         <div className={classes.buttons}>
           <button>Send</button>
           <div className={classes.checking}>
@@ -160,6 +171,7 @@ const ContactForm = () => {
             I agree with the{" "}
             <Link href="terms of use">Terms and Conditions</Link>
           </p>
+          {agreementError}
         </div>
       </form>
     </div>
