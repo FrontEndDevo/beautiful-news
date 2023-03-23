@@ -1,6 +1,39 @@
 import Link from "next/link";
 import classes from "./ContactForm.module.scss";
+const initialContactFormReducer = {
+  name: "",
+  nameIsEmpty: null,
+  email: "",
+  emailIsEmpty: null,
+  interestedIn: "",
+};
+
+const contactFormReducer = (state, action) => {
+  switch (action.type) {
+    case "NAME":
+      return {
+        ...state,
+        name: action.value,
+        nameIsEmpty: false,
+      };
+    case "EMAIL":
+      return {
+        ...state,
+        email: action.value,
+        emailIsEmpty: false,
+      };
+    case "INTERESTED":
+      return {
+        ...state,
+        interestedIn: action.value,
+      };
+  }
+};
 const ContactForm = () => {
+  const [inputs, dispatch] = useReducer(
+    contactFormReducer,
+    initialContactFormReducer
+  );
   return (
     <div className={classes.contact}>
       <div className={classes.text}>
@@ -43,10 +76,10 @@ const ContactForm = () => {
             <input type="checkbox" name="agreement" id="agreement" required />
             <span className={classes.checkmark}></span>
           </div>
-            <p>
-              I agree with the{" "}
-              <Link href="terms of use">Terms and Conditions</Link>
-            </p>
+          <p>
+            I agree with the{" "}
+            <Link href="terms of use">Terms and Conditions</Link>
+          </p>
         </div>
       </form>
     </div>
