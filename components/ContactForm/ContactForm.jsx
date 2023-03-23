@@ -16,33 +16,37 @@ const ContactForm = () => {
             type="text"
             name="name"
             id="name"
-            placeholder="My name is"
+            placeholder="My name is*"
             required
           />
+
           <select name="reson-for-contact" id="reson" required>
-            <option value="I am interested in">I am interested in</option>
+            <option selected value="I am interested in">
+              I am interested in*
+            </option>
             <option value="career opportunities">career opportunities</option>
             <option value="collaboration">collaboration</option>
             <option value="other">other</option>
           </select>
-          <input type="email" name="" id="" placeholder="Email" required />
-          <textarea
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            placeholder="Your message (optional)"
-          />
+          <input type="email" name="" id="" placeholder="Email*" required />
         </div>
+        <textarea
+          className={classes.textarea}
+          name="message"
+          id="message"
+          rows="5"
+          placeholder="Your message (optional)"
+        />
         <div className={classes.buttons}>
           <button>Send</button>
           <div className={classes.checking}>
-            <input type="checkbox" name="" id="" required />
+            <input type="checkbox" name="agreement" id="agreement" required />
+            <span className={classes.checkmark}></span>
+          </div>
             <p>
               I agree with the{" "}
               <Link href="terms of use">Terms and Conditions</Link>
             </p>
-          </div>
         </div>
       </form>
     </div>
