@@ -1,13 +1,12 @@
 import Link from "next/link";
-import { useReducer, useRef } from "react";
+import { useReducer, useRef, useState } from "react";
 import classes from "./ContactForm.module.scss";
 const initialContactFormReducer = {
   name: "",
-  nameIsEmpty: null,
   email: "",
-  emailIsEmpty: null,
   message: "",
   interest: "",
+  agreement: false,
 };
 
 const contactFormReducer = (state, action) => {
@@ -16,13 +15,11 @@ const contactFormReducer = (state, action) => {
       return {
         ...state,
         name: action.value,
-        nameIsEmpty: false,
       };
     case "EMAIL":
       return {
         ...state,
         email: action.value,
-        emailIsEmpty: false,
       };
     case "MESSAGE":
       return {
@@ -38,11 +35,10 @@ const contactFormReducer = (state, action) => {
       return {
         ...state,
         name: action.payload.name,
-        nameIsEmpty: false,
         email: action.payload.email,
-        emailIsEmpty: false,
         message: action.payload.message,
         interest: action.payload.interest,
+        agreement: action.payload.agreement,
       };
   }
 };
@@ -58,11 +54,17 @@ const ContactForm = () => {
   const emailInputRef = useRef();
   const messageInputRef = useRef();
   const interestInputRef = useRef();
+  const checkboxInputRef = useRef();
+
+  // To know when we are gonna show error messages to user.
+  const [isFormSubmmited, setIsFormSubmmited] = useState(false);
 
   // Submit the contact form:
   const submitContactFormHandler = (e) => {
     // Prevent page reload || sending http request.
     e.preventDefault();
+
+    setIsFormSubmmited(true);
 
     // Store the values in our reducer:
     dispatch({
@@ -72,10 +74,34 @@ const ContactForm = () => {
         email: emailInputRef.current.value,
         message: messageInputRef.current.value,
         interest: interestInputRef.current.value,
+        agreement: checkboxInputRef.current.checked,
       },
     });
   };
   console.log(inputs);
+
+  // Error messages for empty and invalid inputs:
+  const nameError =
+    isFormSubmmited && inputs.name.length == 0 ? (
+      <p className={classes["name-error"]}>enter your name</p>
+    ) : null;
+
+  const emailError =
+    isFormSubmmited && inputs.email.length == 0 ? (
+      <p className={classes["email-error"]}>enter your email</p>
+    ) : null;
+
+  const interestError =
+    isFormSubmmited && inputs.interest.length == 0 ? (
+      <p className={classes["interest-error"]}>
+        select your reason of contacting
+      </p>
+    ) : null;
+
+  const agreementError =
+    isFormSubmmited && !inputs.agreement ? (
+      <p className={classes["agreement-error"]}>agree with our terms</p>
+    ) : null;
 
   return (
     <div className={classes.contact}>
@@ -94,16 +120,9 @@ const ContactForm = () => {
             name="name"
             id="name"
             placeholder="My name is*"
-            required
           />
-
-          <select
-            ref={interestInputRef}
-            name="reson-for-contact"
-            id="reson"
-            required
-          >
-            <option selected value="I am interested in">
+          <select ref={interestInputRef} name="reson-for-contact" id="reson">
+            <option disabled value="I am interested in">
               I am interested in*
             </option>
             <option value="career opportunities">career opportunities</option>
@@ -113,10 +132,9 @@ const ContactForm = () => {
           <input
             ref={emailInputRef}
             type="email"
-            name=""
-            id=""
+            name="email"
+            id="email"
             placeholder="Email*"
-            required
           />
         </div>
         <textarea
@@ -130,7 +148,12 @@ const ContactForm = () => {
         <div className={classes.buttons}>
           <button>Send</button>
           <div className={classes.checking}>
-            <input type="checkbox" name="agreement" id="agreement" required />
+            <input
+              ref={checkboxInputRef}
+              type="checkbox"
+              name="agreement"
+              id="agreement"
+            />
             <span className={classes.checkmark}></span>
           </div>
           <p>
