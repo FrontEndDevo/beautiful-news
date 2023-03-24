@@ -59,6 +59,16 @@ const ContactForm = () => {
   // To know when we are gonna show error messages to user.
   const [isFormSubmmited, setIsFormSubmmited] = useState(false);
 
+  // Error messages for empty input fields:
+  const nameError = isFormSubmmited && inputs.name.length == 0;
+
+  const emailError = isFormSubmmited && inputs.email.length == 0;
+
+  const interestError =
+    isFormSubmmited && inputs.interest == "I am interested in";
+
+  const agreementError = isFormSubmmited && !inputs.agreement;
+
   // Submit the contact form:
   const submitContactFormHandler = (e) => {
     // Prevent page reload || sending http request.
@@ -77,18 +87,17 @@ const ContactForm = () => {
         agreement: checkboxInputRef.current.checked,
       },
     });
+
+    // If all is right, let's print values in console for example:
+    if (
+      checkboxInputRef.current.checked &&
+      nameInputRef.current.value.trim() &&
+      emailInputRef.current.value.trim() &&
+      interestInputRef.current.value.trim() !== "I am interested in"
+    ) {
+      console.log(inputs);
+    }
   };
-  console.log(inputs);
-
-  // Error messages for empty input fields:
-  const nameError = isFormSubmmited && inputs.name.length == 0;
-
-  const emailError = isFormSubmmited && inputs.email.length == 0;
-
-  const interestError =
-    isFormSubmmited && inputs.interest == "I am interested in";
-
-  const agreementError = isFormSubmmited && !inputs.agreement;
 
   return (
     <div className={classes.contact}>
@@ -117,9 +126,10 @@ const ContactForm = () => {
               ref={interestInputRef}
               name="reson-for-contact"
               id="reson"
+              defaultValue="I am interested in"
               className={`${interestError && classes["error-filed"]}`}
             >
-              <option selected disabled value="I am interested in">
+              <option disabled value="I am interested in">
                 I am interested in*
               </option>
               <option value="career opportunities">career opportunities</option>
