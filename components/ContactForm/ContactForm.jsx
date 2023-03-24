@@ -78,26 +78,35 @@ const ContactForm = () => {
 
     setIsFormSubmmited(true);
 
+    // Variables naming simplified:
+    const valuesObj = {
+      name: nameInputRef.current.value.trim(),
+      email: emailInputRef.current.value.trim(),
+      message: messageInputRef.current.value.trim(),
+      interest: interestInputRef.current.value.trim(),
+      agreement: checkboxInputRef.current.checked,
+    };
+
     // Store the values in our reducer:
     dispatch({
       type: "MULTIPLEINPUTS",
       payload: {
-        name: nameInputRef.current.value.trim(),
-        email: emailInputRef.current.value.trim(),
-        message: messageInputRef.current.value.trim(),
-        interest: interestInputRef.current.value.trim(),
-        agreement: checkboxInputRef.current.checked,
+        name: valuesObj.name,
+        email: valuesObj.email,
+        message: valuesObj.message,
+        interest: valuesObj.interest,
+        agreement: valuesObj.agreement,
       },
     });
 
     // If all is right, let's print values in console for example:
     if (
-      checkboxInputRef.current.checked &&
-      nameInputRef.current.value.trim() &&
-      emailInputRef.current.value.trim() &&
-      interestInputRef.current.value.trim() !== "I am interested in"
+      valuesObj.agreement &&
+      valuesObj.name &&
+      valuesObj.email &&
+      valuesObj.interest !== "I am interested in"
     ) {
-      console.log(inputs);
+      console.log(valuesObj);
     }
   };
 

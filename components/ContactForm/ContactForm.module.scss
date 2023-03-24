@@ -58,17 +58,18 @@
         input,
         select {
           &.error-filed {
-            background-color: #3b272b;
+            background-color: $dim_red;
             &::placeholder {
-              color: #ff393f;
+              color: $lighter_red;
             }
           }
         }
         select {
-          text-transform: capitalize;
+          option:not(:first-child) {
+            text-transform: capitalize;
+          }
           option:first-child {
-            padding: 2rem;
-            color: #be0027;
+            color: $lighter_red;
           }
         }
         .error {
@@ -82,12 +83,12 @@
       }
       .textarea {
         margin: 2rem 0 1rem;
-        width: 100%;
         resize: vertical;
       }
     }
 
     .buttons {
+      margin-top: 1rem;
       display: flex;
       align-items: center;
       button {
@@ -137,7 +138,7 @@
           }
 
           &.error-filed {
-            background-color: #3b272b;
+            background-color: $dim_red;
           }
         }
       }
