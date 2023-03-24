@@ -1,3 +1,5 @@
+import { faFaceFrown } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useReducer, useRef, useState } from "react";
 import classes from "./ContactForm.module.scss";
@@ -102,11 +104,26 @@ const ContactForm = () => {
   return (
     <div className={classes.contact}>
       <div className={classes.text}>
-        <h2>contact beautiful news</h2>
-        <p>
-          If you have a question, comment, or suggestion, please <br /> send us
-          a message we'd love to hear from you.
-        </p>
+        {(nameError || emailError || interestError || agreementError) && (
+          <div className={classes["submmition-failure"]}>
+            <h2>
+              Sorry, something is not right
+              <FontAwesomeIcon icon={faFaceFrown} />
+            </h2>
+            <p>
+              Please try submitting this form again. If this problem
+              <br />
+              continues, please reach out to the site owner.
+            </p>
+          </div>
+        )}
+        <div className={classes["contact-us"]}>
+          <h2>Contact Beautiful News</h2>
+          <p>
+            If you have a question, comment, or suggestion, please <br /> send
+            us a message we'd love to hear from you.
+          </p>
+        </div>
       </div>
       <form onSubmit={submitContactFormHandler} className={classes.form}>
         <div className={classes.inputs}>

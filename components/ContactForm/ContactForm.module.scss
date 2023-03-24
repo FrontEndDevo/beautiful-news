@@ -4,9 +4,22 @@
   width: 93%;
   .text {
     margin-bottom: 3rem;
-    h2 {
-      text-transform: capitalize;
-      font-size: 4rem;
+    .submmition-failure {
+      margin-bottom: 3rem;
+      h2 {
+        font-size: 4rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        svg {
+          font-size: 3rem;
+        }
+      }
+    }
+    .contact-us {
+      h2 {
+        font-size: 4rem;
+      }
     }
     p {
       font-size: 1.5rem;
