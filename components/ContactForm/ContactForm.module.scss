@@ -42,6 +42,15 @@
       .input {
         flex: 1;
         position: relative;
+        input,
+        select {
+          &.error-filed {
+            background-color: #3b272b;
+            &::placeholder {
+              color: #ff393f;
+            }
+          }
+        }
         select {
           text-transform: capitalize;
           option:first-child {
@@ -112,6 +121,10 @@
           background-color: $dark_gray;
           &:hover {
             background-color: $darken;
+          }
+
+          &.error-filed {
+            background-color: #3b272b;
           }
         }
       }

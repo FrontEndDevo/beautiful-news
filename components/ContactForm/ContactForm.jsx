@@ -80,28 +80,15 @@ const ContactForm = () => {
   };
   console.log(inputs);
 
-  // Error messages for empty and invalid inputs:
-  const nameError =
-    isFormSubmmited && inputs.name.length == 0 ? (
-      <p className={classes.error}>enter your name</p>
-    ) : null;
+  // Error messages for empty input fields:
+  const nameError = isFormSubmmited && inputs.name.length == 0;
 
-  const emailError =
-    isFormSubmmited && inputs.email.length == 0 ? (
-      <p className={classes.error}>enter your email</p>
-    ) : null;
+  const emailError = isFormSubmmited && inputs.email.length == 0;
 
   const interestError =
-    isFormSubmmited && inputs.interest == "I am interested in" ? (
-      <p className={classes.error}>select your reason of contacting</p>
-    ) : null;
+    isFormSubmmited && inputs.interest == "I am interested in";
 
-  const agreementError =
-    isFormSubmmited && !inputs.agreement ? (
-      <p className={classes["agreement-error"]}>
-        * &ensp; agree with our terms
-      </p>
-    ) : null;
+  const agreementError = isFormSubmmited && !inputs.agreement;
 
   return (
     <div className={classes.contact}>
@@ -121,11 +108,17 @@ const ContactForm = () => {
               name="name"
               id="name"
               placeholder="My name is*"
+              className={`${nameError && classes["error-filed"]}`}
             />
-            {nameError}
+            {nameError && <p className={classes.error}>enter your name</p>}
           </div>
           <div className={classes.input}>
-            <select ref={interestInputRef} name="reson-for-contact" id="reson">
+            <select
+              ref={interestInputRef}
+              name="reson-for-contact"
+              id="reson"
+              className={`${interestError && classes["error-filed"]}`}
+            >
               <option selected disabled value="I am interested in">
                 I am interested in*
               </option>
@@ -133,7 +126,9 @@ const ContactForm = () => {
               <option value="collaboration">collaboration</option>
               <option value="other">other</option>
             </select>
-            {interestError}
+            {interestError && (
+              <p className={classes.error}>select your reason of contacting</p>
+            )}
           </div>
           <div className={classes.input}>
             <input
@@ -142,8 +137,9 @@ const ContactForm = () => {
               name="email"
               id="email"
               placeholder="Email*"
+              className={`${emailError && classes["error-filed"]}`}
             />
-            {emailError}
+            {emailError && <p className={classes.error}>enter your email</p>}
           </div>
         </div>
         <div className={classes.input}>
@@ -165,13 +161,21 @@ const ContactForm = () => {
               name="agreement"
               id="agreement"
             />
-            <span className={classes.checkmark}></span>
+            <span
+              className={`${classes.checkmark} ${
+                agreementError && classes["error-filed"]
+              }`}
+            ></span>
           </div>
           <p>
             I agree with the{" "}
             <Link href="terms of use">Terms and Conditions</Link>
           </p>
-          {agreementError}
+          {agreementError && (
+            <p className={classes["agreement-error"]}>
+              * &ensp; agree with our terms
+            </p>
+          )}
         </div>
       </form>
     </div>
