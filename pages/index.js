@@ -32,7 +32,7 @@ export default function Home(props) {
 
 // Top-Headlines for (general) category.
 const defaultAPI =
-  "https://newsapi.org/v2/top-headlines?category=general&pageSize=100&apiKey=8804ae5da994436aa3ab963e0217fe73";
+  "https://newsapi.org/v2/top-headlines?category=general&country=us&pageSize=100&apiKey=8804ae5da994436aa3ab963e0217fe73";
 
 export async function getStaticProps() {
   // Fetching news from our API:
