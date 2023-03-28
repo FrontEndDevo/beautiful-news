@@ -15,16 +15,20 @@ Here are some app snapshots:
 
 #HOME
 ![Home](https://user-images.githubusercontent.com/98362185/227792120-5fc52816-340e-412f-8419-33dc77e1696b.png)
-
+#STORY
+![story](https://user-images.githubusercontent.com/98362185/228386717-7dd18b02-ec7d-4b2e-b706-bf2864766b1d.png)
+#SIDEBAR
+![sidebar](https://user-images.githubusercontent.com/98362185/228386732-c3e5a9b7-51e0-4467-abec-e887eaeeed28.png)
+#EVERYTHING
+![Uploading everything default.jpg…]()
+#FILTRATION -> EVERYTHING
+![searching-everything](https://user-images.githubusercontent.com/98362185/228386876-9f3dba34-d41c-4006-91de-5298e40a60e4.png)
 #CHANNELS
 ![channels](https://user-images.githubusercontent.com/98362185/227792209-238a3124-1abf-4dab-979e-c2bf076e4c91.png)
-
 #ABOUT
 ![about](https://user-images.githubusercontent.com/98362185/227792220-551da266-f647-479d-9fa1-adf513055266.png)
-
 #CONTACT
 ![contact](https://user-images.githubusercontent.com/98362185/227792207-51ba3b8d-832b-45b1-acaa-ace5b6625831.png)
-
 #CONTACT INTERACTION
 ![wrong contact](https://user-images.githubusercontent.com/98362185/227792206-6016c6e2-2597-4cc1-a9ef-22d8dac39500.png)
 
