@@ -20,7 +20,7 @@ Here are some app snapshots:
 #SIDEBAR
 ![sidebar](https://user-images.githubusercontent.com/98362185/228386732-c3e5a9b7-51e0-4467-abec-e887eaeeed28.png)
 #EVERYTHING
-![Uploading everything default.jpg…]()
+![everything default-min](https://user-images.githubusercontent.com/98362185/228388594-55166153-a2d7-476a-82d2-548adb9089ef.png)
 #FILTRATION -> EVERYTHING
 ![searching-everything](https://user-images.githubusercontent.com/98362185/228386876-9f3dba34-d41c-4006-91de-5298e40a60e4.png)
 #CHANNELS
