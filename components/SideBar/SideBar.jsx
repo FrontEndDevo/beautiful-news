@@ -42,14 +42,14 @@ const SideBar = (props) => {
         <div className={classes.tags}>
           <div className={classes["primary"]}>
             <Link href="/about">About</Link>
-            <Link href="/">Submit a story</Link>
+            <Link href="/submit a story">Submit a story</Link>
           </div>
           <div className={classes["secondary"]}>
-            <Link href="/">Contact</Link>
-            <Link href="/">Become a contributor</Link>
-            <Link href="/">Terms of use</Link>
-            <Link href="/">Privacy Policy</Link>
-            <Link href="/">Cookie Policy</Link>
+            <Link href="/contact">Contact</Link>
+            <Link href="/become a contributor">Become a contributor</Link>
+            <Link href="/terms of use">Terms of use</Link>
+            <Link href="/privacy policy">Privacy Policy</Link>
+            <Link href="/cookie policy">Cookie Policy</Link>
           </div>
         </div>
         <div className={classes.buttons}>
