@@ -14,6 +14,7 @@ Status 📶: in-progress.
 Here are some app snapshots:
 
 ![Home](https://user-images.githubusercontent.com/98362185/227792120-5fc52816-340e-412f-8419-33dc77e1696b.png)
+      <p>******************************************************************************</p>
 ![channels](https://user-images.githubusercontent.com/98362185/227792209-238a3124-1abf-4dab-979e-c2bf076e4c91.png)
 ![about](https://user-images.githubusercontent.com/98362185/227792220-551da266-f647-479d-9fa1-adf513055266.png)
 ![contact](https://user-images.githubusercontent.com/98362185/227792207-51ba3b8d-832b-45b1-acaa-ace5b6625831.png)
