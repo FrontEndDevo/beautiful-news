@@ -23,10 +23,14 @@ const ChosenStory = () => {
   return (
     <>
       <Head>
-        <title>{`${catchedStory.title || ""} | News | Beautiful News`}</title>
+        <title>{`${
+          catchedStory.title ? catchedStory.title : ""
+        } | News | Beautiful News`}</title>
         <meta
           name="description"
-          content={`${catchedStory.content} | News section | Beautiful News`}
+          content={`${
+            catchedStory.content ? catchedStory.content : ""
+          } | News section | Beautiful News`}
         />
       </Head>
       <Navbar />
