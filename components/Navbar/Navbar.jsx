@@ -32,7 +32,9 @@ const Navbar = () => {
 
   const changeSearchBarHandler = (text) => {
     dispatch(
-      searchActions.getKeyword({ keyword: text.target.value.toLowerCase() })
+      searchActions.getKeyword({
+        keyword: text.target.value.trim().toLowerCase(),
+      })
     );
   };
 

@@ -26,8 +26,6 @@ const CatchedStory = (props) => {
     content.split("").lastIndexOf("[")
   );
 
-  console.log(props.story);
-
   // Ready code to measure word length from (geeksforgeeks):
   // To center the author name on the img below.
   const canvas = document.createElement("canvas");

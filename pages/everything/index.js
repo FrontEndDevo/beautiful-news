@@ -36,7 +36,11 @@ const Everything = ({ everythingNews, totalResults }) => {
           content: data.articles[key].content,
         });
       }
-      setNewStories({ articles: newNews, totalResults: data.totalResults });
+      setNewStories({
+        topic: keyword,
+        articles: newNews,
+        totalResults: data.totalResults,
+      });
     };
     getFilteredNews();
   };
@@ -53,8 +57,8 @@ const Everything = ({ everythingNews, totalResults }) => {
 
   dispatch(
     everythingNewsActions.everythingStore({
-      topic: filters.keyword || "tesla",
-      news: newStories.articles ? newStories : everythingNews,
+      topic: newStories.topic || "tesla",
+      news: newStories.articles ? newStories.articles : everythingNews,
       total: newStories.articles ? newStories.totalResults : totalResults,
     })
   );
@@ -74,7 +78,11 @@ const Everything = ({ everythingNews, totalResults }) => {
       </Head>
       <Navbar />
       <Filter getFilters={getFiltersAndFetchNewsHandler} />
-      <Stories everything={true} keyword={filters.keyword} />
+      <Stories
+        everything={true}
+        keyword={newStories.topic}
+        filteredStories={newStories.articles}
+      />
       <Footer />
     </React.Fragment>
   );
