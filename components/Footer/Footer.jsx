@@ -43,7 +43,7 @@ const Footer = () => {
           <Link href="become a contributor">become a contributor</Link>
           <Link href="cookie policy">cookie policy</Link>
           <Link href="submit a story">submit a story</Link>
-          <Link href="terms of use">terms of use</Link>
+          <Link href="terms-use">terms of use</Link>
           <Link href="sign in">sign in</Link>
           <Link href="contact">contact</Link>
           <Link href="privacy policy">privacy policy</Link>
