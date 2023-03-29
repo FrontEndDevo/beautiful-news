@@ -1,4 +1,36 @@
 @use "../../styles/vars" as *;
-.terms{
-  
+.terms {
+  margin: 6rem 0 3rem;
+  width: 70%;
+  text-align: justify;
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  div {
+    margin: 2rem 0;
+    h3 {
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    p {
+      line-height: 1.8;
+      margin: 1rem 0;
+    }
+    a {
+      text-decoration: underline;
+    }
+    ul {
+      list-style: circle;
+      li {
+        margin: 1rem;
+      }
+    }
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .lowercase {
+    text-transform: lowercase;
+  }
 }

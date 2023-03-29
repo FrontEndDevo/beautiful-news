@@ -20,9 +20,9 @@ const TermsOfUse = () => {
         <h3>Introduction</h3>
         <p>
           These Terms and Conditions of use pertain to all BEAUTIFUL NEWS
-          websites, including the site found at the URL,{" "}
-          <Link href="/everything">www.beautifulnews.everything</Link>
-          and <Link href="/">www.beautifulnews.com</Link>
+          websites, including the site found at the URL,
+          <Link href="/everything"> www.beautifulnews.everything </Link>
+          and<Link href="/"> www.beautifulnews.com </Link>
         </p>
         <p>
           These terms and conditions (“the Website Terms and Conditions”) govern
