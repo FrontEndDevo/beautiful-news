@@ -8,7 +8,10 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import classes from "./CatchedStory.module.scss";
+import { useEffect, useState } from "react";
 const CatchedStory = (props) => {
+  const [authorWidth, setAuthorWidth] = useState("");
+
   // Extract all properties using destructuring:
   const {
     title,
@@ -26,11 +29,16 @@ const CatchedStory = (props) => {
     content.split("").lastIndexOf("[")
   );
 
-  // Ready code to measure word length from (geeksforgeeks):
-  // To center the author name on the img below.
-  const canvas = document.createElement("canvas");
-  const context = canvas.getContext("2d");
-  const authorWidth = Math.ceil(context.measureText(author).width);
+  useEffect(() => {
+    // Ready code to measure word length from (geeksforgeeks):
+    // To center the author name on the img below.
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    const countAuthorWidth = Math.ceil(context.measureText(author).width);
+    setAuthorWidth(countAuthorWidth);
+  }, [author]);
+
+  console.log(authorWidth);
 
   return (
     <section className={classes["catched-story"]}>

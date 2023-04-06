@@ -28,8 +28,6 @@ const ChosenStory = () => {
     source: { id: 0, name: "" },
   };
 
-  console.log(catchedStory);
-
   return (
     <>
       <Head>
