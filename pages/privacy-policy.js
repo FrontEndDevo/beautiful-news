@@ -1,12 +1,14 @@
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-const PrivacyPolicy = () => {
+import PrivacyPolicy from "../components/PrivacyPolicy/PrivacyPolicy";
+const Privacy = () => {
   return (
     <>
       <Navbar />
+      <PrivacyPolicy />
       <Footer />
     </>
   );
 };
 
-export default PrivacyPolicy;
+export default Privacy;
