@@ -4,7 +4,17 @@ const initialHeadlinesState = {
   headlines: [
     {
       category: "general",
-      articles: [],
+      articles: [
+        {
+          title: "",
+          author: "",
+          content: "",
+          description: "",
+          urlToImage: "",
+          url: "",
+          source: { id: 0, name: "" },
+        },
+      ],
       totalResults: 0,
     },
   ],
