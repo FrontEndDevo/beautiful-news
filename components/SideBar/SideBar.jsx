@@ -47,8 +47,8 @@ const SideBar = (props) => {
           <div className={classes["secondary"]}>
             <Link href="/contact">Contact</Link>
             <Link href="/become a contributor">Become a contributor</Link>
-            <Link href="/terms of use">Terms of use</Link>
-            <Link href="/privacy policy">Privacy Policy</Link>
+            <Link href="/terms-use">Terms of use</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
             <Link href="/cookie policy">Cookie Policy</Link>
           </div>
         </div>
