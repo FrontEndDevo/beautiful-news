@@ -3,17 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialEverythingState = {
   topic: "",
   totalResults: 0,
-  articles: [
-    {
-      title: "",
-      author: "",
-      content: "",
-      description: "",
-      urlToImage: "",
-      url: "",
-      source: { id: 0, name: "" },
-    },
-  ],
+  articles: [],
 };
 
 const everythingNewsSlice = createSlice({
