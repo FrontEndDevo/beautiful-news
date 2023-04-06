@@ -1,4 +1,37 @@
-@use '../../styles/vars' as *;
-.privacy-policy{
-  
+@use "../../styles/vars" as *;
+.privacy-policy {
+  margin: 6rem 0 3rem;
+  width: 70%;
+  text-align: justify;
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  div {
+    margin: 2rem 0;
+    h3 {
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    p {
+      line-height: 1.8;
+      margin: 1rem 0;
+    }
+  }
+  .order {
+    margin: 2rem 0;
+    list-style: decimal;
+    li {
+      margin: 1rem;
+      margin-right: 0;
+
+      ul {
+        list-style: circle;
+        li {
+          line-height: 1.5;
+        }
+      }
+    }
+  }
 }
