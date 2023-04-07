@@ -18,15 +18,7 @@ const ChosenStory = () => {
     (chosenOne) =>
       chosenOne.title.replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s/g, "-") ==
       router.query.chosenStory
-  )[0] || {
-    title: "",
-    author: "",
-    content: "",
-    description: "",
-    urlToImage: "",
-    url: "",
-    source: { id: 0, name: "" },
-  };
+  )[0];
 
   return (
     <>

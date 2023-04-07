@@ -38,8 +38,6 @@ const CatchedStory = (props) => {
     setAuthorWidth(countAuthorWidth);
   }, [author]);
 
-  console.log(authorWidth);
-
   return (
     <section className={classes["catched-story"]}>
       <div className={classes["top-content"]}>
