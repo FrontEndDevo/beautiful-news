@@ -25,17 +25,19 @@ const ChosenStory = () => {
     <>
       <Head>
         <title>{`${
-          catchedStory.title ? catchedStory.title : "Title"
+          catchedStory && catchedStory.title ? catchedStory.title : "Title"
         } | News | Beautiful News`}</title>
         <meta
           name="description"
           content={`${
-            catchedStory.content ? catchedStory.content : "Content"
+            catchedStory && catchedStory.content
+              ? catchedStory.content
+              : "Content"
           } | News section | Beautiful News`}
         />
       </Head>
       <Navbar />
-      <CatchedStory story={catchedStory} />
+      {catchedStory && <CatchedStory story={catchedStory} />}
       <Footer />
     </>
   );
