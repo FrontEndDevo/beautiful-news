@@ -5,21 +5,11 @@ import { useSelector } from "react-redux";
 import Head from "next/head";
 import Footer from "../../components/Footer/Footer";
 const ChosenStory = () => {
-  const router = useRouter();
   // Fetching all news from redux-store:
   const headlines = useSelector((state) => state.headlines.headlines);
   const everything = useSelector((state) => state.everything);
 
-  // A default object (set default values) to solve problems like: can't read property of undefined.
-  const defaultStory = {
-    title: "",
-    author: "",
-    content: "",
-    description: "",
-    urlToImage: "",
-    url: "",
-    source: { id: 0, name: "" },
-  };
+  const router = useRouter();
 
   // Catch the clicked story using (high-ordered-function (FILTER)):
   const catchedStory = [
@@ -35,17 +25,17 @@ const ChosenStory = () => {
     <>
       <Head>
         <title>{`${
-          catchedStory.title ? catchedStory.title : defaultStory.title
+          catchedStory.title != null ? catchedStory.title : "Title"
         } | News | Beautiful News`}</title>
         <meta
           name="description"
           content={`${
-            catchedStory.content ? catchedStory.content : defaultStory.content
+            catchedStory.content != null ? catchedStory.content : "Content"
           } | News section | Beautiful News`}
         />
       </Head>
       <Navbar />
-      <CatchedStory story={catchedStory ? catchedStory : defaultStory} />
+      <CatchedStory story={catchedStory} />
       <Footer />
     </>
   );
