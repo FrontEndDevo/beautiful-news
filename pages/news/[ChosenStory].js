@@ -10,6 +10,17 @@ const ChosenStory = () => {
   const headlines = useSelector((state) => state.headlines.headlines);
   const everything = useSelector((state) => state.everything);
 
+  // A default object (set default values) to solve problems like: can't read property of undefined.
+  const defaultStory = {
+    title: "",
+    author: "",
+    content: "",
+    description: "",
+    urlToImage: "",
+    url: "",
+    source: { id: 0, name: "" },
+  };
+
   // Catch the clicked story using (high-ordered-function (FILTER)):
   const catchedStory = [
     ...headlines[0].articles,
@@ -30,7 +41,7 @@ const ChosenStory = () => {
         />
       </Head>
       <Navbar />
-      <CatchedStory story={catchedStory} />
+      <CatchedStory story={catchedStory ? catchedStory : defaultStory} />
       <Footer />
     </>
   );
