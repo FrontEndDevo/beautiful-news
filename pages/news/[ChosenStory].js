@@ -25,12 +25,12 @@ const ChosenStory = () => {
     <>
       <Head>
         <title>{`${
-          catchedStory.title != null ? catchedStory.title : "Title"
+          catchedStory.title ? catchedStory.title : "Title"
         } | News | Beautiful News`}</title>
         <meta
           name="description"
           content={`${
-            catchedStory.content != null ? catchedStory.content : "Content"
+            catchedStory.content ? catchedStory.content : "Content"
           } | News section | Beautiful News`}
         />
       </Head>
