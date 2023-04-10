@@ -45,7 +45,6 @@ const ChosenStory = () => {
       )[0];
 
       setFinalStory(catchedStory);
-      console.log(catchedStory);
     };
 
     fetchTheStory();
