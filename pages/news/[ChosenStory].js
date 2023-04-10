@@ -8,9 +8,10 @@ import { useEffect, useState } from "react";
 const ChosenStory = () => {
   const [finalStory, setFinalStory] = useState({});
 
+  const router = useRouter();
+
   // Fetching all news from redux-store:
   const everything = useSelector((state) => state.everything);
-
   /*
   First headlines: Our reducer function that subscribed to the Store.
   Second headlines: Our headlines-array that holds all different categories.
@@ -20,21 +21,20 @@ const ChosenStory = () => {
     (item) => item.articles
   );
 
-  // Descover if We only have one array for one category (e.g sports) or more than one array for different categories (e.g sports, general)
-  const newHeadlinesArr = [];
-  const newHeadlines =
-    headlines.length == 1
-      ? headlines[0]
-      : headlines.map((headlineArr) => newHeadlinesArr.push(...headlineArr));
-
-  const finalHeadlines =
-    newHeadlinesArr.length > 0 ? newHeadlinesArr : newHeadlines;
-
-  const router = useRouter();
-
   // Catch the clicked story using (high-ordered-function (FILTER)):
   useEffect(() => {
     const fetchTheStory = async () => {
+      // Descover if We only have one array for one category (e.g sports) or more than one array for different categories (e.g sports, general)
+      const newHeadlinesArr = [];
+      const newHeadlines =
+        headlines.length == 1
+          ? headlines[0]
+          : headlines.map((headlineArr) =>
+              newHeadlinesArr.push(...headlineArr)
+            );
+
+      const finalHeadlines =
+        newHeadlinesArr.length > 0 ? newHeadlinesArr : newHeadlines;
       const catchedStory = await [
         ...finalHeadlines,
         ...everything.articles,
@@ -48,7 +48,9 @@ const ChosenStory = () => {
     };
 
     fetchTheStory();
-  }, [headlines, everything, router.query]);
+  }, []);
+
+  console.log(finalStory);
 
   return (
     <>
