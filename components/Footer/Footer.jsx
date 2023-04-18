@@ -41,7 +41,7 @@ const Footer = () => {
         <div className={classes.links}>
           <Link href="about">about</Link>
           <Link href="become a contributor">become a contributor</Link>
-          <Link href="cookie policy">cookie policy</Link>
+          <Link href="cookie-policy">cookie policy</Link>
           <Link href="submit a story">submit a story</Link>
           <Link href="terms-use">terms of use</Link>
           <Link href="sign in">sign in</Link>
