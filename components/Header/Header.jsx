@@ -51,7 +51,7 @@ const Header = ({ allowTitles = false }) => {
         alt={pickedStory.title}
       />
       {allowTitles && (
-        <div className={classes.shape}>
+        <Link href="submit-story" className={classes.shape}>
           <Shape>
             <button>
               Share hope.
@@ -59,7 +59,7 @@ const Header = ({ allowTitles = false }) => {
               Submit your story
             </button>
           </Shape>
-        </div>
+        </Link>
       )}
     </header>
   );
