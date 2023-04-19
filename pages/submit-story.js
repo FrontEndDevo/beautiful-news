@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import Head from "next/head";
+import SubmitStoryForm from "../components/SubmitStoryForm/SubmitStoryForm";
 const SubmitStory = () => {
   return (
     <>
@@ -12,7 +13,7 @@ const SubmitStory = () => {
         />
       </Head>
       <Navbar />
-    
+      <SubmitStoryForm />
       <Footer />
     </>
   );
