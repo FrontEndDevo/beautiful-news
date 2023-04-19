@@ -42,7 +42,7 @@ const SideBar = (props) => {
         <div className={classes.tags}>
           <div className={classes["primary"]}>
             <Link href="/about">About</Link>
-            <Link href="/submit a story">Submit a story</Link>
+            <Link href="/submit-story">Submit a story</Link>
           </div>
           <div className={classes["secondary"]}>
             <Link href="/contact">Contact</Link>

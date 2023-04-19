@@ -12,7 +12,7 @@ const SubmitStory = () => {
         />
       </Head>
       <Navbar />
-
+    
       <Footer />
     </>
   );
