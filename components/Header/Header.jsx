@@ -34,9 +34,13 @@ const Header = ({ allowTitles = false }) => {
               <Link href="/everything">Everything</Link>
             </div>
           )}
-          <button>
+          <Link
+            href={pickedStory.url}
+            target="_blank"
+            className={classes["play-icon"]}
+          >
             <FontAwesomeIcon icon={faPlay} />
-          </button>
+          </Link>
         </div>
       </div>
       <img

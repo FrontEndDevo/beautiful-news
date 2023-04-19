@@ -36,16 +36,17 @@
       }
     }
 
-    button {
-      cursor: pointer;
+    .play-icon {
       background-color: $lighter_rose;
       border: none;
       padding: 0.5rem 2rem;
+      display: flex;
+      align-items: center;
+      width: fit-content;
       color: white;
       font-weight: bold;
-      font-size: 1.2rem;
       transition: $fast_transition;
-      border-radius: 4px;
+      border-radius: 3px;
       &:hover {
         background-color: $dark;
         svg {
