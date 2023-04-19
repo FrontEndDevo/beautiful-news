@@ -11,6 +11,14 @@ const SubmitStoryForm = () => {
           <br /> We’ll be in touch.
         </p>
       </div>
+      <form>
+        <input type="text" name="" id="" />
+        <input type="email" name="" id="" />
+        
+        <div className={classes.buttons}>
+          <button>Send</button>
+        </div>
+      </form>
     </div>
   );
 };
