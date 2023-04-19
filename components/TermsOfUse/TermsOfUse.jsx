@@ -8,7 +8,7 @@ const TermsOfUse = () => {
       <h2>Terms of use</h2>
       <div>
         <h3>GINKGO AGENCY (PTY) LTD (“BEAUTIFUL NEWS”)</h3>
-        <p>
+        <p className={classes.uppercase}>
           take note that these terms and conditions contain provisions that
           disclaim, limit and exclude the liability of beautiful news to you and
           that indemnify beautiful news against claims and damages that it may
