@@ -1,5 +1,14 @@
-@use '../../styles/vars' as *;
-
-.submit-story{
-  
+@use "../../styles/vars" as *;
+.submit-story {
+  margin-top: 8rem;
+  width: 93%;
+  .text {
+    margin-bottom: 2rem;
+    h2 {
+      font-size: 4rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
 }
