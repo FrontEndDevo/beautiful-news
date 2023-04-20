@@ -1,38 +1,50 @@
 import classes from "./SubmitStoryForm.module.scss";
 import countries from "../../assets/JSON/Countries Codes.json";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 const SubmitStoryForm = () => {
   // Render all country names in a select tag:
   const locationCountries = (
     <select className={classes.countries}>
       {countries.map((country) => (
-        <option>{country.name}</option>
+        <option value={country.name}>{country.name}</option>
       ))}
     </select>
   );
 
   // To render country (flag - name - code):
   const countriesCodes = (
-    <select className={classes["countries-codes"]}>
+    <ul className={classes["countries-codes"]}>
       {countries.map((country) => (
-        <option>
+        <li>
           <img
-            src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country.code.toLowerCase()}.svg`}
+            src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country.code.toUpperCase()}.svg`}
             alt={country.name}
           />
-          <h6>
+          <p>
             {country.name} ({country.code})
-          </h6>
-          <p>{country.dialling_code}</p>
-        </option>
+          </p>
+          <span>{country.dialling_code}</span>
+        </li>
       ))}
-    </select>
+    </ul>
   );
 
   // Render the previous select with telephone input:
   const nationalPhoneNumber = (
     <div className={classes.phoneNumber}>
+      <div className={classes["empty-flag"]}>
+        <span></span>
+        <FontAwesomeIcon icon={faCaretDown} />
+        {/* <FontAwesomeIcon icon={faCaretUp} /> */}
+      </div>
       {countriesCodes}
-      <input type="tel" name="phone number" id="phone" />
+      <input
+        type="tel"
+        name="phone number"
+        id="phone"
+        placeholder="Your phone number (optional)"
+      />
     </div>
   );
   return (
@@ -46,12 +58,32 @@ const SubmitStoryForm = () => {
           <br /> We’ll be in touch.
         </p>
       </div>
-      <form>
-        <input type="text" name="story-name" id="story-name" />
-        <input type="email" name="story-email" id="story-email" />
-        {locationCountries}
-        {nationalPhoneNumber}
-        <textarea name="story" id="story" rows="10"></textarea>
+      <form className={classes.form}>
+        <div className={classes.inputs}>
+          <input
+            type="text"
+            placeholder="My name Is*"
+            name="story-name"
+            id="story-name"
+            className={classes.name}
+          />
+          <input
+            type="email"
+            placeholder="Email*"
+            name="story-email"
+            id="story-email"
+            className={classes.email}
+          />
+          {locationCountries}
+          {nationalPhoneNumber}
+        </div>
+        <textarea
+          className={classes["your-story"]}
+          name="story"
+          id="story"
+          rows="10"
+          placeholder="Your story*"
+        />
         <div className={classes.buttons}>
           <button>Send</button>
         </div>
