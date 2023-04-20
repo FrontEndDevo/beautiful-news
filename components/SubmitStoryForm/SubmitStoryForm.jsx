@@ -2,7 +2,10 @@ import classes from "./SubmitStoryForm.module.scss";
 import countries from "../../assets/JSON/Countries Codes.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 const SubmitStoryForm = () => {
+  const [dropdownList, setDropdownList] = useState(false);
+
   // Render all country names in a select tag:
   const locationCountries = (
     <select className={classes.countries}>
@@ -30,15 +33,26 @@ const SubmitStoryForm = () => {
     </ul>
   );
 
+  // Toggle dropdown unordered list. 
+  const toggleDropdownListHandler = () => {
+    setDropdownList((prevState) => !prevState);
+  };
+
   // Render the previous select with telephone input:
   const nationalPhoneNumber = (
     <div className={classes.phoneNumber}>
-      <div className={classes["empty-flag"]}>
+      <div
+        className={classes["empty-flag"]}
+        onClick={toggleDropdownListHandler}
+      >
         <span></span>
-        <FontAwesomeIcon icon={faCaretDown} />
-        {/* <FontAwesomeIcon icon={faCaretUp} /> */}
+        {dropdownList ? (
+          <FontAwesomeIcon icon={faCaretUp} />
+        ) : (
+          <FontAwesomeIcon icon={faCaretDown} />
+        )}
       </div>
-      {countriesCodes}
+      {dropdownList && countriesCodes}
       <input
         type="tel"
         name="phone number"
@@ -47,6 +61,7 @@ const SubmitStoryForm = () => {
       />
     </div>
   );
+
   return (
     <div className={classes["submit-story"]}>
       <div className={classes.text}>
