@@ -56,7 +56,7 @@
       .phoneNumber {
         display: flex;
         position: relative;
-        
+
         .empty-flag {
           cursor: pointer;
           padding: 0.5rem;
@@ -65,18 +65,20 @@
           align-items: center;
           justify-content: center;
           gap: 6px;
-          width: fit-content;
-          transition: $fast_transition;
-
           &:hover {
             background-color: $darken;
           }
 
-          span {
+          span,
+          img {
             width: 20px;
             height: 15px;
+          }
+
+          span {
             background-color: white;
           }
+
           svg {
             color: #444444;
           }
@@ -89,25 +91,6 @@
           color: black;
           max-height: 25vh;
           overflow: scroll;
-          li {
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 3px 10px;
-            cursor: pointer;
-            // width: 100%;
-            &:hover {
-              background-color: rgba(0, 0, 0, 0.1);
-            }
-            img {
-              width: 20px;
-              height: 20px;
-            }
-            span {
-              color: $lighter_dark;
-            }
-          }
         }
       }
     }

@@ -1,10 +1,12 @@
 import classes from "./SubmitStoryForm.module.scss";
-import countries from "../../assets/JSON/Countries Codes.json";
+import countries from "../../assets/JSON/countries.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import Country from "./Country/Country";
 const SubmitStoryForm = () => {
   const [dropdownList, setDropdownList] = useState(false);
+  const [choosenCountry, setChoosenCountry] = useState(null);
 
   // Render all country names in a select tag:
   const locationCountries = (
@@ -18,22 +20,18 @@ const SubmitStoryForm = () => {
   // To render country (flag - name - code):
   const countriesCodes = (
     <ul className={classes["countries-codes"]}>
-      {countries.map((country) => (
-        <li>
-          <img
-            src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country.code.toUpperCase()}.svg`}
-            alt={country.name}
-          />
-          <p>
-            {country.name} ({country.code})
-          </p>
-          <span>{country.dialling_code}</span>
-        </li>
+      {countries.map((country, index) => (
+        <Country
+          chooseThisCountry={() => setChoosenCountry(countries[index])}
+          name={country.name}
+          code={country.code}
+          dialling_code={country.dialling_code}
+        />
       ))}
     </ul>
   );
 
-  // Toggle dropdown unordered list. 
+  // Toggle dropdown unordered list.
   const toggleDropdownListHandler = () => {
     setDropdownList((prevState) => !prevState);
   };
@@ -45,7 +43,14 @@ const SubmitStoryForm = () => {
         className={classes["empty-flag"]}
         onClick={toggleDropdownListHandler}
       >
-        <span></span>
+        {choosenCountry ? (
+          <img
+            src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${choosenCountry.code.toUpperCase()}.svg`}
+            alt={choosenCountry.name}
+          />
+        ) : (
+          <span></span>
+        )}
         {dropdownList ? (
           <FontAwesomeIcon icon={faCaretUp} />
         ) : (
@@ -58,9 +63,12 @@ const SubmitStoryForm = () => {
         name="phone number"
         id="phone"
         placeholder="Your phone number (optional)"
+        defaultValue={choosenCountry && choosenCountry.dialling_code}
       />
     </div>
   );
+
+  console.log(choosenCountry);
 
   return (
     <div className={classes["submit-story"]}>
