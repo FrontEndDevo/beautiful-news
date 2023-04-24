@@ -2,11 +2,49 @@ import classes from "./SubmitStoryForm.module.scss";
 import countries from "../../assets/JSON/countries.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useReducer, useRef, useState } from "react";
 import Country from "./Country/Country";
+
+const initialSubmitStoryReducer = {
+  name: "",
+  email: "",
+  country: "",
+  phoneNumber: "",
+  story: "",
+  agreement: false,
+};
+
+const submitStoryReducer = (state, action) => {
+  switch (action.type) {
+    case "ALLINPUTS":
+      return {
+        name: action.payload.name,
+        email: action.payload.email,
+        country: action.payload.country,
+        phoneNumber: action.payload.phoneNumber,
+        story: action.payload.story,
+        agreement: action.payload.agreement,
+      };
+  }
+};
+
 const SubmitStoryForm = () => {
   const [dropdownList, setDropdownList] = useState(false);
   const [choosenCountry, setChoosenCountry] = useState(null);
+
+  // This reducer to store all inputs values:
+  const [inputs, dispatch] = useReducer(
+    submitStoryReducer,
+    initialSubmitStoryReducer
+  );
+
+  // Our refs to get inputs values:
+  const nameInputRef = useRef();
+  const emailInputRef = useRef();
+  const countryInputRef = useRef();
+  const phoneNumberInputRef = useRef();
+  const storyInputRef = useRef();
+  const checkboxInputRef = useRef();
 
   // Render all country names in a select tag:
   const locationCountries = (
