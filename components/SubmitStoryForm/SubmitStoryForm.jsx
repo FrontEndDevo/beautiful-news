@@ -31,6 +31,8 @@ const submitStoryReducer = (state, action) => {
 const SubmitStoryForm = () => {
   const [dropdownList, setDropdownList] = useState(false);
   const [choosenCountry, setChoosenCountry] = useState(null);
+  // To know when we are gonna show error messages to user.
+  const [isFormSubmmited, setIsFormSubmmited] = useState(false);
 
   // This reducer to store all inputs values:
   const [inputs, dispatch] = useReducer(
@@ -107,7 +109,47 @@ const SubmitStoryForm = () => {
     </div>
   );
 
-  console.log(choosenCountry);
+  // Submit the contact form:
+  const submitStoryFormHandler = (e) => {
+    // Prevent page reload or sending http request.
+    e.preventDefault();
+
+    setIsFormSubmmited(true);
+
+    // Variables naming simplified:
+    const valuesObj = {
+      name: nameInputRef.current.value.trim(),
+      email: emailInputRef.current.value.trim(),
+      country: countryInputRef.current.value.trim(),
+      phoneNumber: phoneNumberInputRef.current.value.trim(),
+      story: storyInputRef.current.value.trim(),
+      agreement: checkboxInputRef.current.checked,
+    };
+
+    // Store the values in our reducer:
+    dispatch({
+      type: "ALLINPUTS",
+      payload: {
+        name: valuesObj.name,
+        email: valuesObj.email,
+        country: valuesObj.country,
+        phoneNumber: valuesObj.phoneNumber,
+        story: valuesObj.story,
+        agreement: valuesObj.agreement,
+      },
+    });
+
+    // If all is right, let's print values in console for example:
+    if (
+      valuesObj.name &&
+      valuesObj.email &&
+      valuesObj.country &&
+      valuesObj.story &&
+      valuesObj.agreement
+    ) {
+      console.log(valuesObj);
+    }
+  };
 
   return (
     <div className={classes["submit-story"]}>
@@ -120,7 +162,7 @@ const SubmitStoryForm = () => {
           <br /> We’ll be in touch.
         </p>
       </div>
-      <form className={classes.form}>
+      <form onSubmit={submitStoryFormHandler} className={classes.form}>
         <div className={classes.inputs}>
           <input
             type="text"
