@@ -48,7 +48,7 @@ const SubmitStoryForm = () => {
 
   // Render all country names in a select tag:
   const locationCountries = (
-    <select className={classes.countries}>
+    <select className={classes.countries} ref={countryInputRef}>
       {countries.map((country) => (
         <option value={country.name}>{country.name}</option>
       ))}
@@ -102,6 +102,7 @@ const SubmitStoryForm = () => {
         id="phone"
         placeholder="Your phone number (optional)"
         defaultValue={choosenCountry && choosenCountry.dialling_code}
+        ref={phoneNumberInputRef}
       />
     </div>
   );
@@ -127,6 +128,7 @@ const SubmitStoryForm = () => {
             name="story-name"
             id="story-name"
             className={classes.name}
+            ref={storyInputRef}
           />
           <input
             type="email"
@@ -134,6 +136,7 @@ const SubmitStoryForm = () => {
             name="story-email"
             id="story-email"
             className={classes.email}
+            ref={emailInputRef}
           />
           {locationCountries}
           {nationalPhoneNumber}
