@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { useReducer, useRef, useState } from "react";
 import Country from "./Country/Country";
+import Link from "next/link";
 
 const initialSubmitStoryReducer = {
   name: "",
@@ -192,6 +193,28 @@ const SubmitStoryForm = () => {
         />
         <div className={classes.buttons}>
           <button>Send</button>
+          <div className={classes.checking}>
+            <input
+              ref={checkboxInputRef}
+              type="checkbox"
+              name="agreement"
+              id="agreement"
+            />
+            <span
+              className={`${classes.checkmark} ${
+                agreementError && classes["error-filed"]
+              }`}
+            ></span>
+          </div>
+          <p>
+            I agree with the{" "}
+            <Link href="terms of use">Terms and Conditions</Link>
+          </p>
+          {agreementError && (
+            <p className={classes["agreement-error"]}>
+              * &ensp; agree with our terms
+            </p>
+          )}
         </div>
       </form>
     </div>
