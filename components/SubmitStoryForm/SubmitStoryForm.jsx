@@ -1,7 +1,11 @@
 import classes from "./SubmitStoryForm.module.scss";
 import countries from "../../assets/JSON/countries.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCaretDown,
+  faCaretUp,
+  faFaceFrown,
+} from "@fortawesome/free-solid-svg-icons";
 import { useReducer, useRef, useState } from "react";
 import Country from "./Country/Country";
 import Link from "next/link";
@@ -9,7 +13,7 @@ import Link from "next/link";
 const initialSubmitStoryReducer = {
   name: "",
   email: "",
-  country: "",
+  country: "Location",
   phoneNumber: "",
   story: "",
   agreement: false,
@@ -25,6 +29,15 @@ const submitStoryReducer = (state, action) => {
         phoneNumber: action.payload.phoneNumber,
         story: action.payload.story,
         agreement: action.payload.agreement,
+      };
+    case "RESET":
+      return {
+        name: "",
+        email: "",
+        country: "Location",
+        phoneNumber: "",
+        story: "",
+        agreement: false,
       };
   }
 };
@@ -42,20 +55,52 @@ const SubmitStoryForm = () => {
   );
 
   // Our refs to get inputs values:
-  const nameInputRef = useRef();
-  const emailInputRef = useRef();
-  const countryInputRef = useRef();
-  const phoneNumberInputRef = useRef();
-  const storyInputRef = useRef();
-  const checkboxInputRef = useRef();
+  const [
+    nameInputRef,
+    emailInputRef,
+    countryInputRef,
+    phoneNumberInputRef,
+    storyInputRef,
+    checkboxInputRef,
+  ] = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+  ];
+
+  // Error messages for empty input fields:
+  const nameError = isFormSubmmited && inputs.name.length == 0;
+
+  const emailError = isFormSubmmited && inputs.email.length == 0;
+
+  const countryError = isFormSubmmited && inputs.country == "Location";
+
+  const storyError = isFormSubmmited && inputs.story.length == 0;
+
+  const agreementError = isFormSubmmited && !inputs.agreement;
 
   // Render all country names in a select tag:
   const locationCountries = (
-    <select className={classes.countries} ref={countryInputRef}>
-      {countries.map((country) => (
-        <option value={country.name}>{country.name}</option>
-      ))}
-    </select>
+    <div className={classes.input}>
+      <select
+        className={`${classes.countries} ${
+          countryError && classes["error-filed"]
+        }`}
+        ref={countryInputRef}
+        defaultValue="Location"
+      >
+        <option disabled value="Location">
+          Location
+        </option>
+        {countries.map((country) => (
+          <option value={country.name}>{country.name}</option>
+        ))}
+      </select>
+      {countryError && <p className={classes.error}>enter your location</p>}
+    </div>
   );
 
   // To render country (flag - name - code):
@@ -63,7 +108,10 @@ const SubmitStoryForm = () => {
     <ul className={classes["countries-codes"]}>
       {countries.map((country, index) => (
         <Country
-          chooseThisCountry={() => setChoosenCountry(countries[index])}
+          chooseThisCountry={() => {
+            phoneNumberInputRef.current.focus();
+            setChoosenCountry(countries[index]);
+          }}
           name={country.name}
           code={country.code}
           dialling_code={country.dialling_code}
@@ -79,38 +127,40 @@ const SubmitStoryForm = () => {
 
   // Render the previous select with telephone input:
   const nationalPhoneNumber = (
-    <div className={classes.phoneNumber}>
-      <div
-        className={classes["empty-flag"]}
-        onClick={toggleDropdownListHandler}
-      >
-        {choosenCountry ? (
-          <img
-            src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${choosenCountry.code.toUpperCase()}.svg`}
-            alt={choosenCountry.name}
-          />
-        ) : (
-          <span></span>
-        )}
-        {dropdownList ? (
-          <FontAwesomeIcon icon={faCaretUp} />
-        ) : (
-          <FontAwesomeIcon icon={faCaretDown} />
-        )}
+    <div className={classes.input}>
+      <div className={classes.phoneNumber}>
+        <div
+          className={classes["empty-flag"]}
+          onClick={toggleDropdownListHandler}
+        >
+          {choosenCountry ? (
+            <img
+              src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${choosenCountry.code.toUpperCase()}.svg`}
+              alt={choosenCountry.name}
+            />
+          ) : (
+            <span></span>
+          )}
+          {dropdownList ? (
+            <FontAwesomeIcon icon={faCaretUp} />
+          ) : (
+            <FontAwesomeIcon icon={faCaretDown} />
+          )}
+        </div>
+        {dropdownList && countriesCodes}
+        <input
+          type="tel"
+          name="phone number"
+          id="phone"
+          placeholder="Your phone number (optional)"
+          defaultValue={choosenCountry && choosenCountry.dialling_code}
+          ref={phoneNumberInputRef}
+        />
       </div>
-      {dropdownList && countriesCodes}
-      <input
-        type="tel"
-        name="phone number"
-        id="phone"
-        placeholder="Your phone number (optional)"
-        defaultValue={choosenCountry && choosenCountry.dialling_code}
-        ref={phoneNumberInputRef}
-      />
     </div>
   );
 
-  // Submit the contact form:
+  // Submit the story form:
   const submitStoryFormHandler = (e) => {
     // Prevent page reload or sending http request.
     e.preventDefault();
@@ -144,17 +194,50 @@ const SubmitStoryForm = () => {
     if (
       valuesObj.name &&
       valuesObj.email &&
-      valuesObj.country &&
+      valuesObj.country != "Location" &&
       valuesObj.story &&
       valuesObj.agreement
     ) {
       console.log(valuesObj);
+
+      setIsFormSubmmited(false);
+
+      // Clear input fields:
+      const defaultValues = {
+        name: "",
+        email: "",
+        country: "Location",
+        phoneNumber: "",
+        story: "",
+        agreement: false,
+      };
+
+      dispatch({
+        type: "RESET",
+      });
     }
   };
 
   return (
     <div className={classes["submit-story"]}>
       <div className={classes.text}>
+        {(nameError ||
+          emailError ||
+          countryError ||
+          storyError ||
+          agreementError) && (
+          <div className={classes["submmition-failure"]}>
+            <h2>
+              Sorry, something is not right
+              <FontAwesomeIcon icon={faFaceFrown} />
+            </h2>
+            <p>
+              Please try submitting this form again. If this problem
+              <br />
+              continues, please reach out to the site owner.
+            </p>
+          </div>
+        )}
         <h2>Submit your story</h2>
         <p>
           We want to hear from you. If you have a positive,
@@ -165,32 +248,43 @@ const SubmitStoryForm = () => {
       </div>
       <form onSubmit={submitStoryFormHandler} className={classes.form}>
         <div className={classes.inputs}>
-          <input
-            type="text"
-            placeholder="My name Is*"
-            name="story-name"
-            id="story-name"
-            className={classes.name}
-            ref={storyInputRef}
-          />
-          <input
-            type="email"
-            placeholder="Email*"
-            name="story-email"
-            id="story-email"
-            className={classes.email}
-            ref={emailInputRef}
-          />
+          <div className={classes.input}>
+            <input
+              type="text"
+              placeholder="My name Is*"
+              name="story-name"
+              id="story-name"
+              ref={nameInputRef}
+              className={`${nameError && classes["error-filed"]}`}
+            />
+            {nameError && <p className={classes.error}>enter your name</p>}
+          </div>
+          <div className={classes.input}>
+            <input
+              type="email"
+              placeholder="Email*"
+              name="story-email"
+              id="story-email"
+              ref={emailInputRef}
+              className={`${emailError && classes["error-filed"]}`}
+            />
+            {emailError && <p className={classes.error}>enter your email</p>}
+          </div>
           {locationCountries}
           {nationalPhoneNumber}
         </div>
-        <textarea
-          className={classes["your-story"]}
-          name="story"
-          id="story"
-          rows="10"
-          placeholder="Your story*"
-        />
+        <div className={classes.input}>
+          <textarea
+            name="story"
+            id="story"
+            rows="10"
+            placeholder="Your story*"
+            ref={storyInputRef}
+            className={`${classes["your-story"]} ${
+              storyError && classes["error-filed"]
+            }`}
+          />
+        </div>
         <div className={classes.buttons}>
           <button>Send</button>
           <div className={classes.checking}>

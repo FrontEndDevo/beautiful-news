@@ -4,6 +4,20 @@
   width: 93%;
   .text {
     margin-bottom: 2rem;
+
+    .submmition-failure {
+      margin-bottom: 3rem;
+      h2 {
+        font-size: 4rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        svg {
+          font-size: 3rem;
+        }
+      }
+    }
+
     h2 {
       font-size: 4rem;
     }
@@ -38,6 +52,14 @@
         background-color: white;
         color: black;
       }
+
+      &.error-filed {
+        background-color: $dim_red;
+        color: white;
+        &::placeholder {
+          color: $lighter_red;
+        }
+      }
     }
     .inputs {
       display: grid;
@@ -45,59 +67,73 @@
       width: 70%;
       gap: 2rem;
       margin-bottom: 2rem;
-      .countries {
-        option {
-          font-size: 1rem;
-          &:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-          }
-        }
-      }
-      .phoneNumber {
-        display: flex;
+      .input {
         position: relative;
 
-        .empty-flag {
-          cursor: pointer;
-          padding: 0.5rem;
-          background-color: $dark_gray;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 6px;
-          &:hover {
-            background-color: $darken;
-          }
-
-          span,
-          img {
-            width: 20px;
-            height: 15px;
-          }
-
-          span {
-            background-color: white;
-          }
-
-          svg {
-            color: #444444;
+        .countries {
+          option {
+            font-size: 1rem;
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.1);
+            }
           }
         }
-        .countries-codes {
+        .phoneNumber {
+          display: flex;
+          position: relative;
+
+          .empty-flag {
+            cursor: pointer;
+            padding: 0.5rem;
+            background-color: $dark_gray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            &:hover {
+              background-color: $darken;
+            }
+
+            span,
+            img {
+              width: 20px;
+              height: 15px;
+            }
+
+            span {
+              background-color: white;
+            }
+
+            svg {
+              color: #444444;
+            }
+          }
+          .countries-codes {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            color: black;
+            max-height: 25vh;
+            overflow: scroll;
+          }
+        }
+
+        .error {
           position: absolute;
+          right: 0;
           top: 100%;
-          left: 0;
-          background-color: white;
-          color: black;
-          max-height: 25vh;
-          overflow: scroll;
+          color: $lighter_red;
+          font-size: 14px;
+          font-style: italic;
         }
       }
+      .your-story {
+        width: 93%;
+        resize: vertical;
+      }
     }
-    .your-story {
-      width: 93%;
-      resize: vertical;
-    }
+
     .buttons {
       margin-top: 1rem;
       display: flex;
