@@ -30,15 +30,13 @@ const submitStoryReducer = (state, action) => {
         story: action.payload.story,
         agreement: action.payload.agreement,
       };
-    case "RESET":
+    case "CHANGE":
       return {
-        name: "",
-        email: "",
-        country: "Location",
-        phoneNumber: "",
-        story: "",
-        agreement: false,
+        ...state,
+        [action.field]: action.value,
       };
+    case "RESET":
+      return initialSubmitStoryReducer;
   }
 };
 
@@ -71,6 +69,27 @@ const SubmitStoryForm = () => {
     useRef(null),
   ];
 
+  // These (onChange) methods to reset the values of input fields after submit the form.
+  const changeNameInputHandler = (value) => {
+    dispatch({ type: "CHANGE", field: "name", value: value.target.value });
+  };
+  const changeEmailInputHandler = (value) => {
+    dispatch({ type: "CHANGE", field: "email", value: value.target.value });
+  };
+  const changeCountryInputHandler = (value) => {
+    dispatch({ type: "CHANGE", field: "country", value: value.target.value });
+  };
+  const changeStoryInputHandler = (value) => {
+    dispatch({ type: "CHANGE", field: "story", value: value.target.value });
+  };
+  const changeCheckboxHandler = (value) => {
+    dispatch({
+      type: "CHANGE",
+      field: "agreement",
+      value: value.target.checked,
+    });
+  };
+
   // Error messages for empty input fields:
   const nameError = isFormSubmmited && inputs.name.length == 0;
 
@@ -86,6 +105,8 @@ const SubmitStoryForm = () => {
   const locationCountries = (
     <div className={classes.input}>
       <select
+        value={inputs.country}
+        onChange={changeCountryInputHandler}
         className={`${classes.countries} ${
           countryError && classes["error-filed"]
         }`}
@@ -202,16 +223,6 @@ const SubmitStoryForm = () => {
 
       setIsFormSubmmited(false);
 
-      // Clear input fields:
-      const defaultValues = {
-        name: "",
-        email: "",
-        country: "Location",
-        phoneNumber: "",
-        story: "",
-        agreement: false,
-      };
-
       dispatch({
         type: "RESET",
       });
@@ -250,6 +261,8 @@ const SubmitStoryForm = () => {
         <div className={classes.inputs}>
           <div className={classes.input}>
             <input
+              value={inputs.name}
+              onChange={changeNameInputHandler}
               type="text"
               placeholder="My name Is*"
               name="story-name"
@@ -261,6 +274,8 @@ const SubmitStoryForm = () => {
           </div>
           <div className={classes.input}>
             <input
+              value={inputs.email}
+              onChange={changeEmailInputHandler}
               type="email"
               placeholder="Email*"
               name="story-email"
@@ -275,6 +290,8 @@ const SubmitStoryForm = () => {
         </div>
         <div className={classes.input}>
           <textarea
+            value={inputs.story}
+            onChange={changeStoryInputHandler}
             name="story"
             id="story"
             rows="10"
@@ -290,6 +307,8 @@ const SubmitStoryForm = () => {
           <div className={classes.checking}>
             <input
               ref={checkboxInputRef}
+              checked={inputs.agreement}
+              onChange={changeCheckboxHandler}
               type="checkbox"
               name="agreement"
               id="agreement"
