@@ -7,32 +7,12 @@ const initialContactFormReducer = {
   name: "",
   email: "",
   message: "",
-  interest: "",
+  interest: "I am interested in",
   agreement: false,
 };
 
 const contactFormReducer = (state, action) => {
   switch (action.type) {
-    case "NAME":
-      return {
-        ...state,
-        name: action.value,
-      };
-    case "EMAIL":
-      return {
-        ...state,
-        email: action.value,
-      };
-    case "MESSAGE":
-      return {
-        ...state,
-        message: action.value,
-      };
-    case "INTEREST":
-      return {
-        ...state,
-        interest: action.value,
-      };
     case "MULTIPLEINPUTS":
       return {
         ...state,
@@ -42,6 +22,13 @@ const contactFormReducer = (state, action) => {
         interest: action.payload.interest,
         agreement: action.payload.agreement,
       };
+    case "CHANGE":
+      return {
+        ...state,
+        [action.field]: action.value,
+      };
+    case "RESET":
+      return initialContactFormReducer;
   }
 };
 const ContactForm = () => {
@@ -52,11 +39,34 @@ const ContactForm = () => {
   );
 
   // Our refs to get inputs values:
-  const nameInputRef = useRef();
-  const emailInputRef = useRef();
-  const messageInputRef = useRef();
-  const interestInputRef = useRef();
-  const checkboxInputRef = useRef();
+  const [
+    nameInputRef,
+    emailInputRef,
+    messageInputRef,
+    interestInputRef,
+    checkboxInputRef,
+  ] = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
+
+  // These (onChange) methods to reset the values of input fields after submit the form.
+  const changeNameInputHandler = (value) => {
+    dispatch({ type: "CHANGE", field: "name", value: value.target.value });
+  };
+  const changeEmailInputHandler = (value) => {
+    dispatch({ type: "CHANGE", field: "email", value: value.target.value });
+  };
+  const changeMessageInputHandler = (value) => {
+    dispatch({ type: "CHANGE", field: "message", value: value.target.value });
+  };
+  const changeInterestInputHandler = (value) => {
+    dispatch({ type: "CHANGE", field: "interest", value: value.target.value });
+  };
+  const changeCheckboxHandler = (value) => {
+    dispatch({
+      type: "CHANGE",
+      field: "agreement",
+      value: value.target.checked,
+    });
+  };
 
   // To know when we are gonna show error messages to user.
   const [isFormSubmmited, setIsFormSubmmited] = useState(false);
@@ -107,6 +117,12 @@ const ContactForm = () => {
       valuesObj.interest !== "I am interested in"
     ) {
       console.log(valuesObj);
+
+      setIsFormSubmmited(false);
+
+      dispatch({
+        type: "RESET",
+      });
     }
   };
 
@@ -138,6 +154,8 @@ const ContactForm = () => {
         <div className={classes.inputs}>
           <div className={classes.input}>
             <input
+              value={inputs.name}
+              onChange={changeNameInputHandler}
               ref={nameInputRef}
               type="text"
               name="name"
@@ -149,6 +167,8 @@ const ContactForm = () => {
           </div>
           <div className={classes.input}>
             <select
+              value={inputs.interest}
+              onChange={changeInterestInputHandler}
               ref={interestInputRef}
               name="reson-for-contact"
               id="reson"
@@ -168,6 +188,8 @@ const ContactForm = () => {
           </div>
           <div className={classes.input}>
             <input
+              value={inputs.email}
+              onChange={changeEmailInputHandler}
               ref={emailInputRef}
               type="email"
               name="email"
@@ -181,6 +203,8 @@ const ContactForm = () => {
         <div className={classes.input}>
           <textarea
             className={classes.textarea}
+            value={inputs.message}
+            onChange={changeMessageInputHandler}
             ref={messageInputRef}
             name="message"
             id="message"
@@ -192,6 +216,8 @@ const ContactForm = () => {
           <button>Send</button>
           <div className={classes.checking}>
             <input
+              checked={inputs.agreement}
+              onChange={changeCheckboxHandler}
               ref={checkboxInputRef}
               type="checkbox"
               name="agreement"
