@@ -31,5 +31,13 @@ Here are some app snapshots:
 ![contact](https://user-images.githubusercontent.com/98362185/227792207-51ba3b8d-832b-45b1-acaa-ace5b6625831.png)
 #CONTACT INTERACTION
 ![wrong contact](https://user-images.githubusercontent.com/98362185/227792206-6016c6e2-2597-4cc1-a9ef-22d8dac39500.png)
-
-
+#SUBMIT STORY
+![submit-story](https://user-images.githubusercontent.com/98362185/235327642-1bae446a-f327-4463-ae55-a7fde6ae0d2b.png)
+#SUBMIT STORY INTERACTION
+![submit story interaction](https://user-images.githubusercontent.com/98362185/235327646-dde5fde5-61d0-401e-8c73-cdcd71570d72.png)
+#TERMS OF USE
+![terms-use](https://user-images.githubusercontent.com/98362185/235327660-695733cb-3d59-42ff-9488-f34b7133cddf.png)
+#PRIVACY POLICY
+![privacy-policy](https://user-images.githubusercontent.com/98362185/235327666-f60494cc-5ee2-4c35-bb2b-872997752f53.png)
+#COOKIE POLICY
+![cookie-policy](https://user-images.githubusercontent.com/98362185/235327671-3d386aa4-9610-4ab7-bc4e-8d56611a193a.png)
