@@ -8,11 +8,28 @@
   padding: 3rem 4rem;
   text-transform: uppercase;
   width: 93%;
-  h2 {
-    font-weight: 900;
-    font-size: 3rem;
-    span {
-      font-weight: 400;
+  .text {
+    h2 {
+      font-weight: 900;
+      font-size: 3rem;
+      span {
+        font-weight: 400;
+      }
+    }
+    .more {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      p {
+        text-transform: capitalize;
+        text-align: center;
+        font-style: italic;
+      }
+      svg {
+        color: $lighter_rose;
+      }
     }
   }
   .categories {
