@@ -34,7 +34,11 @@ const headlinesNewsSlice = createSlice({
 
       // Start replacing existing headline with the new:
       if (isCategoryExist) {
-        state.headlines.splice(existingHeadlineIndex, 1, newHeadlineObj);
+        state.headlines = state.headlines.filter(
+          (item) => item.category !== action.payload.category
+        );
+
+        state.headlines.push(newHeadlineObj);
       } else {
         // Or push the new headline to our headlines array.
         state.headlines.push(newHeadlineObj);
