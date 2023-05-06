@@ -1,0 +1,41 @@
+@use "../../styles/vars" as *;
+.slider {
+  position: relative;
+  height: 300px; // 250px for Story-div and 50px for the category-word.
+  overflow: hidden;
+  margin-bottom: 1rem;
+  .controls {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      font-size: 1rem;
+    }
+    .buttons {
+      display: flex;
+      margin-right: 10%;
+      gap: 1.5rem;
+      button {
+        background-color: transparent;
+        color: white;
+        cursor: pointer;
+        border: none;
+        font-size: 1.2rem;
+        &:disabled {
+          color: $dark;
+        }
+      }
+    }
+  }
+  .slider-container {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    display: flex;
+    column-gap: 10px;
+    // width: 800%;
+    height: 250px;
+    transition: transform 0.4s ease-in-out;
+  }
+}

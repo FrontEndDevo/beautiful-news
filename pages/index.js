@@ -6,6 +6,7 @@ import Inbox from "../components/Inbox/Inbox";
 import Navbar from "../components/Navbar/Navbar";
 import Stories from "../components/Stories/Stories";
 import { headlinesActions } from "../store/headlines-slice";
+import HomeSlider from "../components/HomeSlider/HomeSlider";
 
 export default function Home({ allHeadlinesNews }) {
   // Store different types of our News in headlines-slice store:
@@ -13,11 +14,17 @@ export default function Home({ allHeadlinesNews }) {
   allHeadlinesNews.map((headline) => {
     dispatch(headlinesActions.headlineStore(headline));
   });
+
+  // Render all the different categories in the Home page:
+  const allCategoriesSliders = allHeadlinesNews.map((headline) => (
+    <HomeSlider news={headline.news} category={headline.category} />
+  ));
+
   return (
     <>
       <Navbar />
       <Header allowTitles={true} />
-      <Stories />
+      {allCategoriesSliders}
       <Headlines />
       <Inbox />
       <Footer />
@@ -26,8 +33,8 @@ export default function Home({ allHeadlinesNews }) {
 }
 
 export async function getStaticProps() {
+  // Fetching different types of news from our API:
   const allHeadlinesNewsPromises = TOP_HEADLINES.map(async (category) => {
-    // Fetching different types of news from our API:
     const response = await fetch(
       `https://newsapi.org/v2/top-headlines?category=${category.headline}&country=us&pageSize=100&apiKey=8804ae5da994436aa3ab963e0217fe73`
     );

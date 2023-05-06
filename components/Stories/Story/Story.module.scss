@@ -4,13 +4,13 @@
   width: 400px;
   height: 250px;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 2px;
   transition: all $mid_transition;
   cursor: pointer;
   .author {
     position: absolute;
     top: 0;
-    left: -100%;
+    left: -150%;
     font-weight: 900;
     background-color: $lighter_rose;
     padding: 4px;
