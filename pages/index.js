@@ -4,7 +4,6 @@ import Header from "../components/Header/Header";
 import Headlines, { TOP_HEADLINES } from "../components/Headlines/Headlines";
 import Inbox from "../components/Inbox/Inbox";
 import Navbar from "../components/Navbar/Navbar";
-import Stories from "../components/Stories/Stories";
 import { headlinesActions } from "../store/headlines-slice";
 import HomeSlider from "../components/HomeSlider/HomeSlider";
 
@@ -23,7 +22,7 @@ export default function Home({ allHeadlinesNews }) {
   return (
     <>
       <Navbar />
-      <Header />
+      <Header isHomePage={true} />
       {allCategoriesSliders}
       <Headlines />
       <Inbox />

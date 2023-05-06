@@ -5,8 +5,22 @@ import Link from "next/link";
 import classes from "./Header.module.scss";
 import Shape from "../Shape/Shape";
 import { detectAndFetch } from "../../helpers/detectAndFetch";
-const Header = () => {
-  const fetchHeaderNews = detectAndFetch();
+import { useSelector } from "react-redux";
+const Header = ({ isHomePage = false }) => {
+  /*
+  - If we are in the (Home-Page), then we will fetch all types of news (General, sports, etc...).
+  - We map on each 'headline' and get its (articles), then filter them and get only the first 10.
+  - We use (flatMap method) to map each array (headline) and extract the objects.
+   */
+  const fetchHeaderNews = isHomePage
+    ? useSelector((state) => state.headlines.headlines)
+        .map((headline) =>
+          headline.articles
+            .filter((item) => item.urlToImage != null)
+            .slice(0, 10)
+        )
+        .flatMap((stories) => stories)
+    : detectAndFetch();
 
   const [pickedStory, setPickedStory] = useState(fetchHeaderNews[0]);
   // Pick a story and put its info in the header cells every (1m || 60000 milliseconds):
@@ -26,14 +40,14 @@ const Header = () => {
     <header className={classes.header}>
       <div className={classes.content}>
         <div className="L-H-S">
-          {allowTitles && <h3>Today's beautiful news</h3>}
+          <h3>Today's beautiful news</h3>
           <h1>{pickedStory.title || ""}</h1>
-          {allowTitles && (
-            <div className={classes.titles}>
-              <Link href="/">General</Link>
-              <Link href="/everything">Everything</Link>
-            </div>
-          )}
+
+          <div className={classes.titles}>
+            <Link href="/">General</Link>
+            <Link href="/everything">Everything</Link>
+          </div>
+
           <Link
             href={pickedStory.url}
             target="_blank"
@@ -50,17 +64,16 @@ const Header = () => {
         }
         alt={pickedStory.title}
       />
-      {allowTitles && (
-        <Link href="submit-story" className={classes.shape}>
-          <Shape>
-            <button>
-              Share hope.
-              <br />
-              Submit your story
-            </button>
-          </Shape>
-        </Link>
-      )}
+
+      <Link href="submit-story" className={classes.shape}>
+        <Shape>
+          <button>
+            Share hope.
+            <br />
+            Submit your story
+          </button>
+        </Shape>
+      </Link>
     </header>
   );
 };
