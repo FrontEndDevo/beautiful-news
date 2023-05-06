@@ -5,7 +5,7 @@ import Link from "next/link";
 import classes from "./Header.module.scss";
 import Shape from "../Shape/Shape";
 import { detectAndFetch } from "../../helpers/detectAndFetch";
-const Header = ({ allowTitles = false }) => {
+const Header = () => {
   const fetchHeaderNews = detectAndFetch();
 
   const [pickedStory, setPickedStory] = useState(fetchHeaderNews[0]);

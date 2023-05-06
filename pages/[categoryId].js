@@ -30,7 +30,7 @@ const SpecificCategory = ({ categoryNews, totalResults, categoryId }) => {
         />
       </Head>
       <Navbar />
-      <Header allowTitles={true} />
+      <Header />
       <Stories />
       <Headlines />
       <Inbox />

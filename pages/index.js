@@ -23,7 +23,7 @@ export default function Home({ allHeadlinesNews }) {
   return (
     <>
       <Navbar />
-      <Header allowTitles={true} />
+      <Header />
       {allCategoriesSliders}
       <Headlines />
       <Inbox />
