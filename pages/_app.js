@@ -7,7 +7,8 @@ import { useState } from "react";
 import { Router } from "next/router";
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 import { Provider } from "react-redux";
-import store from "../store/redux-store";
+import store, { persistor } from "../store/redux-store";
+import { PersistGate } from "redux-persist/integration/react";
 
 function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,8 +34,11 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       {isLoading && <Loader />}
+
       <Provider store={store}>
-        <Component {...pageProps} />
+        <PersistGate loading={null} persistor={persistor}>
+          <Component {...pageProps} />
+        </PersistGate>
       </Provider>
     </>
   );
