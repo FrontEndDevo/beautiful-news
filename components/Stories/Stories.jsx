@@ -10,6 +10,9 @@ const Stories = ({
   // Detect the page we on now and fetch the correct news from redux-store.
   const fetchCorrectNews = detectAndFetch();
 
+  const data = useSelector((state) => state.headlines.headlines);
+  console.log(data);
+
   // These are the approved news we will work on:
   const rightCurrentNews =
     filteredStories.length != 0 ? filteredStories : fetchCorrectNews;

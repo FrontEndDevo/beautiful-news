@@ -35,7 +35,7 @@ export async function getStaticProps() {
   // Fetching different types of news from our API:
   const allHeadlinesNewsPromises = TOP_HEADLINES.map(async (category) => {
     const response = await fetch(
-      `https://newsapi.org/v2/top-headlines?category=${category.headline}&country=us&pageSize=100&apiKey=8804ae5da994436aa3ab963e0217fe73`
+      `https://newsapi.org/v2/top-headlines?category=${category.headline}&country=us&apiKey=8804ae5da994436aa3ab963e0217fe73`
     );
     const data = await response.json();
 
