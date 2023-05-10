@@ -15,8 +15,8 @@ export default function Home({ allHeadlinesNews }) {
   });
 
   // Render all the different categories in the Home page:
-  const allCategoriesSliders = allHeadlinesNews.map((headline) => (
-    <HomeSlider news={headline.news} category={headline.category} />
+  const allCategoriesSliders = allHeadlinesNews.map((headline, index) => (
+    <HomeSlider key={index} news={headline.news} category={headline.category} />
   ));
 
   return (
