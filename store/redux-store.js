@@ -1,4 +1,8 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
 import headlinesNewsSlice from "./headlines-slice";
 import everythingNewsSlice from "./everything-slice";
 import searchBarSlice from "./search-bar-slice";
@@ -20,6 +24,9 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
+  middleware: getDefaultMiddleware({
+    serializableCheck: false,
+  }),
 });
 
 export const persistor = persistStore(store);
