@@ -15,7 +15,7 @@ const Story = (props) => {
     >
       <h4 className={classes.author}>{editedAuthor}</h4>
       <p className={classes.title}>{title}</p>
-      <img className={classes["story-image"]} src={img} alt={author} />
+      <img className={classes["story-image"]} src={img} alt={author} loading="lazy"/>
       <div className={classes["image-hover"]}></div>
       <div className={classes.icons}>
         <div className={classes["top-icons"]}>
