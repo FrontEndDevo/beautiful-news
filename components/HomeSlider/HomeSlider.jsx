@@ -48,16 +48,7 @@ const HomeSlider = (props) => {
         }}
       >
         {slicedNews.map((story, index) => (
-          <Story
-            key={index}
-            author={story.author ? story.author : "Unknown Author"}
-            title={story.title ? story.title : "No Title"}
-            urlToImage={
-              story.urlToImage
-                ? story.urlToImage
-                : '"https://www.linkpicture.com/q/image-not-found-1-scaled.png"'
-            }
-          />
+          <Story key={index} story={story} />
         ))}
       </div>
     </div>

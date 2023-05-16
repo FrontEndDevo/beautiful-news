@@ -6,14 +6,19 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { choosenStoryActions } from "../../../store/story-slice";
 const Story = (props) => {
-  const { author, title, urlToImage: img } = props;
+  const author = props.story.author ? props.story.author : "Unknown Author";
+  const title = props.story.title ? props.story.title : "No Title";
+  const img = props.story.urlToImage
+    ? props.story.urlToImage
+    : "https://www.linkpicture.com/q/image-not-found-1-scaled.png";
+
   // Fix (Long author name) problem
   const editedAuthor =
     author.length > 20 ? `${author.split(" ")[0]}...` : author;
 
   const dispatch = useDispatch();
   const clickedChoosenStoryHandler = () => {
-    dispatch(choosenStoryActions.setChoosenStory(props));
+    dispatch(choosenStoryActions.setChoosenStory(props.story));
   };
   return (
     <Link
