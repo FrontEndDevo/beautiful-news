@@ -8,6 +8,7 @@ import everythingNewsSlice from "./everything-slice";
 import searchBarSlice from "./search-bar-slice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import choosenStorySlice from "./story-slice";
 
 const persistConfig = {
   key: "root",
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   headlines: headlinesNewsSlice.reducer,
   everything: everythingNewsSlice.reducer,
   search: searchBarSlice.reducer,
+  story: choosenStorySlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
