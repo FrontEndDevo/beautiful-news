@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialStoryState = {
-  source: { id: null, name: "" },
-  author: "",
-  title: "",
-  description: "",
-  content: "",
-  url: "",
-  urlToImage: "",
+  choosenStory: {
+    source: { id: null, name: "" },
+    author: "",
+    title: "",
+    description: "",
+    content: "",
+    url: "",
+    urlToImage: "",
+  },
 };
 
 const choosenStorySlice = createSlice({
@@ -15,7 +17,7 @@ const choosenStorySlice = createSlice({
   initialState: initialStoryState,
   reducers: {
     setChoosenStory: (state, action) => {
-      state = action.payload;
+      state.choosenStory = action.payload;
     },
   },
 });
