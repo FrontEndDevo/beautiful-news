@@ -55,10 +55,10 @@ const Navbar = () => {
         </div>
         <ul className={classes.pages}>
           <li>
-            <Link href="about">About</Link>
+            <Link href="/about">About</Link>
           </li>
           <li>
-            <Link href="channels">Channels</Link>
+            <Link href="/channels">Channels</Link>
           </li>
         </ul>
       </div>

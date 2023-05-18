@@ -22,13 +22,18 @@ const Story = (props) => {
   };
   return (
     <Link
-      href={`news/${title.replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s/g, "-")}`}
+      href={`/news/${title.replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s/g, "-")}`}
       className={classes.story}
       onClick={clickedChoosenStoryHandler}
     >
       <h4 className={classes.author}>{editedAuthor}</h4>
       <p className={classes.title}>{title}</p>
-      <img className={classes["story-image"]} src={img} alt={author} loading="lazy"/>
+      <img
+        className={classes["story-image"]}
+        src={img}
+        alt={author}
+        loading="lazy"
+      />
       <div className={classes["image-hover"]}></div>
       <div className={classes.icons}>
         <div className={classes["top-icons"]}>

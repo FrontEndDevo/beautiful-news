@@ -65,7 +65,7 @@ const Header = ({ isHomePage = false }) => {
         alt={pickedStory.title}
       />
 
-      <Link href="submit-story" className={classes.shape}>
+      <Link href="/submit-story" className={classes.shape}>
         <Shape>
           <button>
             Share hope.
