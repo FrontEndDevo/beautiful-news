@@ -4,29 +4,42 @@ import Stories from "../components/Stories/Stories";
 import Headlines, { TOP_HEADLINES } from "../components/Headlines/Headlines";
 import Inbox from "../components/Inbox/Inbox";
 import Head from "next/head";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { headlinesActions } from "../store/headlines-slice";
 import Footer from "../components/Footer/Footer";
 const SpecificCategory = ({ categoryNews, totalResults, categoryId }) => {
-  // Store (Specific Category News) in headlines-slice.js
-  const dispatch = useDispatch();
-  dispatch(
-    headlinesActions.headlineStore({
-      category: categoryId,
-      news: categoryNews,
-      total: totalResults,
-    })
+  // Check first if I have any news of this specific category/headline, if there are, don't store.
+  const existingHeadline = useSelector((state) =>
+    state.headlines.headlines.find(
+      (headline) => headline.category == categoryId
+    )
   );
+  // Store (Specific Category/headline News) in headlines-slice.js if there aren't.
+  const dispatch = useDispatch();
+  if (!existingHeadline) {
+    dispatch(
+      headlinesActions.headlineStore({
+        category: categoryId,
+        news: categoryNews,
+        total: totalResults,
+      })
+    );
+  }
+  
+  const headlineCategory = existingHeadline
+    ? existingHeadline.category
+    : categoryId;
+
+  const pageTitle =
+    headlineCategory.charAt(0).toUpperCase() + categoryId.slice(1);
+
   return (
     <>
       <Head>
-        <title>{`${
-          categoryId.charAt(0).toUpperCase() + categoryId.slice(1)
-        } | Beautiful News`}</title>
+        <title>{`${pageTitle} | Beautiful News`}</title>
         <meta
           name="description"
-          content={`Discover all the news about ${categoryId} in all countries of the world in all possible languages`}
+          content={`Discover all the news about ${pageTitle} in all countries of the world in all possible languages`}
         />
       </Head>
       <Navbar />
@@ -56,7 +69,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // Fetching news from our API:
   const res = await fetch(
-    `https://newsapi.org/v2/top-headlines?pageSize=50&country=us&apiKey=8804ae5da994436aa3ab963e0217fe73&category=${context.params.categoryId}`
+    `https://newsapi.org/v2/top-headlines?pageSize=100&country=us&apiKey=8804ae5da994436aa3ab963e0217fe73&category=${context.params.categoryId}`
   );
   const categoryNews = await res.json();
 
