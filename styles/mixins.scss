@@ -4,10 +4,46 @@
       @content;
     }
   }
-  
+
   @if $checkpoint == tablet {
     @media (max-width: 1199px) and (min-width: 768px) {
       @content;
+    }
+  }
+}
+
+// Implement responsive layout for (Navbar) component:
+@mixin navbar-content {
+  .navbar {
+    width: 100%;
+    .L-H-S {
+      margin: 0 auto;
+      .pages {
+        display: none;
+      }
+    }
+
+    .R-H-S {
+      position: absolute;
+      top: 35%;
+      margin-right: unset;
+      svg {
+        position: absolute;
+        left: 5vw;
+      }
+
+      .side-bar {
+        .menu-icon {
+          position: absolute;
+          left: 80vw;
+        }
+      }
+    }
+
+    .search-bar {
+      input {
+        width: 100%;
+      }
     }
   }
 }

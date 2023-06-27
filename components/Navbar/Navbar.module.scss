@@ -122,38 +122,11 @@
 }
 
 @include responsive(mobile) {
-  .navbar {
-    width: 100%;
-    .L-H-S {
-      margin: 0 auto;
-      .pages {
-        display: none;
-      }
-    }
+  @include navbar-content;
+}
 
-    .R-H-S {
-      position: absolute;
-      top: 35%;
-      margin-right: unset;
-      svg {
-        position: absolute;
-        left: 5vw;
-      }
-
-      .side-bar {
-        .menu-icon {
-          position: absolute;
-          left: 80vw;
-        }
-      }
-    }
-
-    .search-bar {
-      input {
-        width: 100%;
-      }
-    }
-  }
+@include responsive(tablet) {
+  @include navbar-content;
 }
 
 @keyframes top-down {
