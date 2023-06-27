@@ -25,7 +25,7 @@ const SpecificCategory = ({ categoryNews, totalResults, categoryId }) => {
       })
     );
   }
-  
+
   const headlineCategory = existingHeadline
     ? existingHeadline.category
     : categoryId;
