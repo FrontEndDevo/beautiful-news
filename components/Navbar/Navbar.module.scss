@@ -1,4 +1,5 @@
 @use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
 .navbar {
   position: fixed;
   top: 0;
@@ -115,6 +116,41 @@
       background-color: transparent;
       &::-webkit-search-cancel-button {
         -webkit-appearance: none;
+      }
+    }
+  }
+}
+
+@include responsive(mobile) {
+  .navbar {
+    width: 100%;
+    .L-H-S {
+      margin: 0 auto;
+      .pages {
+        display: none;
+      }
+    }
+
+    .R-H-S {
+      position: absolute;
+      top: 35%;
+      margin-right: unset;
+      svg {
+        position: absolute;
+        left: 5vw;
+      }
+
+      .side-bar {
+        .menu-icon {
+          position: absolute;
+          left: 80vw;
+        }
+      }
+    }
+
+    .search-bar {
+      input {
+        width: 100%;
       }
     }
   }
