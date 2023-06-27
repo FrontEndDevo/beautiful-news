@@ -7,11 +7,11 @@
   right: 0;
   z-index: 1111;
   height: 100vh;
-  width: 35vw;
+  width: 40vw;
   padding: 6rem 4rem;
   transition: $mid_transition;
   &.show-side-bar {
-    transform: translateX(35vw);
+    transform: translateX(40vw);
   }
 
   .content {
@@ -111,6 +111,14 @@
           }
         }
       }
+    }
+  }
+}
+@include responsive(tablet) {
+  .side-bar {
+    width: 60vw;
+    &.show-side-bar {
+      transform: translateX(60vw);
     }
   }
 }
