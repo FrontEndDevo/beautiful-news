@@ -12,6 +12,13 @@ body {
   position: relative;
 }
 
+@media (max-width: 767px) {
+  body {
+    width: 100%;
+    margin-left: unset;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
