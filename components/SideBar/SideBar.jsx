@@ -5,7 +5,6 @@ import {
   faVimeo,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import classes from "./SideBar.module.scss";
@@ -31,12 +30,9 @@ const SideBar = (props) => {
 
   return (
     <aside
-      className={classes["side-bar"]}
-      style={{
-        transform: `${
-          props.showSideBar ? "translateX(0vw)" : "translateX(35vw)"
-        }`,
-      }}
+      className={`${classes["side-bar"]} ${
+        props.showSideBar ? "" : classes["show-side-bar"]
+      }`}
     >
       <div className={classes.content}>
         <div className={classes.tags}>
