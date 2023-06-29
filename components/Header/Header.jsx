@@ -38,25 +38,6 @@ const Header = ({ isHomePage = false }) => {
 
   return (
     <header className={classes.header}>
-      <div className={classes.content}>
-        <div className="L-H-S">
-          <h3>Today's beautiful news</h3>
-          <h1>{pickedStory.title || ""}</h1>
-
-          <div className={classes.titles}>
-            <Link href="/">General</Link>
-            <Link href="/everything">Everything</Link>
-          </div>
-
-          <Link
-            href={pickedStory.url}
-            target="_blank"
-            className={classes["play-icon"]}
-          >
-            <FontAwesomeIcon icon={faPlay} />
-          </Link>
-        </div>
-      </div>
       <img
         src={
           pickedStory.urlToImage ||
@@ -64,6 +45,24 @@ const Header = ({ isHomePage = false }) => {
         }
         alt={pickedStory.title}
       />
+      <div className={classes.content}>
+        <h3>Today's beautiful news</h3>
+        <h1>{pickedStory.title || ""}</h1>
+
+        <div className={classes.titles}>
+          <Link href="/">General</Link>
+          <Link href="/everything">Everything</Link>
+        </div>
+
+        <Link
+          href={pickedStory.url}
+          target="_blank"
+          className={classes["play-icon"]}
+        >
+          <FontAwesomeIcon icon={faPlay} />
+          <p>Watch video</p>
+        </Link>
+      </div>
 
       <Link href="/submit-story" className={classes.shape}>
         <Shape>
