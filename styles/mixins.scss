@@ -47,3 +47,56 @@
     }
   }
 }
+
+// Implement responsive layout for (Header) component:
+@mixin header-content {
+  .header {
+    background-image: none;
+    height: 100vh;
+    background: linear-gradient(to top, black 50%, transparent);
+    img {
+      height: 50%;
+    }
+
+    .content {
+      position: unset;
+      padding-left: 1rem;
+      margin-top: 2rem;
+
+      h3 {
+        font-size: 1rem;
+      }
+
+      h1 {
+        width: 95%;
+        font-size: 1.5rem;
+        text-align: justify;
+      }
+
+      .play-icon {
+        justify-content: center;
+        width: 95%;
+        margin-bottom: 3rem;
+        svg {
+          font-size: 1.5rem;
+        }
+
+        p {
+          display: block;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .shape {
+      position: unset;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button {
+        line-height: 1.2;
+        text-align: start;
+      }
+    }
+  }
+}
