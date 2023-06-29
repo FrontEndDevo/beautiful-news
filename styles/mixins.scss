@@ -100,3 +100,24 @@
     }
   }
 }
+
+// Implement responsive layout for (About) component:
+@mixin about-content {
+  .about {
+    .title {
+      height: 50vh;
+      h2 {
+        margin-left: 1rem;
+        font-size: 2rem;
+      }
+    }
+    .description {
+      p {
+        width: 90%;
+        text-align: justify;
+        margin-left: 1rem;
+        line-height: 1.5;
+      }
+    }
+  }
+}
