@@ -3,6 +3,10 @@ const About = () => {
   return (
     <main className={styles.about}>
       <div className={styles.title}>
+        <img
+          src="https://i.postimg.cc/HL31znSs/about-beautiful-news.jpg"
+          alt="Beautiful News About Section"
+        />
         <h2>
           About
           <br />
@@ -10,10 +14,6 @@ const About = () => {
           <br />
           News
         </h2>
-        <img
-          src="https://i.postimg.cc/HL31znSs/about-beautiful-news.jpg"
-          alt="Beautiful News About"
-        />
       </div>
       <div className={styles.description}>
         <p>
