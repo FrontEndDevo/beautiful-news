@@ -6,13 +6,24 @@ import Inbox from "../components/Inbox/Inbox";
 import Navbar from "../components/Navbar/Navbar";
 import { headlinesActions } from "../store/headlines-slice";
 import HomeSlider from "../components/HomeSlider/HomeSlider";
+import { useEffect } from "react";
 
-export default function Home({ allHeadlinesNews }) {
+export default function Home({ allHeadlinesNews = [] }) {
   // Store different types of our News in headlines-slice store:
   const dispatch = useDispatch();
-  allHeadlinesNews.map((headline) => {
-    dispatch(headlinesActions.headlineStore(headline));
-  });
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // Store the fetched news every 12hrs.
+      allHeadlinesNews.map((headline) => {
+        dispatch(headlinesActions.headlineStore(headline));
+      });
+    }, 12 * 60 * 60 * 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   // Render all the different categories in the Home page:
   const allCategoriesSliders = allHeadlinesNews.map((headline, index) => (
@@ -23,7 +34,11 @@ export default function Home({ allHeadlinesNews }) {
     <>
       <Navbar />
       <Header isHomePage={true} />
-      {allCategoriesSliders}
+      {allCategoriesSliders.length > 0 ? (
+        allCategoriesSliders
+      ) : (
+        <p className="error">oops...Something went wrong!</p>
+      )}
       <Headlines />
       <Inbox />
       <Footer />
@@ -68,6 +83,6 @@ export async function getStaticProps() {
     props: {
       allHeadlinesNews,
     },
-    revalidate: 43200, // Will fetching new 'news' every 12 hours.
+    revalidate: 12 * 60 * 60, // Will fetching new 'news' every 12 hours.
   };
 }
