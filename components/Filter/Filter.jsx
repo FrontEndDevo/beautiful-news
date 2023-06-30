@@ -1,4 +1,4 @@
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { faFilter, faSortUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import classes from "./Filter.module.scss";
@@ -67,11 +67,19 @@ const Filter = (props) => {
   };
   return (
     <form onSubmit={submitFiltrationHandler} className={classes.filter}>
-      <FontAwesomeIcon
-        onClick={showFiltersHandler}
-        className={classes["filter-icon"]}
-        icon={faFilter}
-      />
+      <div className={classes["filter-icon"]}>
+        <FontAwesomeIcon onClick={showFiltersHandler} icon={faFilter} />
+        <div className={classes.arrows}>
+          <p>Filters</p>
+          <FontAwesomeIcon
+            icon={faSortUp}
+            onClick={showFiltersHandler}
+            style={{
+              transform: showFilters ? "rotate(1800deg)" : "rotate(180deg)",
+            }}
+          />
+        </div>
+      </div>
       {showFilters && (
         <div className={classes.inputs}>
           <div className={classes["keyword-sort"]}>
