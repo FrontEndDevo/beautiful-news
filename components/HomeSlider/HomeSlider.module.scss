@@ -1,4 +1,5 @@
 @use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
 .slider {
   position: relative;
   height: 300px; // 250px for Story-div and 50px for the category-word.
@@ -38,4 +39,12 @@
     height: 250px;
     transition: transform 0.4s ease-in-out;
   }
+}
+
+@include responsive(mobile) {
+  @include home-slider-content;
+}
+
+@include responsive(tablet) {
+  @include home-slider-content;
 }

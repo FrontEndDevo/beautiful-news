@@ -41,6 +41,7 @@ const HomeSlider = (props) => {
           </button>
         </div>
       </div>
+      
       <div
         className={classes["slider-container"]}
         style={{

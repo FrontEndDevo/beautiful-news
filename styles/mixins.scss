@@ -121,3 +121,18 @@
     }
   }
 }
+
+// Implement responsive layout for (HomeSlider) component:
+@mixin home-slider-content {
+  .slider {
+    .controls {
+      h2 {
+        font-size: 1.5rem;
+        margin-left: 2rem;
+      }
+      .buttons {
+        gap: 2rem;
+      }
+    }
+  }
+}
