@@ -1,4 +1,5 @@
 @use "../../../styles/vars" as *;
+@use "../../../styles/mixins" as *;
 .story {
   position: relative;
   width: 400px;
@@ -101,5 +102,19 @@
     .icons {
       opacity: 1;
     }
+  }
+}
+
+@include responsive(mobile) {
+  @include story-content;
+  .story {
+    height: 300px;
+  }
+}
+
+@include responsive(tablet) {
+  @include story-content;
+  .story {
+    height: 400px;
   }
 }

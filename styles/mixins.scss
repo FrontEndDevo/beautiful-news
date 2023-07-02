@@ -235,3 +235,48 @@
     }
   }
 }
+
+// Implement responsive layout for (Story) component:
+@mixin story-content {
+  .story {
+    width: 100%;
+    .author {
+      left: 0;
+      border-top-right-radius: 0;
+    }
+
+    .title {
+      left: 0;
+      bottom: 0;
+      font-weight: normal;
+      text-align: justify;
+      padding: 5px 15px 5px 5px;
+      border-radius: 0;
+      border-top-right-radius: 30px;
+      line-height: 1.3;
+      background-color: $darken;
+    }
+
+    .image-hover {
+      display: none;
+    }
+
+    .icons {
+      opacity: 1;
+
+      .top-icons {
+        margin-right: 5px;
+      }
+      .bottom-icon {
+        margin-bottom: 1rem;
+        margin-right: 5px;
+      }
+    }
+
+    &:hover {
+      .title {
+        background-color: $dark;
+      }
+    }
+  }
+}
