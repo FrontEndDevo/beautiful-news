@@ -4,8 +4,7 @@
   margin-bottom: 2rem;
   h3 {
     font-size: 2rem;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    margin-left: 1rem;
     font-weight: 900;
   }
 
@@ -21,10 +20,10 @@
   }
 
   .rendered-stories {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 2rem 1rem;
+    gap: 2rem;
   }
 }
 
@@ -41,6 +40,8 @@
       font-weight: normal;
     }
     .rendered-stories {
+      display: grid;
+      grid-template-columns: 1fr;
       margin: 2rem 1rem;
       gap: 2rem;
     }
