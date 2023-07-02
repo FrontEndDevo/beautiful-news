@@ -1,9 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Story from "../Stories/Story/Story";
 import classes from "./HomeSlider.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 const HomeSlider = (props) => {
+  const [screenSize, setScreenSize] = useState(2);
+  useEffect(() => {
+    function handleResize() {
+      setScreenSize(window.innerWidth <= 767 ? 1 : 2);
+    }
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Call handleResize once on mount to set initial screen size
+    handleResize();
+
+    // Remove event listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const [storyIndex, setStoryIndex] = useState(0);
 
   const { news, category } = props;
@@ -35,13 +51,13 @@ const HomeSlider = (props) => {
           </button>
           <button
             onClick={nextSlideHandler}
-            disabled={storyIndex == slicedNews.length - 4}
+            disabled={storyIndex == slicedNews.length - screenSize}
           >
             <FontAwesomeIcon icon={faAngleRight} />
           </button>
         </div>
       </div>
-      
+
       <div
         className={classes["slider-container"]}
         style={{
