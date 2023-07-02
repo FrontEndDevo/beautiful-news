@@ -1,5 +1,5 @@
-@use "../../styles/vars.scss" as *;
-
+@use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
 .stories {
   margin-bottom: 2rem;
   h3 {
@@ -25,5 +25,45 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 1rem 2rem;
+  }
+}
+
+@include responsive(mobile) {
+  .stories {
+    h3 {
+      margin-left: 1rem;
+      font-size: 1rem;
+    }
+
+    .no-news {
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem;
+      font-weight: normal;
+    }
+    .rendered-stories {
+      margin: 2rem 1rem;
+      gap: 2rem;
+    }
+  }
+}
+
+@include responsive(tablet) {
+  .stories {
+    h3 {
+      font-size: 2rem;
+      margin-left: 1rem;
+    }
+
+    .no-news {
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem;
+      font-weight: normal;
+    }
+    .rendered-stories {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin: 2rem 1rem;
+      gap: 2rem 1rem;
+    }
   }
 }
