@@ -8,6 +8,12 @@
   border-radius: 2px;
   transition: all $mid_transition;
   cursor: pointer;
+
+  &.home {
+    width: 400px;
+    height: 250px;
+  }
+
   .author {
     position: absolute;
     top: 0;

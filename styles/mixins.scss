@@ -240,6 +240,10 @@
 @mixin story-content {
   .story {
     width: 100%;
+    &.home {
+      width: 400px;
+      height: 250px;
+    }
     .author {
       left: 0;
       border-top-right-radius: 0;
