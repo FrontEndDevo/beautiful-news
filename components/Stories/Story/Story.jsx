@@ -5,6 +5,7 @@ import classes from "./Story.module.scss";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { choosenStoryActions } from "../../../store/story-slice";
+import { useRouter } from "next/router";
 const Story = (props) => {
   const author = props.story.author ? props.story.author : "Unknown Author";
   const title = props.story.title ? props.story.title : "No Title";
@@ -20,10 +21,13 @@ const Story = (props) => {
   const clickedChoosenStoryHandler = () => {
     dispatch(choosenStoryActions.setChoosenStory(props.story));
   };
+
+  const router = useRouter();
+
   return (
     <Link
       href={`/news/${title.replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s/g, "-")}`}
-      className={classes.story}
+      className={`${classes.story} ${router.asPath == "/" ? classes.home : ""}`}
       onClick={clickedChoosenStoryHandler}
     >
       <h4 className={classes.author}>{editedAuthor}</h4>
