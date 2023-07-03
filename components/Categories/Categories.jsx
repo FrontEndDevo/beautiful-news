@@ -12,7 +12,9 @@ const Categories = () => {
   ));
   return (
     <main className={classes.categories}>
-      <h3>Beautiful News Channels to watch</h3>
+      <h3>
+        <span>Beautiful News -</span> Channels to watch
+      </h3>
       <ul className={classes.channels}>
         {allChannels}
         <Channel
