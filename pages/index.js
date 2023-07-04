@@ -6,24 +6,13 @@ import Inbox from "../components/Inbox/Inbox";
 import Navbar from "../components/Navbar/Navbar";
 import { headlinesActions } from "../store/headlines-slice";
 import HomeSlider from "../components/HomeSlider/HomeSlider";
-import { useEffect } from "react";
 
 export default function Home({ allHeadlinesNews = [] }) {
   // Store different types of our News in headlines-slice store:
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      // Store the fetched news every 12hrs.
-      allHeadlinesNews.map((headline) => {
-        dispatch(headlinesActions.headlineStore(headline));
-      });
-    }, 12 * 60 * 60 * 1000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+  allHeadlinesNews.map((headline) => {
+    dispatch(headlinesActions.headlineStore(headline));
+  });
 
   // Render all the different categories in the Home page:
   const allCategoriesSliders = allHeadlinesNews.map((headline, index) => (
