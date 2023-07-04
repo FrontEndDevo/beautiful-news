@@ -284,3 +284,25 @@
     }
   }
 }
+
+// Implement responsive layout for (Inbox) component:
+@mixin inbox-content {
+  .inbox {
+    margin: 0 1rem;
+    padding: 1rem;
+    .title {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .subscribe {
+      display: grid;
+      gap: 2rem;
+      button {
+        font-size: 1.5rem;
+        background-color: $darken;
+      }
+    }
+  }
+}

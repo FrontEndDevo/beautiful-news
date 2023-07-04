@@ -1,4 +1,5 @@
 @use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
 .inbox {
   margin: 5rem 0;
   width: 93%;
@@ -56,6 +57,31 @@
       transition: $fast_transition;
       &:hover {
         background-color: $darken;
+      }
+    }
+  }
+}
+
+@include responsive(mobile) {
+  @include inbox-content;
+  .inbox {
+    padding: 1rem;
+    .title {
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@include responsive(tablet) {
+  @include inbox-content;
+  .inbox {
+    padding: 4rem 1rem;
+    .subscribe {
+      grid-template-columns: 1fr 1fr;
+      button {
+        font-size: 1.5rem;
       }
     }
   }
