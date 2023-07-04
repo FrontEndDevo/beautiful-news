@@ -1,8 +1,20 @@
 @use "../../../styles/vars" as *;
+@use "../../../styles/mixins" as *;
 
 .category {
   color: $lighter_rose;
   &:hover {
     color: white;
+  }
+}
+
+@include responsive(mobile) {
+  .category {
+    &.odd {
+      margin-left: auto;
+    }
+    &.even {
+      margin-right: auto;
+    }
   }
 }

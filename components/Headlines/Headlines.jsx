@@ -37,7 +37,7 @@ export const TOP_HEADLINES = [
 ];
 const Headlines = () => {
   const allHeadlines = TOP_HEADLINES.map((headlineObj, index) => (
-    <Category key={index} headline={headlineObj.headline} />
+    <Category key={index} headline={headlineObj.headline} index={index} />
   ));
   return (
     <section className={styles.headlines}>
