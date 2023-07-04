@@ -46,7 +46,7 @@
 
 @include responsive(mobile) {
   .headlines {
-    margin: 4rem 1rem;
+    margin: 5rem 1rem;
     flex-direction: column;
     border-width: 15px;
     border-radius: 10px;
@@ -75,6 +75,41 @@
       flex-direction: column;
       align-items: center;
       gap: 2rem;
+    }
+  }
+}
+
+@include responsive(tablet) {
+  .headlines {
+    margin: 3rem 1rem;
+    flex-direction: column;
+    border-width: 2rem;
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+    box-shadow: $dark_rose 0px 20px 60px -12px inset,
+      $dark_rose 20px 18px 36px -18px inset;
+    .text {
+      h2 {
+        font-size: 4rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        span {
+          font-size: 2rem;
+        }
+      }
+      .more {
+        gap: 1rem;
+        .arrow-right {
+          display: none;
+        }
+        .arrow-down {
+          display: block;
+        }
+      }
+    }
+    .categories {
+      justify-content: center;
     }
   }
 }
