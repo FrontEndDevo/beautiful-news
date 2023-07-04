@@ -1,4 +1,5 @@
 @use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
 .headlines {
   margin: 5rem 0;
   display: flex;
@@ -27,6 +28,9 @@
         text-align: center;
         font-style: italic;
       }
+      .arrow-down {
+        display: none;
+      }
       svg {
         color: $lighter_rose;
       }
@@ -37,5 +41,40 @@
     gap: 3rem;
     flex-wrap: wrap;
     font-size: 1.5rem;
+  }
+}
+
+@include responsive(mobile) {
+  .headlines {
+    margin: 4rem 1rem;
+    flex-direction: column;
+    border-width: 15px;
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    box-shadow: $dark_rose 0px 20px 40px -12px inset,
+      $dark_rose 20px 18px 36px -18px inset;
+    .text {
+      h2 {
+        text-align: center;
+        font-size: 2.5rem;
+      }
+      .more {
+        gap: 1rem;
+        p {
+          font-style: unset;
+        }
+        .arrow-right {
+          display: none;
+        }
+        .arrow-down {
+          display: block;
+        }
+      }
+    }
+    .categories {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
   }
 }

@@ -1,7 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Category from "./Category/Category";
 import styles from "./Headlines.module.scss";
-import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowDownLong,
+  faArrowRightLong,
+} from "@fortawesome/free-solid-svg-icons";
 export const TOP_HEADLINES = [
   {
     headline: "general",
@@ -46,7 +49,18 @@ const Headlines = () => {
         </h2>
         <div className={styles.more}>
           <p>More news</p>
-          <FontAwesomeIcon icon={faArrowRightLong} bounce size="lg" />
+          <FontAwesomeIcon
+            icon={faArrowRightLong}
+            bounce
+            size="lg"
+            className={styles["arrow-right"]}
+          />
+          <FontAwesomeIcon
+            icon={faArrowDownLong}
+            bounce
+            size="lg"
+            className={styles["arrow-down"]}
+          />
         </div>
       </div>
       <ul className={styles.categories}>
