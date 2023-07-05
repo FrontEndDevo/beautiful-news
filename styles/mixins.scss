@@ -306,3 +306,87 @@
     }
   }
 }
+
+// Implement responsive layout for (CatchedStory) component:
+@mixin catched-story-content {
+  .catched-story {
+    margin: 0;
+    background-image: unset;
+
+    .image {
+      .author {
+        background-color: $lighter_rose;
+        font-size: 1.5rem;
+        font-weight: 900;
+        box-shadow: $darken 0px -40px 36px -40px inset;
+      }
+    }
+
+    .top-content {
+      position: unset;
+      margin: 2rem 0 0 1rem;
+      .title {
+        width: 95%;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+      .links {
+        font-weight: normal;
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        a {
+          margin-right: unset;
+        }
+      }
+      .social {
+        .play {
+          align-items: center;
+          gap: 1rem;
+          background-color: $dark;
+          svg {
+            color: $lighter_rose;
+          }
+          p {
+            display: block;
+            font-style: italic;
+            font-size: 20px;
+          }
+        }
+        .icons {
+          gap: 2rem;
+        }
+      }
+    }
+
+    .bottom-content {
+      width: 90vw;
+      .paragraph {
+        gap: 2rem;
+        margin-left: 1rem;
+        .content,
+        .description {
+          &::before {
+            margin-left: -1rem;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 40px;
+            padding: 0.2rem 2rem;
+            font-style: unset;
+            background-image: linear-gradient(300deg, #283c86, #45a247);
+          }
+        }
+      }
+      .read-more {
+        background-color: transparent;
+        border-width: 15px;
+        border-radius: 0;
+        border-bottom-left-radius: 50px;
+        border-top-right-radius: 50px;
+        margin: 2rem auto -2rem;
+        &:hover {
+          background-color: unset;
+        }
+      }
+    }
+  }
+}

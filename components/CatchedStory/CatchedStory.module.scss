@@ -1,8 +1,36 @@
 @use "../../styles/vars" as *;
-
+@use "../../styles/mixins" as *;
 .catched-story {
   margin: 6rem 0;
   background-image: linear-gradient(to right, black -10%, transparent);
+
+  .image {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    z-index: -1;
+    img {
+      width: 100%;
+      height: 100%;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    .author {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 2px solid $lighter_rose;
+      border-bottom: none;
+      padding: 5px 10px;
+      font-size: 20px;
+      font-weight: 100;
+      font-style: italic;
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+    }
+  }
+
   .top-content {
     position: absolute;
     top: 25%;
@@ -46,6 +74,10 @@
             color: $lighter_rose;
           }
         }
+
+        p {
+          display: none;
+        }
       }
       .icons {
         display: flex;
@@ -59,33 +91,6 @@
           }
         }
       }
-    }
-  }
-
-  .image {
-    position: relative;
-    width: 100%;
-    height: 80vh;
-    z-index: -1;
-    img {
-      width: 100%;
-      height: 100%;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-    }
-    .author {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      background-color: rgba(0, 0, 0, 0.5);
-      border: 2px solid $lighter_rose;
-      border-bottom: none;
-      padding: 5px 10px;
-      font-size: 20px;
-      font-weight: 100;
-      font-style: italic;
-      border-top-right-radius: 8px;
-      border-top-left-radius: 8px;
     }
   }
 
@@ -140,6 +145,40 @@
       margin: 3rem 0 0 auto;
       &:hover {
         background-color: $dark;
+      }
+    }
+  }
+}
+
+@include responsive(mobile) {
+  @include catched-story-content;
+  .catched-story {
+    .top-content {
+      .social {
+        gap: 2rem;
+        flex-direction: column;
+      }
+    }
+    .bottom-content {
+      .paragraph {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@include responsive(tablet) {
+  @include catched-story-content;
+  .catched-story {
+    .top-content {
+      .links {
+        font-size: 2rem;
+      }
+      .social {
+        justify-content: space-between;
+        .icons {
+          margin-right: 3rem;
+        }
       }
     }
   }

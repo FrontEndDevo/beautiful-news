@@ -42,24 +42,6 @@ const CatchedStory = ({ story }) => {
 
   return (
     <section className={classes["catched-story"]}>
-      <div className={classes["top-content"]}>
-        <h2 className={classes.title}>{theStory.title}</h2>
-        <div className={classes.links}>
-          <Link href="/">General</Link>
-          <Link href="/everything">Everything</Link>
-        </div>
-        <div className={classes.social}>
-          <Link className={classes.play} href={theStory.url} target="_blank">
-            <FontAwesomeIcon icon={faPlay} />
-          </Link>
-          <div className={classes.icons}>
-            <FontAwesomeIcon icon={faBookmark} />
-            <FontAwesomeIcon icon={faComment} />
-            <FontAwesomeIcon icon={faPaperPlane} />
-            <FontAwesomeIcon icon={faHeart} />
-          </div>
-        </div>
-      </div>
       <div className={classes.image}>
         <img src={theStory.urlToImage} alt={theStory.author} />
         {theStory.author && (
@@ -71,6 +53,26 @@ const CatchedStory = ({ story }) => {
           </h4>
         )}
       </div>
+      <div className={classes["top-content"]}>
+        <h2 className={classes.title}>{theStory.title}</h2>
+        <div className={classes.links}>
+          <Link href="/">General</Link>
+          <Link href="/everything">Everything</Link>
+        </div>
+        <div className={classes.social}>
+          <Link className={classes.play} href={theStory.url} target="_blank">
+            <FontAwesomeIcon icon={faPlay} />
+            <p>Read More</p>
+          </Link>
+          <div className={classes.icons}>
+            <FontAwesomeIcon icon={faBookmark} />
+            <FontAwesomeIcon icon={faComment} />
+            <FontAwesomeIcon icon={faPaperPlane} />
+            <FontAwesomeIcon icon={faHeart} />
+          </div>
+        </div>
+      </div>
+
       <div className={classes["bottom-content"]}>
         <div className={classes.paragraph}>
           <p className={classes.content}>{modifiedConetent}</p>
