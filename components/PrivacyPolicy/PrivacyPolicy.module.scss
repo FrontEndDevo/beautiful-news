@@ -1,4 +1,5 @@
 @use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
 .privacy-policy {
   margin: 6rem 0 3rem;
   width: 70%;
@@ -34,4 +35,12 @@
       }
     }
   }
+}
+
+@include responsive(mobile) {
+  @include privacy-policy-content;
+}
+
+@include responsive(tablet) {
+  @include privacy-policy-content;
 }
