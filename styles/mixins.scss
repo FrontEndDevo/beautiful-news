@@ -394,3 +394,27 @@
     }
   }
 }
+
+// Implement responsive layout for (TermsOfUse) component:
+@mixin terms-content {
+  .terms {
+    margin: 6rem 0 0 1rem;
+    width: 90%;
+    h2 {
+      font-size: 3rem;
+      text-align: center;
+      font-style: italic;
+      border-bottom: 5px solid $lighter_rose;
+    }
+    div {
+      p {
+        line-height: 2;
+      }
+      ul {
+        li {
+          line-height: 2;
+        }
+      }
+    }
+  }
+}

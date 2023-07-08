@@ -1,4 +1,5 @@
 @use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
 .terms {
   margin: 6rem 0 3rem;
   width: 70%;
@@ -34,4 +35,12 @@
   .lowercase {
     text-transform: lowercase;
   }
+}
+
+@include responsive(mobile) {
+  @include terms-content;
+}
+
+@include responsive(tablet) {
+  @include terms-content;
 }
