@@ -464,3 +464,56 @@
     }
   }
 }
+
+// Implement responsive layout for (Footer) component:
+@mixin footer-content {
+  .footer {
+    padding: 1rem;
+    flex-direction: column-reverse;
+    gap: 2rem;
+    .social-media {
+      flex-direction: column-reverse;
+      gap: 2rem;
+      .icons {
+        gap: 2rem;
+        font-size: 2rem;
+      }
+      .bottom {
+        align-items: center;
+        .logo {
+          align-items: center;
+          img {
+            width: 30px;
+            height: 25px;
+          }
+          h4 {
+            font-weight: bold;
+            font-size: 1.5rem;
+          }
+        }
+
+        .rights {
+          opacity: 0.3;
+        }
+      }
+    }
+
+    .pages {
+      .links {
+        display: grid;
+        text-align: center;
+      }
+      .apps {
+        justify-content: center;
+        .google,
+        .store {
+          gap: 1rem;
+          font-size: 1rem;
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

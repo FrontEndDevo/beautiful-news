@@ -40,14 +40,14 @@ const Footer = () => {
       <div className={classes.pages}>
         <div className={classes.links}>
           <Link href="/about">about</Link>
-          <Link href="/become a contributor">become a contributor</Link>
-          <Link href="/cookie-policy">cookie policy</Link>
-          <Link href="/submit-story">submit a story</Link>
           <Link href="/terms-use">terms of use</Link>
-          <Link href="/sign in">sign in</Link>
           <Link href="/contact">contact</Link>
           <Link href="/privacy-policy">privacy policy</Link>
+          <Link href="/sign in">sign in</Link>
+          <Link href="/cookie-policy">cookie policy</Link>
           <Link href="/create account">create account</Link>
+          <Link href="/submit-story">submit a story</Link>
+          <Link href="/become a contributor">become a contributor</Link>
         </div>
         <div className={classes.apps}>
           <div className={classes.google}>
