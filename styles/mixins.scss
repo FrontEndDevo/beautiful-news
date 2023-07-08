@@ -53,16 +53,16 @@
 @mixin header-content {
   .header {
     background-image: none;
-    height: 100vh;
+    height: 110vh;
     background: linear-gradient(to top, black 50%, transparent);
     img {
-      height: 50%;
+      height: 60%;
     }
 
     .content {
       position: unset;
       padding-left: 1rem;
-      margin-top: 2rem;
+      margin-top: 3rem;
 
       h3 {
         font-size: 1rem;
@@ -90,12 +90,16 @@
     }
 
     .shape {
-      position: unset;
       display: flex;
       justify-content: center;
       align-items: center;
+      height: fit-content;
+      top: 50%;
+      right: 20vw;
+
       button {
-        line-height: 1.2;
+        font-size: 1rem;
+        line-height: 1.3;
         text-align: start;
       }
     }

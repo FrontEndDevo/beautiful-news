@@ -1,4 +1,5 @@
 @use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
 .shape {
   width: fit-content;
   padding: 3rem 2rem;
@@ -45,6 +46,18 @@
       border: 20px solid;
       border-color: $lighter_rose transparent transparent transparent;
       z-index: 11;
+    }
+  }
+}
+
+@include responsive(mobile) {
+  .shape {
+    padding: 1rem 3rem;
+
+    .icon {
+      &::before {
+        right: 63px;
+      }
     }
   }
 }
