@@ -136,16 +136,15 @@ const ContactForm = () => {
               <FontAwesomeIcon icon={faFaceFrown} />
             </h2>
             <p>
-              Please try submitting this form again. If this problem
-              <br />
-              continues, please reach out to the site owner.
+              Please try submitting this form again. If this problem continues,
+              please reach out to the site owner.
             </p>
           </div>
         )}
         <div className={classes["contact-us"]}>
           <h2>Contact Beautiful News</h2>
           <p>
-            If you have a question, comment, or suggestion, please <br /> send
+            If you have a question, comment, or suggestion, please send
             us a message we'd love to hear from you.
           </p>
         </div>
