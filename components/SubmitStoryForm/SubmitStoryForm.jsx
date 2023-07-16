@@ -243,18 +243,16 @@ const SubmitStoryForm = () => {
               <FontAwesomeIcon icon={faFaceFrown} />
             </h2>
             <p>
-              Please try submitting this form again. If this problem
-              <br />
-              continues, please reach out to the site owner.
+              Please try submitting this form again. If this problem continues,
+              please reach out to the site owner.
             </p>
           </div>
         )}
-        <h2>Submit your story</h2>
-        <p>
-          We want to hear from you. If you have a positive,
-          <br /> uplifting or inspiring story to share about yourself or
-          <br /> someone you know, let us know using the form below.
-          <br /> We’ll be in touch.
+        <h2 className={classes["main-title"]}>Submit your story</h2>
+        <p className={classes.explaination}>
+          We want to hear from you. If you have a positive, uplifting or
+          inspiring story to share about yourself or someone you know, let us
+          know using the form below. We’ll be in touch.
         </p>
       </div>
       <form onSubmit={submitStoryFormHandler} className={classes.form}>
