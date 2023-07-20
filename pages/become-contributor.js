@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import Head from "next/head";
+import ContributorForm from "../components/ContributorForm/ContributorForm";
 
 const BecomeContributor = () => {
   return (
@@ -14,7 +15,7 @@ const BecomeContributor = () => {
         />
       </Head>
       <Navbar />
-
+      <ContributorForm />
       <Footer />
     </>
   );

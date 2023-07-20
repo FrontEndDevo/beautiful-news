@@ -144,8 +144,8 @@ const ContactForm = () => {
         <div className={classes["contact-us"]}>
           <h2>Contact Beautiful News</h2>
           <p>
-            If you have a question, comment, or suggestion, please send
-            us a message we'd love to hear from you.
+            If you have a question, comment, or suggestion, please send us a
+            message we'd love to hear from you.
           </p>
         </div>
       </div>
