@@ -47,7 +47,7 @@ const Footer = () => {
           <Link href="/cookie-policy">cookie policy</Link>
           <Link href="/create account">create account</Link>
           <Link href="/submit-story">submit a story</Link>
-          <Link href="/become a contributor">become a contributor</Link>
+          <Link href="/become-contributor">become a contributor</Link>
         </div>
         <div className={classes.apps}>
           <div className={classes.google}>
