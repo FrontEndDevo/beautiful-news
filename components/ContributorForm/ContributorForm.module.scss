@@ -1,2 +1,18 @@
 @use "../../styles/vars" as *;
 @use "../../styles/mixins" as *;
+.contributor {
+  margin-top: 8rem;
+  width: 93%;
+  .text {
+    margin-bottom: 3rem;
+    .contributor-title {
+      h2 {
+        font-size: 4rem;
+      }
+    }
+    p {
+      font-size: 1.5rem;
+      width: 40%;
+    }
+  }
+}
