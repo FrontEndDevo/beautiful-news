@@ -1,5 +1,19 @@
+import countries from "../../assets/JSON/countries.json";
 import classes from "./ContributorForm.module.scss";
 const ContributorForm = () => {
+  const locationCountries = (
+    <div className={classes.input}>
+      <select className={classes.countries} defaultValue="Location">
+        <option disabled value="Location">
+          Location
+        </option>
+        {countries.map((country) => (
+          <option value={country.name}>{country.name}</option>
+        ))}
+      </select>
+    </div>
+  );
+
   return (
     <section className={classes.contributor}>
       <div className={classes.text}>
@@ -30,14 +44,15 @@ const ContributorForm = () => {
               id="contributor-email"
             />
           </div>
-        </div>
-        <div className={classes.input}>
-          <input
-            type="text"
-            placeholder="Link to your portfolio or blog (optional)"
-            name="contributor-blog"
-            id="contributor-blog"
-          />
+          {locationCountries}
+          <div className={classes.input}>
+            <input
+              type="text"
+              placeholder="Link to your portfolio or blog (optional)"
+              name="contributor-blog"
+              id="contributor-blog"
+            />
+          </div>
         </div>
         <div className={classes.input}>
           <input
