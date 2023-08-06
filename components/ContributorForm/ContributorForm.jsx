@@ -54,38 +54,46 @@ const ContributorForm = () => {
             />
           </div>
         </div>
-        <div className={classes.input}>
+        <div className={`${classes.input} ${classes["upload-photo"]}`}>
+          <label htmlFor="upload-photo">
+            Upload photo (optional)
+            <span>Choose file</span>
+          </label>
           <input
             type="file"
+            accept="image/*"
             placeholder="Upload photo (optional)"
             name="upload-photo"
             id="upload-photo"
           />
         </div>
-        <ul className={classes["I-want"]}>
-          <li>
-            <button>Submit a story idea</button>
-            <div className={classes.checking}>
-              <input type="checkbox" name="story-idea" id="story-idea" />
-              <span className={classes.checkmark}></span>
-            </div>
-          </li>
-          <li>
-            <button>Submit a story</button>
-            <div className={classes.checking}>
-              <input type="checkbox" name="Submit-story" id="Submit-story" />
-              <span className={classes.checkmark}></span>
-            </div>
-          </li>
-          <li>
-            <button>Edit a story</button>
-            <div className={classes.checking}>
-              <input type="checkbox" name="Edit-story" id="Edit-story" />
-              <span className={classes.checkmark}></span>
-            </div>
-          </li>
-        </ul>
-        <div className={classes.input}>
+        <div className={classes.options}>
+          <h4>I want to (multiple options are possible)</h4>
+          <ul className={classes["I-want"]}>
+            <li>
+              <div className={classes.checking}>
+                <input type="checkbox" name="story-idea" id="story-idea" />
+                <span className={classes.checkmark}></span>
+              </div>
+              <p>Submit a story idea</p>
+            </li>
+            <li>
+              <div className={classes.checking}>
+                <input type="checkbox" name="Submit-story" id="Submit-story" />
+                <span className={classes.checkmark}></span>
+              </div>
+              <p>Submit a story</p>
+            </li>
+            <li>
+              <div className={classes.checking}>
+                <input type="checkbox" name="Edit-story" id="Edit-story" />
+                <span className={classes.checkmark}></span>
+              </div>
+              <p>Edit a story</p>
+            </li>
+          </ul>
+        </div>
+        <div className={`${classes.input} ${classes.message}`}>
           <textarea
             name="message"
             id="message"
