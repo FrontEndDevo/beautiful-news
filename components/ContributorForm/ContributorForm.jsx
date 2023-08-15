@@ -1,6 +1,49 @@
+import { useReducer } from "react";
 import countries from "../../assets/JSON/countries.json";
 import classes from "./ContributorForm.module.scss";
+
+const initialContributorFormReducer = {
+  name: "",
+  email: "",
+  country: "Location",
+  blog: "",
+  photo: "",
+  storyIdea: false,
+  submitStory: false,
+  editStory: false,
+  message: "",
+};
+
+const contributorFormReducer = (state, action) => {
+  switch (action.type) {
+    case "ALL_INPUTS":
+      return {
+        name: action.payload.name,
+        email: action.payload.email,
+        country: action.payload.country,
+        blog: action.payload.blog,
+        storyIdea: action.payload.storyIdea,
+        submitStory: action.payload.submitStory,
+        editStory: action.payload.editStory,
+        message: action.payload.message,
+      };
+
+    case "UPDATE":
+      return {
+        ...state,
+        [action.input]: action.value,
+      };
+
+    case "RESET":
+      return initialSubmitStoryReducer;
+  }
+};
+
 const ContributorForm = () => {
+  const [inputs, dispatch] = useReducer(
+    contributorFormReducer,
+    initialContributorFormReducer
+  );
   const locationCountries = (
     <div className={classes.input}>
       <select className={classes.countries} defaultValue="Location">
