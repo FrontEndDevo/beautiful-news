@@ -7,7 +7,7 @@ const initialContributorFormReducer = {
   email: "",
   country: "Location",
   blog: "",
-  photo: "",
+  photo: "Upload photo (optional)",
   storyIdea: false,
   submitStory: false,
   editStory: false,
@@ -58,9 +58,24 @@ const ContributorForm = () => {
   const updateBlogInputHandler = (value) => {
     dispatch({ type: "UPDATE", field: "blog", value: value.target.value });
   };
+
   const updatePhotoInputHandler = (value) => {
-    dispatch({ type: "UPDATE", field: "photo", value: value.target.value });
+    const photo = value.target.files[0];
+
+    // Store the image in localStorage temporarily.
+    const reader = new FileReader();
+    reader.readAsDataURL(photo);
+    reader.addEventListener("load", () => {
+      localStorage.setItem("photo", reader.result);
+    });
+
+    dispatch({
+      type: "UPDATE",
+      field: "photo",
+      value: photo.name,
+    });
   };
+
   const updateStoryIdeaHandler = (value) => {
     dispatch({
       type: "UPDATE",
@@ -157,11 +172,10 @@ const ContributorForm = () => {
         </div>
         <div className={`${classes.input} ${classes["upload-photo"]}`}>
           <label htmlFor="upload-photo">
-            Upload photo (optional)
+            {inputs.photo}
             <span>Choose file</span>
           </label>
           <input
-            value={inputs.photo}
             type="file"
             accept="image/*"
             placeholder="Upload photo (optional)"
