@@ -130,11 +130,8 @@ const ContributorForm = () => {
       country: inputs.country.trim() != "Location" ? inputs.country.trim() : "",
       blog: inputs.blog.trim(),
       photo: {
-        name:
-          inputs.photo.trim() != "Upload photo (optional)"
-            ? inputs.photo.trim()
-            : "",
-        src: contributorPhoto || "",
+        name: inputs.photo != "Upload photo (optional)" ? inputs.photo : "",
+        src: contributorPhoto,
       },
       storyIdea: inputs.storyIdea,
       submitStory: inputs.submitStory,
@@ -154,8 +151,12 @@ const ContributorForm = () => {
       dispatch({
         type: "RESET",
       });
+
+      localStorage.removeItem("photo");
     }
   };
+
+  console.log(inputs);
 
   return (
     <section className={classes.contributor}>
@@ -223,7 +224,7 @@ const ContributorForm = () => {
             <li>
               <div className={classes.checking}>
                 <input
-                  value={inputs.storyIdea}
+                  checked={inputs.storyIdea}
                   type="checkbox"
                   name="story-idea"
                   id="story-idea"
@@ -236,7 +237,7 @@ const ContributorForm = () => {
             <li>
               <div className={classes.checking}>
                 <input
-                  value={inputs.submitStory}
+                  checked={inputs.submitStory}
                   type="checkbox"
                   name="Submit-story"
                   id="Submit-story"
@@ -249,7 +250,7 @@ const ContributorForm = () => {
             <li>
               <div className={classes.checking}>
                 <input
-                  value={inputs.editStory}
+                  checked={inputs.editStory}
                   type="checkbox"
                   name="Edit-story"
                   id="Edit-story"
