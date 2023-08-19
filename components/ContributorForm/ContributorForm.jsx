@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import countries from "../../assets/JSON/countries.json";
 import classes from "./ContributorForm.module.scss";
 
@@ -16,18 +16,6 @@ const initialContributorFormReducer = {
 
 const contributorFormReducer = (state, action) => {
   switch (action.type) {
-    case "ALL_INPUTS":
-      return {
-        name: action.payload.name,
-        email: action.payload.email,
-        country: action.payload.country,
-        blog: action.payload.blog,
-        storyIdea: action.payload.storyIdea,
-        submitStory: action.payload.submitStory,
-        editStory: action.payload.editStory,
-        message: action.payload.message,
-      };
-
     case "UPDATE":
       return {
         ...state,
@@ -35,7 +23,7 @@ const contributorFormReducer = (state, action) => {
       };
 
     case "RESET":
-      return initialSubmitStoryReducer;
+      return initialContributorFormReducer;
   }
 };
 
@@ -44,6 +32,7 @@ const ContributorForm = () => {
     contributorFormReducer,
     initialContributorFormReducer
   );
+  const [isFormSubmmited, setIsFormSubmmited] = useState(false);
 
   // All onChange events for all inputs:
   const updateNameInputHandler = (value) => {
@@ -122,7 +111,51 @@ const ContributorForm = () => {
     </div>
   );
 
-  console.log(inputs);
+  // Submit the form:
+  const submitContributorFormHandler = (e) => {
+    e.preventDefault();
+
+    setIsFormSubmmited(true);
+
+    // Get the contributor photo from localStorage:
+    const contributorPhoto =
+      inputs.photo.trim() != "Upload photo (optional)"
+        ? localStorage.getItem("photo")
+        : "";
+
+    // Prepare the values to check them, then submit the form.
+    const inputsValues = {
+      name: inputs.name.trim(),
+      email: inputs.email.trim(),
+      country: inputs.country.trim() != "Location" ? inputs.country.trim() : "",
+      blog: inputs.blog.trim(),
+      photo: {
+        name:
+          inputs.photo.trim() != "Upload photo (optional)"
+            ? inputs.photo.trim()
+            : "",
+        src: contributorPhoto || "",
+      },
+      storyIdea: inputs.storyIdea,
+      submitStory: inputs.submitStory,
+      editStory: inputs.editStory,
+      message: inputs.message.trim(),
+    };
+
+    if (
+      (inputsValues.name && inputsValues.email && inputsValues.storyIdea) ||
+      inputsValues.submitStory ||
+      inputsValues.editStory
+    ) {
+      console.log(inputsValues);
+
+      setIsFormSubmmited(false);
+
+      dispatch({
+        type: "RESET",
+      });
+    }
+  };
 
   return (
     <section className={classes.contributor}>
@@ -136,7 +169,7 @@ const ContributorForm = () => {
           </p>
         </div>
       </div>
-      <form className={classes.form}>
+      <form onSubmit={submitContributorFormHandler} className={classes.form}>
         <div className={classes.inputs}>
           <div className={classes.input}>
             <input
