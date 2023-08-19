@@ -322,7 +322,7 @@ const SubmitStoryForm = () => {
             <Link href="terms of use">Terms and Conditions</Link>
           </p>
           {agreementError && (
-            <p className={classes["agreement-error"]}>
+            <p className={classes["checkbox-error"]}>
               * &ensp; agree with our terms
             </p>
           )}

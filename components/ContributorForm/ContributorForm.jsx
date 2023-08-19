@@ -1,6 +1,8 @@
 import { useReducer, useState } from "react";
 import countries from "../../assets/JSON/countries.json";
 import classes from "./ContributorForm.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFaceFrown } from "@fortawesome/free-solid-svg-icons";
 
 const initialContributorFormReducer = {
   name: "",
@@ -90,12 +92,25 @@ const ContributorForm = () => {
     dispatch({ type: "UPDATE", field: "message", value: value.target.value });
   };
 
+  // Error messages for empty input fields:
+  const nameError = isFormSubmmited && inputs.name.length == 0;
+
+  const emailError = isFormSubmmited && inputs.email.length == 0;
+
+  const countryError = isFormSubmmited && inputs.country == "Location";
+
+  const storyOptionsError =
+    isFormSubmmited &&
+    !(inputs.storyIdea || inputs.editStory || inputs.submitStory);
+
   // Render all countries:
   const locationCountries = (
     <div className={classes.input}>
       <select
         value={inputs.country}
-        className={classes.countries}
+        className={`${classes.countries} ${
+          countryError && classes["error-filed"]
+        }`}
         defaultValue="Location"
         onChange={updateCountryInputHandler}
       >
@@ -108,6 +123,7 @@ const ContributorForm = () => {
           </option>
         ))}
       </select>
+      {countryError && <p className={classes.error}>enter your location</p>}
     </div>
   );
 
@@ -156,11 +172,21 @@ const ContributorForm = () => {
     }
   };
 
-  console.log(inputs);
-
   return (
     <section className={classes.contributor}>
       <div className={classes.text}>
+        {(nameError || emailError || countryError || storyOptionsError) && (
+          <div className={classes["submmition-failure"]}>
+            <h2>
+              Sorry, something is not right
+              <FontAwesomeIcon icon={faFaceFrown} />
+            </h2>
+            <p>
+              Please try submitting this form again. If this problem continues,
+              please reach out to the site owner.
+            </p>
+          </div>
+        )}
         <div className={classes["contributor-title"]}>
           <h2>Become a contributor</h2>
           <p>
@@ -180,7 +206,9 @@ const ContributorForm = () => {
               name="contributor-name"
               id="contributor-name"
               onChange={updateNameInputHandler}
+              className={`${nameError && classes["error-filed"]}`}
             />
+            {nameError && <p className={classes.error}>enter your name</p>}
           </div>
           <div className={classes.input}>
             <input
@@ -190,7 +218,9 @@ const ContributorForm = () => {
               name="contributor-email"
               id="contributor-email"
               onChange={updateEmailInputHandler}
+              className={`${emailError && classes["error-filed"]}`}
             />
+            {emailError && <p className={classes.error}>enter your email</p>}
           </div>
           {locationCountries}
           <div className={classes.input}>
@@ -230,7 +260,11 @@ const ContributorForm = () => {
                   id="story-idea"
                   onChange={updateStoryIdeaHandler}
                 />
-                <span className={classes.checkmark}></span>
+                <span
+                  className={`${classes.checkmark} ${
+                    storyOptionsError && classes["error-filed"]
+                  }`}
+                ></span>
               </div>
               <p>Submit a story idea</p>
             </li>
@@ -243,7 +277,11 @@ const ContributorForm = () => {
                   id="Submit-story"
                   onChange={updateSubmitStoryHandler}
                 />
-                <span className={classes.checkmark}></span>
+                <span
+                  className={`${classes.checkmark} ${
+                    storyOptionsError && classes["error-filed"]
+                  }`}
+                ></span>
               </div>
               <p>Submit a story</p>
             </li>
@@ -256,11 +294,20 @@ const ContributorForm = () => {
                   id="Edit-story"
                   onChange={updateEditStoryHandler}
                 />
-                <span className={classes.checkmark}></span>
+                <span
+                  className={`${classes.checkmark} ${
+                    storyOptionsError && classes["error-filed"]
+                  }`}
+                ></span>
               </div>
               <p>Edit a story</p>
             </li>
           </ul>
+          {storyOptionsError && (
+            <p className={classes["checkbox-error"]}>
+              at least one option is required
+            </p>
+          )}
         </div>
         <div className={`${classes.input} ${classes.message}`}>
           <textarea
