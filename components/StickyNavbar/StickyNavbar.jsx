@@ -6,11 +6,11 @@ import Link from "next/link";
 const StickyNavbar = () => {
   return (
     <div className={classes["sticky-navbar"]}>
-      <Link href='/channels'>
+      <Link href='/channels' className={classes.link}>
         <FontAwesomeIcon icon={faDisplay} />
         <span>Channels</span>
       </Link>
-      <Link href="/a-dynamic-name">
+      <Link href="/a-dynamic-name" className={classes.link}>
         <FontAwesomeIcon icon={faUser} />
         <span>Account</span>
       </Link>

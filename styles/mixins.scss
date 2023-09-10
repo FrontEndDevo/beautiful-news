@@ -729,3 +729,10 @@
     }
   }
 }
+
+// Implement responsive layout for (Sticky-Navbar) component:
+@mixin sticky-navbar {
+  .sticky-navbar {
+    display: flex;
+  }
+}
