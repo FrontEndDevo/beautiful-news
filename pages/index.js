@@ -6,6 +6,7 @@ import Inbox from "../components/Inbox/Inbox";
 import Navbar from "../components/Navbar/Navbar";
 import { headlinesActions } from "../store/headlines-slice";
 import HomeSlider from "../components/HomeSlider/HomeSlider";
+import StickyNavbar from "../components/StickyNavbar/StickyNavbar";
 
 export default function Home({ allHeadlinesNews = [] }) {
   // Store different types of our News in headlines-slice store:
@@ -31,6 +32,7 @@ export default function Home({ allHeadlinesNews = [] }) {
       <Headlines />
       <Inbox />
       <Footer />
+      <StickyNavbar />
     </>
   );
 }
