@@ -4,14 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 const sortOptions = ["publishedAt", "relevancy", "popularity"];
 
-const Sort = () => {
+const Sort = ({ chooseSortByOption }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(sortOptions[0]);
 
   // Function to handle the selected option:
   const selectOptionHandler = (option) => {
-    setSelectedOption(option);
     setIsDropdownOpen(false);
+    chooseSortByOption(option);
   };
 
   const allOptions = sortOptions.map((opt, i) => (

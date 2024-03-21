@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import classes from "./Filters.module.scss";
 import Options from "./Options/Options";
+import Sort from "./Options/Sort/Sort";
 const optionsObj = {
   languages: [
     "en",
@@ -44,6 +45,11 @@ const Filters = (props) => {
     .reverse();
 
   // Functions to handle the values selected for each select tag:
+  const selectSortByOption = (opt) => {
+    console.log(opt);
+    setSortBy(opt);
+  };
+
   const changeSortByHandler = (sort) => {
     setSortBy(sort.target.value);
   };
@@ -66,65 +72,72 @@ const Filters = (props) => {
     props.getFilters(filtersObject);
   };
   return (
-    <form onSubmit={submitFiltrationHandler} className={classes.filter}>
-      <div className={classes["filter-icon"]}>
-        <FontAwesomeIcon onClick={showFiltersHandler} icon={faFilter} />
-        <div className={classes.arrows}>
-          <p>Filters</p>
-          <FontAwesomeIcon
-            icon={faSortUp}
-            onClick={showFiltersHandler}
-            style={{
-              transform: showFilters ? "rotate(1800deg)" : "rotate(180deg)",
-            }}
-          />
-        </div>
-      </div>
-      {showFilters && (
-        <div className={classes.inputs}>
-          <div className={classes["keyword-sort"]}>
-            <div className={classes.keyword}>
-              <label htmlFor="keyword">Keyword</label>
-              <input
-                ref={keywordInputRef}
-                type="text"
-                name="keyword"
-                id="keyword"
-                placeholder="e.g. Google"
-              />
-            </div>
-
-            <div className={classes["sort-by"]}>
-              <p>Sorting By</p>
-              <select onChange={changeSortByHandler} name="sortby" id="sortby">
-                {renderedSortBy}
-              </select>
-            </div>
+    <>
+      <form onSubmit={submitFiltrationHandler} className={classes.filter}>
+        <div className={classes["filter-icon"]}>
+          <FontAwesomeIcon onClick={showFiltersHandler} icon={faFilter} />
+          <div className={classes.arrows}>
+            <p>Filters</p>
+            <FontAwesomeIcon
+              icon={faSortUp}
+              onClick={showFiltersHandler}
+              style={{
+                transform: showFilters ? "rotate(1800deg)" : "rotate(180deg)",
+              }}
+            />
           </div>
-
-          <div className={classes["language-sizes"]}>
-            <div className={classes.languages}>
-              <p>Languages</p>
-              <select
-                onChange={changeLanguageHandler}
-                name="language"
-                id="language"
-              >
-                {renderedLanguages}
-              </select>
-            </div>
-
-            <div className={classes.sizes}>
-              <p>Page Size</p>
-              <select onChange={changePageSizeHandler} name="size" id="size">
-                {renderedPageSize}
-              </select>
-            </div>
-          </div>
-          <button className={classes.apply}>Apply</button>
         </div>
-      )}
-    </form>
+        {showFilters && (
+          <div className={classes.inputs}>
+            <div className={classes["keyword-sort"]}>
+              <div className={classes.keyword}>
+                <label htmlFor="keyword">Keyword</label>
+                <input
+                  ref={keywordInputRef}
+                  type="text"
+                  name="keyword"
+                  id="keyword"
+                  placeholder="e.g. Google"
+                />
+              </div>
+
+              <div className={classes["sort-by"]}>
+                <p>Sorting By</p>
+                <select
+                  onChange={changeSortByHandler}
+                  name="sortby"
+                  id="sortby"
+                >
+                  {renderedSortBy}
+                </select>
+              </div>
+            </div>
+
+            <div className={classes["language-sizes"]}>
+              <div className={classes.languages}>
+                <p>Languages</p>
+                <select
+                  onChange={changeLanguageHandler}
+                  name="language"
+                  id="language"
+                >
+                  {renderedLanguages}
+                </select>
+              </div>
+
+              <div className={classes.sizes}>
+                <p>Page Size</p>
+                <select onChange={changePageSizeHandler} name="size" id="size">
+                  {renderedPageSize}
+                </select>
+              </div>
+            </div>
+            <button className={classes.apply}>Apply</button>
+          </div>
+        )}
+      </form>
+      <Sort chooseSortByOption={selectSortByOption} />
+    </>
   );
 };
 
