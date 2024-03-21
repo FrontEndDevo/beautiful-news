@@ -22,13 +22,19 @@ const Header = ({ isHomePage = false }) => {
         .flatMap((stories) => stories)
     : detectAndFetch();
 
-  const [pickedStory, setPickedStory] = useState(fetchHeaderNews[0]);
+  const [pickedStory, setPickedStory] = useState({
+    urlToImage: "https://postimg.cc/8fsgNGXC",
+    title: "",
+    url: "",
+  });
   // Pick a story and put its info in the header cells every (1m || 60000 milliseconds):
   useEffect(() => {
     const interval = setInterval(() => {
-      setPickedStory(
-        fetchHeaderNews[Math.floor(Math.random() * fetchHeaderNews.length)]
-      );
+      if (fetchHeaderNews.length > 0) {
+        setPickedStory(
+          fetchHeaderNews[Math.floor(Math.random() * fetchHeaderNews.length)]
+        );
+      }
     }, 60000);
 
     return () => {
@@ -39,11 +45,8 @@ const Header = ({ isHomePage = false }) => {
   return (
     <header className={classes.header}>
       <img
-        src={
-          pickedStory.urlToImage ||
-          "https://www.linkpicture.com/q/image-not-found-1-scaled.png"
-        }
-        alt={pickedStory.title}
+        src={pickedStory.urlToImage || "https://postimg.cc/8fsgNGXC"}
+        alt={pickedStory.title || ""}
       />
       <div className={classes.content}>
         <h3>Today's beautiful news</h3>
@@ -55,7 +58,7 @@ const Header = ({ isHomePage = false }) => {
         </div>
 
         <Link
-          href={pickedStory.url}
+          href={pickedStory.url || ""}
           target="_blank"
           className={classes["play-icon"]}
         >
