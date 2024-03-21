@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import Filter from "../../components/Filter/Filter";
+import Filters from "../../components/Filters/Filters";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Stories from "../../components/Stories/Stories";
@@ -77,7 +77,7 @@ const Everything = ({ everythingNews, totalResults }) => {
         />
       </Head>
       <Navbar />
-      <Filter getFilters={getFiltersAndFetchNewsHandler} />
+      <Filters getFilters={getFiltersAndFetchNewsHandler} />
       <Stories
         everything={true}
         keyword={newStories.topic}

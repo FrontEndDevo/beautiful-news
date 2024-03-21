@@ -1,7 +1,7 @@
 import { faFilter, faSortUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
-import classes from "./Filter.module.scss";
+import classes from "./Filters.module.scss";
 import Options from "./Options/Options";
 const optionsObj = {
   languages: [
@@ -24,7 +24,7 @@ const optionsObj = {
   pageSize: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
 };
 
-const Filter = (props) => {
+const Filters = (props) => {
   const [showFilters, setShowFilters] = useState(false);
   const [language, setLanguage] = useState("en");
   const [pageSize, setPageSize] = useState(100);
@@ -128,4 +128,4 @@ const Filter = (props) => {
   );
 };
 
-export default Filter;
+export default Filters;
