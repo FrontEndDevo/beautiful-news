@@ -9,7 +9,7 @@ const Keyword = React.memo(() => {
   const dispatch = useDispatch();
 
   const changeKeywordHandler = (e) => {
-    dispatch(setSearchedKeyword(e.target.value));
+    dispatch(setSearchedKeyword(e.target.value.trim()));
   };
 
   return (
