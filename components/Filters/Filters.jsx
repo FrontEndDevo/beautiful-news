@@ -6,6 +6,7 @@ import Options from "./Options/Options";
 import Sort from "./Options/Sort";
 import Keyword from "./Options/Keyword/Keyword";
 import Languages from "./Options/Languages";
+import PageSize from "./Options/PageSize";
 const optionsObj = {
   languages: [
     "en",
@@ -143,6 +144,7 @@ const Filters = (props) => {
       <Sort />
       <Keyword getSearchedKeyword={getSearchedKeywordHandler} />
       <Languages />
+      <PageSize />
     </>
   );
 };
