@@ -9,6 +9,10 @@ import searchBarSlice from "./search-bar-slice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import choosenStorySlice from "./story-slice";
+import keywordSlice from "./Filters/keyword-slice";
+import sortSlice from "./Filters/sort-slice";
+import languageSlice from "./Filters/language-slice";
+import pagesSlice from "./Filters/pages-slice";
 
 const persistConfig = {
   key: "root",
@@ -20,6 +24,10 @@ const rootReducer = combineReducers({
   everything: everythingNewsSlice.reducer,
   search: searchBarSlice.reducer,
   story: choosenStorySlice.reducer,
+  keyword: keywordSlice,
+  sort: sortSlice,
+  language: languageSlice,
+  pagesize: pagesSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
