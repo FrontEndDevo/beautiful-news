@@ -10,17 +10,38 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import classes from "./Footer.module.scss";
+const footerIcons = [faFacebookF, faInstagram, faYoutube, faLinkedin, faVimeoV];
+const footerLinks = [
+  "about",
+  "terms use",
+  "contact",
+  "privacy policy",
+  "cookie policy",
+  "submit story",
+  "become contributor",
+];
 const Footer = () => {
+  const allIcons = footerIcons.map((icon, index) => (
+    <FontAwesomeIcon key={index} icon={icon} />
+  ));
+
+  const allLinks = footerLinks.map((link, index) => (
+    <Link
+      key={index}
+      href={link
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9 ]/g, "")
+        .replace(/\s+/g, "-")}
+    >
+      {link}
+    </Link>
+  ));
+
   return (
     <footer className={classes.footer}>
       <div className={classes["social-media"]}>
-        <div className={classes.icons}>
-          <FontAwesomeIcon icon={faFacebookF} />
-          <FontAwesomeIcon icon={faInstagram} />
-          <FontAwesomeIcon icon={faYoutube} />
-          <FontAwesomeIcon icon={faLinkedin} />
-          <FontAwesomeIcon icon={faVimeoV} />
-        </div>
+        <div className={classes.icons}>{allIcons}</div>
         <div className={classes.bottom}>
           <Link href="/" className={classes.logo}>
             {/* Here I used (PostImage) tool to create URL for my local image */}
@@ -33,22 +54,12 @@ const Footer = () => {
             </h4>
           </Link>
           <span className={classes.rights}>
-            &copy; 2023 FrontEndDevo &lt; Beshoy Tag /&gt;
+            &copy; 2024 FrontEndDevo &lt; Beshoy Tag /&gt;
           </span>
         </div>
       </div>
       <div className={classes.pages}>
-        <div className={classes.links}>
-          <Link href="/about">about</Link>
-          <Link href="/terms-use">terms of use</Link>
-          <Link href="/contact">contact</Link>
-          <Link href="/privacy-policy">privacy policy</Link>
-          <Link href="/sign in">sign in</Link>
-          <Link href="/cookie-policy">cookie policy</Link>
-          <Link href="/create account">create account</Link>
-          <Link href="/submit-story">submit a story</Link>
-          <Link href="/become-contributor">become a contributor</Link>
-        </div>
+        <div className={classes.links}>{allLinks}</div>
         <div className={classes.apps}>
           <div className={classes.google}>
             <FontAwesomeIcon icon={faGoogle} />
