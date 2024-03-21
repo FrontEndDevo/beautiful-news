@@ -2,10 +2,14 @@ import classes from "./Keyword.module.scss";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setSearchedKeyword } from "../../../../store/Filters/keyword-slice";
 
 const Keyword = React.memo(() => {
+  const dispatch = useDispatch();
+
   const changeKeywordHandler = (e) => {
-    console.log(e.target.value);
+    dispatch(setSearchedKeyword(e.target.value));
   };
 
   return (
