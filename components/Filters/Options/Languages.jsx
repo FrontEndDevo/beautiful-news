@@ -1,3 +1,4 @@
+import React from "react";
 import Dropdown from "../../../shared/Dropdown/Dropdown";
 const storiesLanguages = [
   "en",
@@ -16,7 +17,7 @@ const storiesLanguages = [
   "zh",
 ];
 
-const Languages = () => {
+const Languages = React.memo(() => {
   return (
     <Dropdown
       options={storiesLanguages}
@@ -24,6 +25,6 @@ const Languages = () => {
       getSelectedOption={(option) => console.log(option)}
     />
   );
-};
+});
 
 export default Languages;

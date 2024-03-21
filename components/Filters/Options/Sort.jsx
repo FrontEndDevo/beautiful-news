@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 import Dropdown from "../../../shared/Dropdown/Dropdown";
 const sortOptions = ["publishedAt", "relevancy", "popularity"];
 
-const Sort = () => {
+const Sort = React.memo(() => {
   return (
     <Dropdown
       options={sortOptions}
@@ -12,6 +10,6 @@ const Sort = () => {
       getSelectedOption={(option) => console.log(option)}
     />
   );
-};
+});
 
 export default Sort;

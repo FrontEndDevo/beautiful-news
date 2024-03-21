@@ -1,9 +1,9 @@
 import classes from "./Keyword.module.scss";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef } from "react";
+import React from "react";
 
-const Keyword = () => {
+const Keyword = React.memo(() => {
   const changeKeywordHandler = (e) => {
     console.log(e.target.value);
   };
@@ -20,6 +20,6 @@ const Keyword = () => {
       <FontAwesomeIcon icon={faMagnifyingGlass} />
     </div>
   );
-};
+});
 
 export default Keyword;
