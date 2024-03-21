@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import classes from "./Filters.module.scss";
 import Options from "./Options/Options";
-import Sort from "./Options/Sort/Sort";
+import Sort from "./Options/Sort";
 import Keyword from "./Options/Keyword/Keyword";
 const optionsObj = {
   languages: [
@@ -48,9 +48,6 @@ const Filters = (props) => {
     .reverse();
 
   // Functions to handle the values selected for each select tag:
-  const selectSortByOptionHandler = (opt) => {
-    setSortBy(opt);
-  };
 
   const getSearchedKeywordHandler = (keyword) => {
     setKeyword(keyword);
@@ -142,7 +139,7 @@ const Filters = (props) => {
           </div>
         )}
       </form>
-      <Sort chooseSortByOption={selectSortByOptionHandler} />
+      <Sort />
       <Keyword getSearchedKeyword={getSearchedKeywordHandler} />
     </>
   );
