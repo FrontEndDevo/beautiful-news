@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import classes from "./Filters.module.scss";
 import Options from "./Options/Options";
 import Sort from "./Options/Sort/Sort";
+import Keyword from "./Options/Keyword/Keyword";
 const optionsObj = {
   languages: [
     "en",
@@ -30,6 +31,8 @@ const Filters = (props) => {
   const [language, setLanguage] = useState("en");
   const [pageSize, setPageSize] = useState(100);
   const [sortBy, setSortBy] = useState("publishedAt");
+  const [keyword, setKeyword] = useState("google");
+
   const keywordInputRef = useRef();
   const showFiltersHandler = () => {
     setShowFilters((prev) => !prev);
@@ -45,9 +48,12 @@ const Filters = (props) => {
     .reverse();
 
   // Functions to handle the values selected for each select tag:
-  const selectSortByOption = (opt) => {
-    console.log(opt);
+  const selectSortByOptionHandler = (opt) => {
     setSortBy(opt);
+  };
+
+  const getSearchedKeywordHandler = (keyword) => {
+    setKeyword(keyword);
   };
 
   const changeSortByHandler = (sort) => {
@@ -136,7 +142,8 @@ const Filters = (props) => {
           </div>
         )}
       </form>
-      <Sort chooseSortByOption={selectSortByOption} />
+      <Sort chooseSortByOption={selectSortByOptionHandler} />
+      <Keyword getSearchedKeyword={getSearchedKeywordHandler} />
     </>
   );
 };

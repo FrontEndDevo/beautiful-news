@@ -1,0 +1,32 @@
+@use "../../../../styles/vars" as *;
+
+.keyword {
+  input {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+    outline: none;
+    letter-spacing: 0.1em;
+    border-radius: 3px;
+    border-color: #71717a;
+    caret-color: #4b5563;
+    border: 1px solid $lighter_rose;
+  }
+
+  svg {
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    right: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    width: 35px;
+    height: 42px;
+    color: white;
+    background-color: #71717a;
+    transition-duration: 200ms;
+  }
+}
