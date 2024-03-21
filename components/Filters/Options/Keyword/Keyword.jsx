@@ -3,9 +3,9 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef } from "react";
 
-const Keyword = ({ getSearchedKeyword }) => {
+const Keyword = () => {
   const changeKeywordHandler = (e) => {
-    getSearchedKeyword(e.target.value);
+    console.log(e.target.value);
   };
 
   return (
