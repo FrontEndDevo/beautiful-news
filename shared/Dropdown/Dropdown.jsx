@@ -25,7 +25,10 @@ const Dropdown = ({ label, options, getSelectedOption }) => {
         className={classes.title}
       >
         <h4>{selectedOption ? selectedOption : label}</h4>
-        <FontAwesomeIcon icon={faAngleDown} />
+        <FontAwesomeIcon
+          icon={faAngleDown}
+          className={isDropdownOpen ? classes.open : classes.close}
+        />
       </div>
       <ul
         className={`${classes.options} ${

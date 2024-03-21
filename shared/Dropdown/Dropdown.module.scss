@@ -21,9 +21,12 @@
       text-transform: capitalize;
     }
     svg {
-      transition: 300ms;
-      &.rotate {
+      transition: 200ms;
+      &.open {
         transform: rotate(180deg);
+      }
+      &.close {
+        transform: rotate(0);
       }
     }
   }
