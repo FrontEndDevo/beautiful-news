@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const pagesSlice = createSlice({
-  name: "pages",
+  name: "pagesize",
   initialState: 100,
   reducers: {
-    setPageSize: (state, action) => {
-      state = action.payload;
-    },
+    setPageSize: (state, action) => action.payload,
   },
 });
 

@@ -4,9 +4,7 @@ const sortSlice = createSlice({
   name: "sort",
   initialState: "publishedAt",
   reducers: {
-    setSortOption: (state, action) => {
-      state = action.payload;
-    },
+    setSortOption: (state, action) => action.payload,
   },
 });
 
