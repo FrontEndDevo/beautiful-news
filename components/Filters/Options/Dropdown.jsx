@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 const Dropdown = ({ label, options, getSelectedOption }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
+  const [selectedOption, setSelectedOption] = useState(null);
   // Function to handle the selected option:
   const selectOptionHandler = (option) => {
     getSelectedOption(option);
+    setIsDropdownOpen(false);
+    setSelectedOption(option);
   };
 
   const allOptions = options.map((opt, i) => (
@@ -22,7 +24,7 @@ const Dropdown = ({ label, options, getSelectedOption }) => {
         onClick={() => setIsDropdownOpen((prevState) => !prevState)}
         className={classes.title}
       >
-        <h4>{label}</h4>
+        <h4>{selectedOption ? selectedOption : label}</h4>
         <FontAwesomeIcon icon={faAngleDown} />
       </div>
       <ul
