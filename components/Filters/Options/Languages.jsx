@@ -1,4 +1,4 @@
-import Dropdown from "./Dropdown";
+import Dropdown from "../../../shared/Dropdown/Dropdown";
 const storiesLanguages = [
   "en",
   "ar",
