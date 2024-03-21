@@ -4,7 +4,7 @@ import classes from "./Stories.module.scss";
 import Story from "./Story/Story";
 const Stories = ({
   everything = false,
-  keyword = "Tesla",
+  keyword = "Google",
   filteredStories = [],
 }) => {
   // Detect the page we on now and fetch the correct news from redux-store.

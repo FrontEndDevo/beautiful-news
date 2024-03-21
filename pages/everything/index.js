@@ -50,14 +50,14 @@ const Everything = ({ everythingNews, totalResults }) => {
       ? `${
           filters.keyword.charAt(0).toUpperCase() + filters.keyword.slice(1)
         } | Everything | Beautiful News`
-      : "Tesla | Everything | Beautiful News";
+      : "Google | Everything | Beautiful News";
 
   // Store (Everything-News) in everything-slice.js.
   const dispatch = useDispatch();
 
   dispatch(
     everythingNewsActions.everythingStore({
-      topic: newStories.topic || "tesla",
+      topic: newStories.topic || "google",
       news: newStories.articles ? newStories.articles : everythingNews,
       total: newStories.articles ? newStories.totalResults : totalResults,
     })
@@ -92,7 +92,7 @@ export default Everything;
 
 export async function getStaticProps() {
   const response = await fetch(
-    `https://newsapi.org/v2/everything?apiKey=${process.env.NEXT_PUBLIC_NEXT_API_KEY}&q=tesla&language=en&pageSize=100&sortBy=publishedAt`
+    `https://newsapi.org/v2/everything?apiKey=${process.env.NEXT_PUBLIC_NEXT_API_KEY}&q=google&language=en&pageSize=100&sortBy=publishedAt`
   );
   const data = await response.json();
   const everythingData = [];
