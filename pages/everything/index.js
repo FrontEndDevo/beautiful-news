@@ -21,7 +21,7 @@ const Everything = ({ everythingNews, totalResults }) => {
     // Start fetching the required news/stories:
     const getFilteredNews = async () => {
       const response = await fetch(
-        `https://newsapi.org/v2/everything?apiKey=8804ae5da994436aa3ab963e0217fe73&q=${keyword}&language=${language}&pageSize=${pageSize}&sortBy=${sortBy}`
+        `https://newsapi.org/v2/everything?apiKey=${process.env.NEXT_PUBLIC_NEXT_API_KEY}&q=${keyword}&language=${language}&pageSize=${pageSize}&sortBy=${sortBy}`
       );
       const data = await response.json();
       const newNews = [];
@@ -92,7 +92,7 @@ export default Everything;
 
 export async function getStaticProps() {
   const response = await fetch(
-    "https://newsapi.org/v2/everything?apiKey=8804ae5da994436aa3ab963e0217fe73&q=tesla&language=en&pageSize=100&sortBy=publishedAt"
+    `https://newsapi.org/v2/everything?apiKey=${process.env.NEXT_PUBLIC_NEXT_API_KEY}&q=tesla&language=en&pageSize=100&sortBy=publishedAt`
   );
   const data = await response.json();
   const everythingData = [];

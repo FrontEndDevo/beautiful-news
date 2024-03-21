@@ -69,7 +69,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // Fetching news from our API:
   const res = await fetch(
-    `https://newsapi.org/v2/top-headlines?pageSize=100&country=us&apiKey=8804ae5da994436aa3ab963e0217fe73&category=${context.params.categoryId}`
+    `https://newsapi.org/v2/top-headlines?pageSize=100&country=us&apiKey=${process.env.NEXT_PUBLIC_NEXT_API_KEY}&category=${context.params.categoryId}`
   );
   const categoryNews = await res.json();
 
