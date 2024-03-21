@@ -1,6 +1,7 @@
 @use "../../../../styles/vars" as *;
 
 .keyword {
+  position: relative;
   input {
     width: 100%;
     padding: 1rem 0.5rem;
@@ -23,10 +24,10 @@
     padding-right: 0.5rem;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
-    width: 35px;
-    height: 42px;
+    width: 40px;
+    height: 100%;
     color: white;
-    background-color: #71717a;
+    background-color: $lighter_rose;
     transition-duration: 200ms;
   }
 }
