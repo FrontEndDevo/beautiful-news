@@ -5,6 +5,7 @@ import classes from "./Filters.module.scss";
 import Options from "./Options/Options";
 import Sort from "./Options/Sort";
 import Keyword from "./Options/Keyword/Keyword";
+import Languages from "./Options/Languages";
 const optionsObj = {
   languages: [
     "en",
@@ -141,6 +142,7 @@ const Filters = (props) => {
       </form>
       <Sort />
       <Keyword getSearchedKeyword={getSearchedKeywordHandler} />
+      <Languages />
     </>
   );
 };
