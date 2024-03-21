@@ -41,34 +41,7 @@
         gap: 10px;
       }
     }
-    .buttons {
-      display: flex;
-      gap: 2rem;
 
-      button {
-        font-size: 1.5rem;
-        padding: 5px 15px;
-        border-radius: 4px;
-        color: white;
-        border: none;
-        background-color: transparent;
-        transition: $fast_transition;
-        cursor: pointer;
-        border: 3px solid $lighter_rose;
-        &:first-child {
-          &:hover {
-            background-color: $lighter_rose;
-          }
-        }
-        &:last-child {
-          background-color: $lighter_rose;
-          &:hover {
-            background-color: transparent;
-            border: 3px solid $lighter_rose;
-          }
-        }
-      }
-    }
     .contact-us {
       font-size: 1.5rem;
       h4 {
@@ -98,22 +71,9 @@
     &.show-side-bar {
       transform: translateX(100vw);
     }
-
-    .content {
-      .buttons {
-        gap: 1rem;
-        button {
-          flex: 1;
-          font-size: 1rem;
-          padding: 10px 20px;
-          &:last-child {
-            flex: 2;
-          }
-        }
-      }
-    }
   }
 }
+
 @include responsive(tablet) {
   .side-bar {
     width: 60vw;

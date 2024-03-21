@@ -48,10 +48,6 @@ const SideBar = (props) => {
             <Link href="/cookie-policy">Cookie Policy</Link>
           </div>
         </div>
-        <div className={classes.buttons}>
-          <button>Sign in</button>
-          <button>Create Account</button>
-        </div>
         <div className={classes["contact-us"]}>
           <h4>Find us on</h4>
           {contactIcons}
