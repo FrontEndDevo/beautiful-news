@@ -1,5 +1,5 @@
 import { faAngleDown, faSliders } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./Filters.module.scss";
 import Sort from "./Options/Sort";
 import Keyword from "./Options/Keyword/Keyword";
@@ -9,34 +9,60 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Filters = () => {
   const [areFiltersOpen, setAreFiltersOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup function to remove the event listener
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className={classes["all-filters"]}>
-      <div
-        onClick={() => setAreFiltersOpen((prevState) => !prevState)}
-        className={classes["filters-gate"]}
-      >
-        <div className={classes["L-H-S"]}>
-          <FontAwesomeIcon icon={faSliders} />
-          <h4>Filters</h4>
+      {!isMobile && (
+        <div
+          onClick={() => setAreFiltersOpen((prevState) => !prevState)}
+          className={classes["filters-gate"]}
+        >
+          <div className={classes["L-H-S"]}>
+            <FontAwesomeIcon icon={faSliders} />
+            <h4>Filters</h4>
+          </div>
+          <div className={classes.arrow}>
+            <FontAwesomeIcon
+              icon={faAngleDown}
+              className={areFiltersOpen ? classes.open : classes.close}
+            />
+          </div>
         </div>
-        <div className={classes.arrow}>
-          <FontAwesomeIcon
-            icon={faAngleDown}
-            className={areFiltersOpen ? classes.open : classes.close}
-          />
-        </div>
-      </div>
+      )}
       <div
         className={`${classes.filters} ${
-          areFiltersOpen ? classes.show : classes.hide
+          !isMobile ? (areFiltersOpen ? classes.show : classes.hide) : null
         }`}
       >
-        <Keyword />
-        <Sort />
-        <Languages />
-        <PageSize />
-        <button className={classes.apply}>Apply</button>
+        <div className={classes.div1}>
+          <Keyword />
+        </div>
+        <div className={classes.div2}>
+          <Sort />
+        </div>
+        <div className={classes.div3}>
+          <Languages />
+        </div>
+        <div className={classes.div4}>
+          <PageSize />
+        </div>
+        <div className={classes.div5}>
+          <button className={classes.apply}>Apply</button>
+        </div>
       </div>
     </div>
   );
