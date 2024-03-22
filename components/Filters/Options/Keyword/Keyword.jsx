@@ -3,13 +3,13 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setSearchedKeyword } from "../../../../store/Filters/keyword-slice";
+import { setKeyword } from "../../../../store/filters-slice";
 
 const Keyword = React.memo(() => {
   const dispatch = useDispatch();
 
   const changeKeywordHandler = (e) => {
-    dispatch(setSearchedKeyword(e.target.value.trim()));
+    dispatch(setKeyword(e.target.value.trim()));
   };
 
   return (

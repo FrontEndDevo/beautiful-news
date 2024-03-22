@@ -1,7 +1,7 @@
 import React from "react";
 import Dropdown from "../../../shared/Dropdown/Dropdown";
 import { useDispatch } from "react-redux";
-import { setPageSize } from "../../../store/Filters/pages-slice";
+import { setPageSize } from "../../../store/filters-slice";
 
 const pageSizes = Array.from({ length: 10 }, (_, i) => (i + 1) * 10);
 
