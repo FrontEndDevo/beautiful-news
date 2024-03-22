@@ -5,8 +5,9 @@ const pagesSlice = createSlice({
   initialState: 100,
   reducers: {
     setPageSize: (state, action) => action.payload,
+    resetPageSize: () => 100,
   },
 });
 
-export const { setPageSize } = pagesSlice.actions;
+export const { setPageSize, resetPageSize } = pagesSlice.actions; // Export the resetPageSize action
 export default pagesSlice.reducer;

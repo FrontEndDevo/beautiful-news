@@ -6,9 +6,10 @@ const keywordSlice = createSlice({
   reducers: {
     setSearchedKeyword: (state, action) =>
       action.payload == "" ? state : action.payload,
+    resetKeyword: () => "google",
   },
 });
 
-export const { setSearchedKeyword } = keywordSlice.actions;
+export const { setSearchedKeyword, resetKeyword } = keywordSlice.actions;
 
 export default keywordSlice.reducer;

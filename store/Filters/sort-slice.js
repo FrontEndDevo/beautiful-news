@@ -5,9 +5,10 @@ const sortSlice = createSlice({
   initialState: "publishedAt",
   reducers: {
     setSortOption: (state, action) => action.payload,
+    resetSort: () => "publishedAt",
   },
 });
 
-export const { setSortOption } = sortSlice.actions;
+export const { setSortOption, resetSort } = sortSlice.actions;
 
 export default sortSlice.reducer;

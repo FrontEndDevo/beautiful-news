@@ -5,9 +5,10 @@ const languageSlice = createSlice({
   initialState: "en",
   reducers: {
     setLanguage: (state, action) => action.payload,
+    resetLanguage: () => "en",
   },
 });
 
-export const { setLanguage } = languageSlice.actions;
+export const { setLanguage, resetLanguage } = languageSlice.actions;
 
 export default languageSlice.reducer;

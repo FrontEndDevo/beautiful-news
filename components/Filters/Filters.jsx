@@ -6,10 +6,20 @@ import Keyword from "./Options/Keyword/Keyword";
 import Languages from "./Options/Languages";
 import PageSize from "./Options/PageSize";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch, useSelector } from "react-redux";
 
 const Filters = () => {
   const [areFiltersOpen, setAreFiltersOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Reset all filters when the component is mounted.
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(resetKeyword());
+    dispatch(resetLanguage());
+    dispatch(resetPageSize());
+    dispatch(resetSort());
+  }, [dispatch]);
 
   useEffect(() => {
     const handleResize = () => {
