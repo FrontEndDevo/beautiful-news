@@ -10,6 +10,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import classes from "./Footer.module.scss";
+import React from "react";
 const footerIcons = [faFacebookF, faInstagram, faYoutube, faLinkedin, faVimeoV];
 const footerLinks = [
   "about",
@@ -20,7 +21,7 @@ const footerLinks = [
   "submit story",
   "become contributor",
 ];
-const Footer = () => {
+const Footer = React.memo(() => {
   const allIcons = footerIcons.map((icon, index) => (
     <FontAwesomeIcon key={index} icon={icon} />
   ));
@@ -77,6 +78,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;

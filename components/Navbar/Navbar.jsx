@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Navbar.module.scss";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,7 +6,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import SideBar from "../SideBar/SideBar";
 import { useDispatch } from "react-redux";
 import { searchActions } from "../../store/search-bar-slice";
-const Navbar = () => {
+const Navbar = React.memo(() => {
   const [navbarBackground, setNavbarBackground] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [sideBar, setSideBar] = useState(false);
@@ -97,6 +97,6 @@ const Navbar = () => {
       )}
     </nav>
   );
-};
+});
 
 export default Navbar;
