@@ -1,6 +1,6 @@
 import Head from "next/head";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Filters from "../../components/Filters/Filters";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
@@ -10,14 +10,22 @@ import { everythingNewsActions } from "../../store/everything-slice";
 const Everything = ({ everythingNews, totalResults }) => {
   // To store the required news after set filters by user and fetch them.
   const [newStories, setNewStories] = useState({});
-  const [filters, setFilters] = useState({});
 
-  const getFiltersAndFetchNewsHandler = (filtersObj) => {
-    setFilters(filtersObj);
+  const dispatch = useDispatch();
 
-    // use object destructuring to extract values:
-    const { keyword, language, pageSize, sortBy } = filtersObj;
+  // Get filters from the user and fetch the required news/stories.
+  const { keyword, language, pageSize, sortBy } = useSelector((state) => ({
+    keyword: state.keyword,
+    language: state.language,
+    pageSize: state.pagesize,
+    sortBy: state.sort,
+  }));
 
+  console.log(
+    `Keyword: ${keyword}, Language: ${language}, PageSize: ${pageSize}, SortBy: ${sortBy}`
+  );
+
+  useEffect(() => {
     // Start fetching the required news/stories:
     const getFilteredNews = async () => {
       const response = await fetch(
@@ -43,18 +51,16 @@ const Everything = ({ everythingNews, totalResults }) => {
       });
     };
     getFilteredNews();
-  };
+  }, [keyword, language, pageSize, sortBy]);
 
   const headTitle =
-    Object.keys(filters).length > 0
-      ? `${
-          filters.keyword.charAt(0).toUpperCase() + filters.keyword.slice(1)
-        } | Everything | Beautiful News`
-      : "Google | Everything | Beautiful News";
+    keyword === "google"
+      ? "Google | Everything | Beautiful News"
+      : `${
+          keyword.charAt(0).toUpperCase() + keyword.slice(1)
+        } | Everything | Beautiful News`;
 
   // Store (Everything-News) in everything-slice.js.
-  const dispatch = useDispatch();
-
   dispatch(
     everythingNewsActions.everythingStore({
       topic: newStories.topic || "google",
@@ -70,14 +76,12 @@ const Everything = ({ everythingNews, totalResults }) => {
         <meta
           name="description"
           content={`Discover all the news around ${
-            Object.keys(filters).length > 0
-              ? filters.keyword
-              : "a certain topic"
+            keyword === "google" ? "Google" : keyword
           } in all languages`}
         />
       </Head>
       <Navbar />
-      <Filters getFilters={getFiltersAndFetchNewsHandler} />
+      <Filters />
       <Stories
         everything={true}
         keyword={newStories.topic}
