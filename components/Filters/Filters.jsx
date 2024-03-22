@@ -1,5 +1,5 @@
 import { faAngleDown, faSliders } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import classes from "./Filters.module.scss";
 import Sort from "./Options/Sort";
 import Keyword from "./Options/Keyword/Keyword";
@@ -12,7 +12,7 @@ import { resetLanguage } from "../../store/Filters/language-slice";
 import { resetPageSize } from "../../store/Filters/pages-slice";
 import { resetSort } from "../../store/Filters/sort-slice";
 
-const Filters = () => {
+const Filters = memo(() => {
   const [areFiltersOpen, setAreFiltersOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -80,6 +80,6 @@ const Filters = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Filters;
