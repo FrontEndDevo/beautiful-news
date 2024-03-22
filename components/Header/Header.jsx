@@ -23,24 +23,29 @@ const Header = ({ isHomePage = false }) => {
     : detectAndFetch();
 
   const [pickedStory, setPickedStory] = useState({
-    urlToImage: "https://postimg.cc/8fsgNGXC",
-    title: "",
-    url: "",
+    urlToImage: fetchHeaderNews[0].urlToImage || "https://postimg.cc/8fsgNGXC",
+    title: fetchHeaderNews[0].title || "",
+    url: fetchHeaderNews[0].url || "",
   });
   // Pick a story and put its info in the header cells every (1m || 60000 milliseconds):
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (fetchHeaderNews.length > 0) {
+    if (fetchHeaderNews.length > 0) {
+      // Immediately set a random story
+      setPickedStory(
+        fetchHeaderNews[Math.floor(Math.random() * fetchHeaderNews.length)]
+      );
+
+      // Then set a new random story every minute
+      const intervalId = setInterval(() => {
         setPickedStory(
           fetchHeaderNews[Math.floor(Math.random() * fetchHeaderNews.length)]
         );
-      }
-    }, 60000);
+      }, 60000);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [fetchHeaderNews, setPickedStory]);
+      // Clear the interval when the component unmounts or fetchHeaderNews changes
+      return () => clearInterval(intervalId);
+    }
+  }, [fetchHeaderNews]);
 
   return (
     <header className={classes.header}>
