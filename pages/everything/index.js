@@ -14,12 +14,9 @@ const Everything = ({ everythingNews, totalResults }) => {
   const dispatch = useDispatch();
 
   // Get filters from the user and fetch the required news/stories.
-  const { keyword, language, pageSize, sortBy } = useSelector((state) => ({
-    keyword: state.keyword,
-    language: state.language,
-    pageSize: state.pagesize,
-    sortBy: state.sort,
-  }));
+  const { keyword, sortBy, language, pageSize } = useSelector(
+    (state) => state.filters
+  );
 
   console.log(
     `Keyword: ${keyword}, Language: ${language}, PageSize: ${pageSize}, SortBy: ${sortBy}`
