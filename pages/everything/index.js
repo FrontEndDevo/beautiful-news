@@ -25,31 +25,38 @@ const Everything = ({ everythingNews, totalResults }) => {
   useEffect(() => {
     // Start fetching the required news/stories:
     const getFilteredNews = async () => {
-      const response = await fetch(
-        `https://newsapi.org/v2/everything?apiKey=${process.env.NEXT_PUBLIC_NEXT_API_KEY}&q=${keyword}&language=${language}&pageSize=${pageSize}&sortBy=${sortBy}`
-      );
-      const data = await response.json();
-      const newNews = [];
-      for (const key in data.articles) {
-        newNews.push({
-          source: data.articles[key].source,
-          author: data.articles[key].author,
-          title: data.articles[key].title,
-          description: data.articles[key].description,
-          url: data.articles[key].url,
-          urlToImage: data.articles[key].urlToImage,
-          content: data.articles[key].content,
+      try {
+        const response = await fetch(
+          `https://newsapi.org/v2/everything?apiKey=${process.env.NEXT_PUBLIC_NEXT_API_KEY}&q=${keyword}&language=${language}&pageSize=${pageSize}&sortBy=${sortBy}`
+        );
+        const data = await response.json();
+
+        const newNews = [];
+        for (const key in data.articles) {
+          newNews.push({
+            source: data.articles[key].source,
+            author: data.articles[key].author,
+            title: data.articles[key].title,
+            description: data.articles[key].description,
+            url: data.articles[key].url,
+            urlToImage: data.articles[key].urlToImage,
+            content: data.articles[key].content,
+          });
+        }
+
+        setNewStories({
+          topic: keyword,
+          articles: newNews,
+          totalResults: data.totalResults,
         });
+      } catch (error) {
+        console.error("Failed to fetch news:", error);
       }
-      setNewStories({
-        topic: keyword,
-        articles: newNews,
-        totalResults: data.totalResults,
-      });
     };
     getFilteredNews();
   }, [keyword, language, pageSize, sortBy]);
 
+  // Set the head title for the page.
   const headTitle =
     keyword === "google"
       ? "Google | Everything | Beautiful News"
