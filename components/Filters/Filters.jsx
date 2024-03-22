@@ -6,7 +6,11 @@ import Keyword from "./Options/Keyword/Keyword";
 import Languages from "./Options/Languages";
 import PageSize from "./Options/PageSize";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { resetKeyword } from "../../store/Filters/keyword-slice";
+import { resetLanguage } from "../../store/Filters/language-slice";
+import { resetPageSize } from "../../store/Filters/pages-slice";
+import { resetSort } from "../../store/Filters/sort-slice";
 
 const Filters = () => {
   const [areFiltersOpen, setAreFiltersOpen] = useState(false);
