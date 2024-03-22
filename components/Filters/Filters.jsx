@@ -7,10 +7,7 @@ import Languages from "./Options/Languages";
 import PageSize from "./Options/PageSize";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
-import { resetKeyword } from "../../store/Filters/keyword-slice";
-import { resetLanguage } from "../../store/Filters/language-slice";
-import { resetPageSize } from "../../store/Filters/pages-slice";
-import { resetSort } from "../../store/Filters/sort-slice";
+import { resetFilters } from "../../store/filters-slice";
 
 const Filters = memo(() => {
   const [areFiltersOpen, setAreFiltersOpen] = useState(false);
@@ -19,11 +16,8 @@ const Filters = memo(() => {
   // Reset all filters when the component is mounted.
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(resetKeyword());
-    dispatch(resetLanguage());
-    dispatch(resetPageSize());
-    dispatch(resetSort());
-  }, [dispatch]);
+    dispatch(resetFilters());
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
