@@ -45,7 +45,7 @@ const Header = ({ isHomePage = false }) => {
       // Clear the interval when the component unmounts or fetchHeaderNews changes
       return () => clearInterval(intervalId);
     }
-  }, [fetchHeaderNews]);
+  }, []);
 
   return (
     <header className={classes.header}>
