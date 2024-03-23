@@ -20,10 +20,6 @@ const Everything = ({ everythingNews, totalResults }) => {
     (state) => state.filters
   );
 
-  console.log(
-    `Keyword: ${keyword}, Language: ${language}, PageSize: ${pageSize}, SortBy: ${sortBy}`
-  );
-
   useEffect(() => {
     // Start fetching the required news/stories:
     const getFilteredNews = async () => {
