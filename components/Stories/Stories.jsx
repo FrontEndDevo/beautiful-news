@@ -50,7 +50,7 @@ const Stories = ({
       </div>
 
       {allStories.length > 0 ? (
-        <div className={classes["rendered-stories"]}>allStories</div>
+        <div className={classes["rendered-stories"]}>{allStories}</div>
       ) : (
         <p className={classes["no-news"]}>
           oops...There are no news at this moment.
