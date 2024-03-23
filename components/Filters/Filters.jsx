@@ -68,9 +68,6 @@ const Filters = memo(() => {
         <div className={classes.div4}>
           <PageSize />
         </div>
-        <div className={classes.div5}>
-          <button className={classes.apply}>Apply</button>
-        </div>
       </div>
     </div>
   );
