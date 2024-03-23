@@ -103,38 +103,29 @@ const Everything = ({ everythingNews, totalResults }) => {
 export default Everything;
 
 export async function getStaticProps() {
-  try {
-    const response = await fetch(
-      `https://newsapi.org/v2/everything?apiKey=${process.env.NEXT_PUBLIC_NEXT_API_KEY}&q=google&language=en&pageSize=100&sortBy=publishedAt`
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
-
-    const everythingData = data.articles.map((article) => ({
-      source: article.source,
-      author: article.author,
-      title: article.title,
-      description: article.description,
-      url: article.url,
-      urlToImage: article.urlToImage,
-      content: article.content,
-    }));
-
-    return {
-      props: {
-        everythingNews: everythingData,
-        totalResults: data.totalResults,
-      },
-      revalidate: 43200, // Will fetching new 'news' every 12 hours.
+  const response = await fetch(
+    `https://newsapi.org/v2/everything?apiKey=${process.env.NEXT_PUBLIC_NEXT_API_KEY}&q=google&language=en&pageSize=100&sortBy=publishedAt`
+  );
+  const data = await response.json();
+  const everythingData = [];
+  for (const key in data.articles) {
+    const article = {
+      source: data.articles[key].source,
+      author: data.articles[key].author,
+      title: data.articles[key].title,
+      description: data.articles[key].description,
+      url: data.articles[key].url,
+      urlToImage: data.articles[key].urlToImage,
+      content: data.articles[key].content,
     };
-  } catch (error) {
-    console.error(`Fetch Error: ${error.message}`);
-    return {
-      notFound: true,
-    };
+    everythingData.push(article);
   }
+
+  return {
+    props: {
+      everythingNews: everythingData || [],
+      totalResults: data.totalResults || 0,
+    },
+    revalidate: 43200, // Will fetching new 'news' every 12 hours.
+  };
 }
