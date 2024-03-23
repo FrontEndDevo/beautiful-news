@@ -40,11 +40,7 @@ const Story = (props) => {
       />
       <div className={classes["image-hover"]}></div>
       <div className={classes.icons}>
-        <div className={classes["top-icons"]}>
-          <FontAwesomeIcon icon={faBookmark} />
-          <FontAwesomeIcon icon={faHeart} />
-        </div>
-        <FontAwesomeIcon icon={faPlay} className={classes["bottom-icon"]} />
+        <FontAwesomeIcon icon={faPlay} className={classes.play} />
       </div>
     </Link>
   );

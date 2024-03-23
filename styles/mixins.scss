@@ -206,9 +206,12 @@
       .top-icons {
         margin-right: 5px;
       }
-      .bottom-icon {
+      .play {
         margin-bottom: 1rem;
-        margin-right: 5px;
+        background-color: $lighter_rose;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
       }
     }
 
