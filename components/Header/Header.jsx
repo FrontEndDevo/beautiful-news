@@ -24,8 +24,8 @@ const Header = ({ isHomePage = false }) => {
 
   const [pickedStory, setPickedStory] = useState({
     urlToImage: fetchHeaderNews[0].urlToImage || "https://postimg.cc/8fsgNGXC",
-    title: fetchHeaderNews[0].title || "",
-    url: fetchHeaderNews[0].url || "",
+    title: fetchHeaderNews[0].title || "No Title",
+    url: fetchHeaderNews[0].url || "/www.google.com",
   });
   // Pick a story and put its info in the header cells every (1m || 60000 milliseconds):
   useEffect(() => {
@@ -49,13 +49,10 @@ const Header = ({ isHomePage = false }) => {
 
   return (
     <header className={classes.header}>
-      <img
-        src={pickedStory.urlToImage || "https://postimg.cc/8fsgNGXC"}
-        alt={pickedStory.title || ""}
-      />
+      <img src={pickedStory.urlToImage} alt={pickedStory.title} />
       <div className={classes.content}>
         <h3>Today's beautiful news</h3>
-        <h1>{pickedStory.title || ""}</h1>
+        <h1>{pickedStory.title}</h1>
 
         <div className={classes.titles}>
           <Link href="/">General</Link>
@@ -63,7 +60,7 @@ const Header = ({ isHomePage = false }) => {
         </div>
 
         <Link
-          href={pickedStory.url || ""}
+          href={pickedStory.url}
           target="_blank"
           className={classes["play-icon"]}
         >
