@@ -123,7 +123,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      everythingNews: everythingData || [],
+      everythingNews: everythingData,
       totalResults: data.totalResults || 0,
     },
     revalidate: 43200, // Will fetching new 'news' every 12 hours.

@@ -92,7 +92,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       categoryNews: loadedNews,
-      totalResults: categoryNews.totalResults,
+      totalResults: categoryNews.totalResults || 0,
       categoryId: context.params.categoryId,
     },
   };

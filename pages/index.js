@@ -64,7 +64,7 @@ export async function getStaticProps() {
     return {
       category: category.headline,
       news: loadedNews,
-      total: data.totalResults,
+      total: data.totalResults || 0,
     };
   });
 
