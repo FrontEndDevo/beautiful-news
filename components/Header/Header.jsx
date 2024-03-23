@@ -28,12 +28,12 @@ const Header = ({ isHomePage = false }) => {
           urlToImage:
             fetchHeaderNews[0].urlToImage || "https://postimg.cc/8fsgNGXC",
           title: fetchHeaderNews[0].title || "No Title",
-          url: fetchHeaderNews[0].url || "/www.google.com",
+          url: fetchHeaderNews[0].url || "/",
         }
       : {
           urlToImage: "https://postimg.cc/8fsgNGXC",
           title: "No Title",
-          url: "/www.google.com",
+          url: "/",
         }
   );
   // Pick a story and put its info in the header cells every (1m || 60000 milliseconds):
