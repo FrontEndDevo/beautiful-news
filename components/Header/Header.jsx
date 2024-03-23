@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import classes from "./Header.module.scss";
-import Shape from "../Shape/Shape";
+import Shape from "../../shared/Shape/Shape";
 import { detectAndFetch } from "../../helpers/detectAndFetch";
 import { useSelector } from "react-redux";
 const Header = ({ isHomePage = false }) => {
