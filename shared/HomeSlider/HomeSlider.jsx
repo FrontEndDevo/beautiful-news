@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Story from "../Stories/Story/Story";
+import Story from "../../components/Stories/Story/Story";
 import classes from "./HomeSlider.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
