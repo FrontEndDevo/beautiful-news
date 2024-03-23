@@ -22,11 +22,20 @@ const Header = ({ isHomePage = false }) => {
         .flatMap((stories) => stories)
     : detectAndFetch();
 
-  const [pickedStory, setPickedStory] = useState({
-    urlToImage: fetchHeaderNews[0].urlToImage || "https://postimg.cc/8fsgNGXC",
-    title: fetchHeaderNews[0].title || "No Title",
-    url: fetchHeaderNews[0].url || "/www.google.com",
-  });
+  const [pickedStory, setPickedStory] = useState(
+    fetchHeaderNews[0]
+      ? {
+          urlToImage:
+            fetchHeaderNews[0].urlToImage || "https://postimg.cc/8fsgNGXC",
+          title: fetchHeaderNews[0].title || "No Title",
+          url: fetchHeaderNews[0].url || "/www.google.com",
+        }
+      : {
+          urlToImage: "https://postimg.cc/8fsgNGXC",
+          title: "No Title",
+          url: "/www.google.com",
+        }
+  );
   // Pick a story and put its info in the header cells every (1m || 60000 milliseconds):
   useEffect(() => {
     if (fetchHeaderNews.length > 0) {
