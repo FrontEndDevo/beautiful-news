@@ -11,7 +11,7 @@ const Story = (props) => {
   const title = props.story.title ? props.story.title : "No Title";
   const img = props.story.urlToImage
     ? props.story.urlToImage
-    : "https://www.linkpicture.com/q/image-not-found-1-scaled.png";
+    : "https://postimg.cc/8fsgNGXC";
 
   // Fix (Long author name) problem
   const editedAuthor =
