@@ -6,10 +6,12 @@ import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Stories from "../../components/Stories/Stories";
 import { everythingNewsActions } from "../../store/everything-slice";
+import LoaderSpinner from "../../shared/LoaderSpinner/LoaderSpinner";
 
 const Everything = ({ everythingNews, totalResults }) => {
   // To store the required news after set filters by user and fetch them.
   const [newStories, setNewStories] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -25,6 +27,7 @@ const Everything = ({ everythingNews, totalResults }) => {
   useEffect(() => {
     // Start fetching the required news/stories:
     const getFilteredNews = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch(
           `https://newsapi.org/v2/everything?apiKey=${process.env.NEXT_PUBLIC_NEXT_API_KEY}&q=${keyword}&language=${language}&pageSize=${pageSize}&sortBy=${sortBy}`
@@ -52,6 +55,7 @@ const Everything = ({ everythingNews, totalResults }) => {
       } catch (error) {
         console.error("Failed to fetch news:", error);
       }
+      setIsLoading(false);
     };
     getFilteredNews();
   }, [keyword, language, pageSize, sortBy]);
@@ -86,11 +90,15 @@ const Everything = ({ everythingNews, totalResults }) => {
       </Head>
       <Navbar />
       <Filters />
-      <Stories
-        everything={true}
-        keyword={newStories.topic}
-        filteredStories={newStories.articles}
-      />
+      {isLoading ? (
+        <LoaderSpinner />
+      ) : (
+        <Stories
+          everything={true}
+          keyword={newStories.topic}
+          filteredStories={newStories.articles}
+        />
+      )}
       <Footer />
     </React.Fragment>
   );
