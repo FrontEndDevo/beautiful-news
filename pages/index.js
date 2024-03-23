@@ -5,7 +5,7 @@ import Headlines, { TOP_HEADLINES } from "../components/Headlines/Headlines";
 import Inbox from "../components/Inbox/Inbox";
 import Navbar from "../components/Navbar/Navbar";
 import { headlinesActions } from "../store/headlines-slice";
-import HomeSlider from "../components/HomeSlider/HomeSlider";
+import HomeSlider from "../shared/HomeSlider/HomeSlider";
 import StickyNavbar from "../components/StickyNavbar/StickyNavbar";
 
 export default function Home({ allHeadlinesNews = [] }) {
