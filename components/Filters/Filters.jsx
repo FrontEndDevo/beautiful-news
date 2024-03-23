@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { resetFilters } from "../../store/filters-slice";
 
 const Filters = memo(() => {
-  const [areFiltersOpen, setAreFiltersOpen] = useState(false);
+  const [areFiltersOpen, setAreFiltersOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   // Reset all filters when the component is mounted.
