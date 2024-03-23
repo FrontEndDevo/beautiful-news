@@ -1,19 +1,15 @@
 @use "../../styles/vars" as *;
 .spinner {
   display: flex;
-  margin: 0 auto;
-  height: 5rem;
-  width: 5rem;
+  margin: 2rem auto;
+  height: 4rem;
+  width: 4rem;
   border-radius: 50%;
-  border-width: 10px;
+  border-width: 8px;
   border-style: solid;
   border-right-color: transparent;
   color: $dark_rose;
   animation: spin 1s linear infinite;
-  position: absolute;
-  z-index: 10000;
-  top: 5%;
-  left: 50%;
   span {
     position: absolute;
     margin: 0px;
