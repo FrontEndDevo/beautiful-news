@@ -1,5 +1,5 @@
 import React from "react";
-import Dropdown from "../../../shared/Dropdown/Dropdown";
+import Dropdown from "../../Dropdown/Dropdown";
 import { useDispatch } from "react-redux";
 import { setPageSize } from "../../../store/filters-slice";
 

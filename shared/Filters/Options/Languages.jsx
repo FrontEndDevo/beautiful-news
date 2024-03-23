@@ -1,5 +1,5 @@
 import React from "react";
-import Dropdown from "../../../shared/Dropdown/Dropdown";
+import Dropdown from "../../Dropdown/Dropdown";
 import { setLanguage } from "../../../store/filters-slice";
 import { useDispatch } from "react-redux";
 const storiesLanguages = [

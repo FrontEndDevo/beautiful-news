@@ -1,5 +1,5 @@
 import React from "react";
-import Dropdown from "../../../shared/Dropdown/Dropdown";
+import Dropdown from "../../Dropdown/Dropdown";
 import { useDispatch } from "react-redux";
 import { setSortBy } from "../../../store/filters-slice";
 const sortOptions = ["publishedAt", "relevancy", "popularity"];
