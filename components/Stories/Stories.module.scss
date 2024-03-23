@@ -2,10 +2,28 @@
 @use "../../styles/mixins" as *;
 .stories {
   margin-bottom: 2rem;
-  h3 {
-    font-size: 2rem;
-    margin-left: 1rem;
-    font-weight: 900;
+  .title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+      font-size: 2rem;
+      margin-left: 1rem;
+      font-weight: 900;
+    }
+    p {
+      margin-right: 6rem;
+      border-bottom: 2px solid $lighter_rose;
+      padding: 3px;
+      border-radius: 6px;
+      span {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: $lighter_rose;
+      }
+    }
   }
 
   .no-news {
@@ -29,9 +47,16 @@
 
 @include responsive(mobile) {
   .stories {
-    h3 {
-      margin-left: 1rem;
-      font-size: 1rem;
+    .title {
+      flex-direction: column-reverse;
+      gap: 1rem;
+      h3 {
+        margin-left: 1rem;
+        font-size: 1rem;
+      }
+      p {
+        margin-right: 0;
+      }
     }
 
     .no-news {
@@ -50,9 +75,14 @@
 
 @include responsive(tablet) {
   .stories {
-    h3 {
-      font-size: 2rem;
-      margin-left: 1rem;
+    .title {
+      h3 {
+        font-size: 2rem;
+        margin-left: 1rem;
+      }
+      p {
+        margin-right: 1rem;
+      }
     }
 
     .no-news {

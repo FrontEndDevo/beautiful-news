@@ -34,13 +34,21 @@ const Stories = ({
 
   return (
     <main className={classes.stories}>
-      <h3>
-        {everything
-          ? `Everything We Know About <  ${
-              keyword.charAt(0).toUpperCase() + keyword.slice(1)
-            } />`
-          : "Worldwide News"}
-      </h3>
+      <div className={classes.title}>
+        <h3>
+          {everything
+            ? `Everything We Know About <  ${
+                keyword.charAt(0).toUpperCase() + keyword.slice(1)
+              } />`
+            : "Worldwide News"}
+        </h3>
+        {everything && (
+          <p>
+            Total Results: <span>{allStories.length}</span>
+          </p>
+        )}
+      </div>
+
       <div className={classes["rendered-stories"]}>
         {allStories.length > 0 ? (
           allStories
