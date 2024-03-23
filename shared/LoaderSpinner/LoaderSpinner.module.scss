@@ -1,0 +1,34 @@
+@use "../../styles/vars" as *;
+.spinner {
+  display: flex;
+  margin: 0 auto;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  border-width: 10px;
+  border-style: solid;
+  border-right-color: transparent;
+  color: $dark_rose;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  z-index: 10000;
+  top: 5%;
+  left: 50%;
+  span {
+    position: absolute;
+    margin: 0px;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    padding: 0;
+    clip: rect(0, 0, 0, 0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
