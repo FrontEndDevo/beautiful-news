@@ -49,15 +49,13 @@ const Stories = ({
         )}
       </div>
 
-      <div className={classes["rendered-stories"]}>
-        {allStories.length > 0 ? (
-          allStories
-        ) : (
-          <p className={classes["no-news"]}>
-            oops...There are no news at this moment.
-          </p>
-        )}
-      </div>
+      {allStories.length > 0 ? (
+        <div className={classes["rendered-stories"]}>allStories</div>
+      ) : (
+        <p className={classes["no-news"]}>
+          oops...There are no news at this moment.
+        </p>
+      )}
     </main>
   );
 };

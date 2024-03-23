@@ -27,14 +27,15 @@
   }
 
   .no-news {
+    width: fit-content;
     background-color: $dark;
     padding: 1rem 2rem;
     text-align: center;
-    margin: 0 auto 3rem;
-    font-size: 3rem;
+    margin: 2rem auto;
+    font-size: 2rem;
     font-weight: 700;
     font-style: italic;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   .rendered-stories {
@@ -60,8 +61,10 @@
     }
 
     .no-news {
+      width: unset;
       padding: 0.5rem 1rem;
-      font-size: 1.5rem;
+      font-size: 1rem;
+      margin: 2rem;
       font-weight: normal;
     }
     .rendered-stories {
