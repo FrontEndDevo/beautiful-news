@@ -25,10 +25,9 @@ const Header = ({ isHomePage = false }) => {
   const [pickedStory, setPickedStory] = useState(
     fetchHeaderNews[0]
       ? {
-          urlToImage:
-            fetchHeaderNews[0].urlToImage || "https://postimg.cc/8fsgNGXC",
-          title: fetchHeaderNews[0].title || "No Title",
-          url: fetchHeaderNews[0].url || "/",
+          urlToImage: fetchHeaderNews[0].urlToImage,
+          title: fetchHeaderNews[0].title,
+          url: fetchHeaderNews[0].url,
         }
       : {
           urlToImage: "https://postimg.cc/8fsgNGXC",
