@@ -36,15 +36,10 @@ const Header = ({ isHomePage = false }) => {
           url: "/",
         }
   );
-  // Pick a story and put its info in the header cells every (1m || 60000 milliseconds):
+  // Pick a story and put its info in the header cells every (1 minute || 60000 milliseconds):
   useEffect(() => {
     if (fetchHeaderNews.length > 0) {
-      // Immediately set a random story
-      setPickedStory(
-        fetchHeaderNews[Math.floor(Math.random() * fetchHeaderNews.length)]
-      );
-
-      // Then set a new random story every minute
+      // Set a new random story every minute
       const intervalId = setInterval(() => {
         setPickedStory(
           fetchHeaderNews[Math.floor(Math.random() * fetchHeaderNews.length)]
