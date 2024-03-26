@@ -20,8 +20,8 @@ const Stories = ({
   );
 
   // Filter the news we have in this page ang get the searched story:
-  const filteredRightNews = rightCurrentNews.filter((item) =>
-    item.title.toLowerCase().includes(searchedKeyword)
+  const filteredRightNews = rightCurrentNews.filter(
+    (item) => item.title && item.title.toLowerCase().includes(searchedKeyword)
   );
 
   // Filter duplicated stories:
@@ -37,7 +37,7 @@ const Stories = ({
       <div className={classes.title}>
         <h3>
           {everything
-            ? `Everything We Know About <  ${
+            ? `Everything We Know About < ${
                 keyword.charAt(0).toUpperCase() + keyword.slice(1)
               } />`
             : "Worldwide News"}
