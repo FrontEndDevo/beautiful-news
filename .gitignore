@@ -28,6 +28,7 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+# Test a new api key for news api.
 
 # vercel
 .vercel
