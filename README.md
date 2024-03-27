@@ -19,9 +19,11 @@ Here are some app snapshots:
 #SIDEBAR
 ![sidebar](https://user-images.githubusercontent.com/98362185/228386732-c3e5a9b7-51e0-4467-abec-e887eaeeed28.png)
 #EVERYTHING
-![everything default-min](https://user-images.githubusercontent.com/98362185/228388594-55166153-a2d7-476a-82d2-548adb9089ef.png)
+![everything](https://github.com/FrontEndDevo/beautiful-news/assets/98362185/ea574f06-2d12-49bd-9ccc-168fde9ea733)
+)
 #FILTRATION -> EVERYTHING
-![searching-everything](https://user-images.githubusercontent.com/98362185/228386876-9f3dba34-d41c-4006-91de-5298e40a60e4.png)
+![searching-everything](https://github.com/FrontEndDevo/beautiful-news/assets/98362185/055cd5cb-fd12-4b3d-8f9d-46aa808f00b2)
+)
 #CHANNELS
 ![channels](https://user-images.githubusercontent.com/98362185/227792209-238a3124-1abf-4dab-979e-c2bf076e4c91.png)
 #ABOUT
