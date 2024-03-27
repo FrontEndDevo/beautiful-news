@@ -20,10 +20,8 @@ Here are some app snapshots:
 ![sidebar](https://user-images.githubusercontent.com/98362185/228386732-c3e5a9b7-51e0-4467-abec-e887eaeeed28.png)
 #EVERYTHING
 ![everything](https://github.com/FrontEndDevo/beautiful-news/assets/98362185/ea574f06-2d12-49bd-9ccc-168fde9ea733)
-)
 #FILTRATION -> EVERYTHING
 ![searching-everything](https://github.com/FrontEndDevo/beautiful-news/assets/98362185/055cd5cb-fd12-4b3d-8f9d-46aa808f00b2)
-)
 #CHANNELS
 ![channels](https://user-images.githubusercontent.com/98362185/227792209-238a3124-1abf-4dab-979e-c2bf076e4c91.png)
 #ABOUT
