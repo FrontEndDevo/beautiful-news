@@ -13,7 +13,8 @@ Status 📶: in-progress.
 Here are some app snapshots:
 
 #HOME
-![Home](https://user-images.githubusercontent.com/98362185/227792120-5fc52816-340e-412f-8419-33dc77e1696b.png)
+![Home](https://github.com/FrontEndDevo/beautiful-news/assets/98362185/c920cc77-45ee-4af0-b5e9-9affefd5f51e)
+
 #STORY
 ![story](https://user-images.githubusercontent.com/98362185/228386717-7dd18b02-ec7d-4b2e-b706-bf2864766b1d.png)
 #SIDEBAR
