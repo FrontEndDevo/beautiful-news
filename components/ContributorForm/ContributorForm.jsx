@@ -53,13 +53,6 @@ const ContributorForm = () => {
   const updatePhotoInputHandler = (value) => {
     const photo = value.target.files[0];
 
-    // Store the image in localStorage temporarily.
-    const reader = new FileReader();
-    reader.readAsDataURL(photo);
-    reader.addEventListener("load", () => {
-      localStorage.setItem("photo", reader.result);
-    });
-
     dispatch({
       type: "UPDATE",
       field: "photo",
